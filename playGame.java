@@ -1,0 +1,12 @@
+
+/**
+ * GUI for the board
+ *
+ * @author (Logan, Tucker, Josh, Eamonn, Tom)
+ * @version (4/8/18)
+ */
+public class playGame
+{
+    public static void main(String[] args){
+    }
+}
