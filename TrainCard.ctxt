@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.params=newCardType
+comment0.target=TrainCard(java.lang.String)
+comment0.text=\r\n\ This\ method\ initializes\ the\ TrainCard\ with\ the\ type\ of\r\n\ train\ the\ card\ has.\r\n\ @param\ newCardType\ -\ The\ type\ of\ train\ portrayed\ on\ the\ card\r\n
+numComments=1
