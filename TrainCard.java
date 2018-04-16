@@ -13,8 +13,9 @@ import java.awt.event.*;
 public class TrainCard
 {
     protected int cardNum;
-    protected Toolkit toolkit;
+    protected Toolkit toolkit = Toolkit.getDefaultToolkit();
     private Image[] imgArr;
+    //All the different trains.
     private Image blackTrain = toolkit.getImage("TicketToRidePics\\BlackCard");
     private Image blueTrain = toolkit.getImage("TicketToRidePics\\BlueCard");
     private Image greenTrain = toolkit.getImage("TicketToRidePics\\GreenCard");
@@ -36,11 +37,24 @@ public class TrainCard
         
         imgArr = new Image[]{blackTrain, blueTrain, greenTrain, orangeTrain, purpleTrain,
         redTrain, whiteTrain, yellowTrain, wildCard};
-        
     }
     
+    /**
+     * This method returns the current Image of the object.
+     * @return - the train in use by this object
+     */
     public Image getTrainCard()
     {
         return imgArr[cardNum];
+    }
+    
+    /**
+     * This method returns the current index in the imgArr of this object,
+     * which gets you the image you want to use as an int.
+     * @return - current index in imgArr of the object.
+     */
+    public int getCurrentNum()
+    {
+        return cardNum;
     }
 }
