@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.util.ArrayList;
 /**
  * Contains an array that shows the player what cards they have
@@ -9,8 +10,8 @@ import java.util.ArrayList;
 public class PlayerHand extends JPanel
 {
     private Player person;
-    private ArrayList<TrainCard> hand = new ArrayList<TrainCard>();
-    private in[] amountOfCards;
+    private ArrayList<TrainCard> hand = new ArrayList<>();
+    private int[] amountOfCards;
 
     //imgArr = new Image[]{blackTrain, blueTrain, greenTrain, orangeTrain, purpleTrain,
     //        redTrain, whiteTrain, yellowTrain, wildCard};
@@ -39,14 +40,20 @@ public class PlayerHand extends JPanel
 
     public void addToHand(TrainCard c){
         int cardNum = c.getCurrentNum();
-        hand.add(c, cardNum);
+        hand.add(cardNum, c);
         amountOfCards[cardNum]++;
     }
 
+    /**
+     * NOT CORRECT OR FINISHED
+     * @return
+     */
     public ArrayList returnCurrentHand(){
         for(int i = 0; i < hand.size(); i++){
-            amountOfCards[i];
+            int x = amountOfCards[i];
         }
+        return hand;
+
     }
     
     

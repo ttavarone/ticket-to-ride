@@ -43,7 +43,7 @@ public class TrainCard
      * This method returns the current Image of the object.
      * @return - the train in use by this object
      */
-    public Image getTrainCard()
+    public Image getTrainCard(int cardNum)
     {
         return imgArr[cardNum];
     }

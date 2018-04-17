@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 
 /**
@@ -15,8 +16,15 @@ public class PlayGame
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setSize(1200, 900);
             frame.setResizable(false);
+            frame.setLayout(new BorderLayout());
+
             BoardPanel bPanel = new BoardPanel();
-            frame.getContentPane().add(bPanel);
+            frame.getContentPane().add(bPanel, BorderLayout.WEST);
+
+            CardPanel cPanel = new CardPanel();
+            frame.getContentPane().add(cPanel, BorderLayout.SOUTH);
+
+
 
             //Display the window.
             frame.setVisible(true);

@@ -1,4 +1,11 @@
-public class CardPanel extends JPanel{
+import javax.swing.*;
+import java.awt.*;
+
+/**
+ *
+ */
+public class CardPanel extends JPanel
+{
 
     private TrainCard blackTrain;
     private TrainCard blueTrain;
@@ -14,7 +21,9 @@ public class CardPanel extends JPanel{
 
     //imgArr = new Image[]{blackTrain, blueTrain, greenTrain, orangeTrain, purpleTrain,
     //        redTrain, whiteTrain, yellowTrain, wildCard};
-    public CardPanel(){
+
+    public CardPanel()
+    {
         super();
         toolkit = Toolkit.getDefaultToolkit();
         setOpaque(true);
@@ -39,7 +48,5 @@ public class CardPanel extends JPanel{
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-
-        g.drawImage(blackTrain.getTrainCard(0), );
-    }
+        }
 }
