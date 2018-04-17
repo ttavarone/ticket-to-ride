@@ -1,17 +1,9 @@
 #BlueJ class context
-<<<<<<< HEAD
-comment0.target=TicketCard
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ TicketCard\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=startCity\ endCity\ length\ value\ i
-comment1.target=TicketCard(java.lang.String,\ java.lang.String,\ java.lang.String,\ int,\ java.awt.Image)
-comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ TicketCard\r\n
-=======
-comment0.params=startCity\ endCity\ length\ value
-comment0.target=TicketCard(java.lang.String,\ java.lang.String,\ java.lang.String,\ int)
+comment0.params=startCity\ endCity\ length\ value\ i
+comment0.target=TicketCard(java.lang.String,\ java.lang.String,\ java.lang.String,\ int,\ java.awt.Image)
 comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ TicketCard\r\n
 comment1.params=
 comment1.target=void\ setRouteComplete()
->>>>>>> b6a17fab1c9717d1dae042e0e702676d24f5e60b
 comment2.params=
 comment2.target=java.lang.String\ getStartCity()
 comment3.params=
