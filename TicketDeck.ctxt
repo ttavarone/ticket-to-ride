@@ -4,9 +4,8 @@ comment0.text=\r\n\ Write\ a\ description\ of\ class\ TicketDeck\ here.\r\n\r\n\
 comment1.params=
 comment1.target=TicketDeck()
 comment2.params=
-comment2.target=TicketCard[]\ shuffle()
-comment3.params=
-comment3.target=void\ names()
-comment4.params=args
-comment4.target=void\ main(java.lang.String[])
-numComments=5
+comment2.target=void\ names()
+comment2.text=public\ TicketCard[]\ shuffle(){\r\n\ \ \ \ \ \ \ \ Random\ rand\ \=\ new\ Random();\r\n\ \ \ \ \ \ \ \ for(int\ i\ \=\ 0;\ i\ <\ ticketCardsDeck.length;\ i++){\r\n\ \ \ \ \ \ \ \ \ \ \ \ //int\ randomPos\ \=\ rand.nextInt(ticketCardsDeck.length);\r\n\ \ \ \ \ \ \ \ \ \ \ \ //TicketCard\ temp\ \=\ ticketcardsDeck.add();\r\n\ \ \ \ \ \ \ \ \ \ \ \ //ticketcardsDeck.add(iticketcardsDeck.add(randomPos];\r\n\ \ \ \ \ \ \ \ \ \ \ \ //ticketcardsDeck.add(randomPostemp);\r\n\ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ return\ ticketCardsDeck;\r\n}
+comment3.params=args
+comment3.target=void\ main(java.lang.String[])
+numComments=4

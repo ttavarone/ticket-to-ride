@@ -8,7 +8,7 @@ import java.util.Collections;
  * Eamonn Conway, Joshua DelSignore 
  * @version 1.0
  */
-public class deckOfCards
+public final class DeckOfCards
 {
     private ArrayList<TrainCard> deck = new ArrayList<TrainCard>();
     private ArrayList<TrainCard> discard = new ArrayList<TrainCard>();
@@ -77,7 +77,7 @@ public class deckOfCards
      * This constructor creates a deck of 110 cards of the appropriate amount 
      * of cards, then proceeds shuffle the deck.
      */
-    public deckOfCards()
+    public DeckOfCards()
     {
         for(int color = 0; color < 9; color++)
         {

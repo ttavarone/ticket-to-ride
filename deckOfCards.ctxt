@@ -1,5 +1,5 @@
 #BlueJ class context
-comment0.target=deckOfCards
+comment0.target=DeckOfCards
 comment0.text=\r\n\ This\ method\ creates\ a\ deck\ of\ train\ cards\ to\ be\ used\ for\ Ticket\ to\ Ride.\r\n\ \r\n\ @author\ Logan\ Brandt,\ Tom\ Fressenius,\ Tucker\ Tavarone,\ \r\n\ Eamonn\ Conway,\ Joshua\ DelSignore\ \r\n\ @version\ 1.0\r\n
 comment1.params=c
 comment1.target=boolean\ enqueue(TrainCard)
@@ -14,7 +14,7 @@ comment4.params=
 comment4.target=boolean\ isEmpty()
 comment4.text=\r\n\ This\ method\ sees\ if\ the\ deck\ has\ any\ TrainCards\ left\ in\ it.\r\n\ @return\ -\ true\ if\ there\ are\ no\ cards\ left,\ false\ if\ there\ is\ a\ card\r\n
 comment5.params=
-comment5.target=deckOfCards()
+comment5.target=DeckOfCards()
 comment5.text=\r\n\ This\ constructor\ creates\ a\ deck\ of\ 110\ cards\ of\ the\ appropriate\ amount\ \r\n\ of\ cards,\ then\ proceeds\ shuffle\ the\ deck.\r\n
 comment6.params=
 comment6.target=void\ print()
