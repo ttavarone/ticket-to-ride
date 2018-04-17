@@ -55,8 +55,17 @@ target2.naviview.expanded=false
 target2.showInterface=false
 target2.type=ClassTarget
 target2.width=90
+<<<<<<< HEAD
 target2.x=190
 target2.y=190
+=======
+target2.x=380
+target2.y=150
+target3.editor.height=840
+target3.editor.width=1552
+target3.editor.x=-8
+target3.editor.y=-8
+>>>>>>> a2f1a417d7c3584292ffff7b50040396089211cb
 target3.height=50
 target3.name=BoardPanel
 target3.showInterface=false
