@@ -1,11 +1,40 @@
+import javax.swing.*;
+import java.awt.*;
 /**
  * GUI for the board
  *
  * @author (Logan, Tucker, Josh, Eamonn, Tom)
  * @version (4/8/18)
  */
-public class boardPanel
+public class BoardPanel extends JPanel
 {
-    public boardPanel(){
+    private Toolkit toolkit;
+    private Image board;
+    private int bHeight;
+    private int bWidth;
+
+
+    public BoardPanel(){
+        super();
+        setOpaque(true);
+        setBackground(Color.WHITE);
+        toolkit = Toolkit.getDefaultToolkit();
+        board = toolkit.getImage("TTRGermanyMap.jpg");
+        bHeight = board.getHeight(this);
+        bWidth = board.getWidth(this);
+
+        int scaleW = bWidth / 2;
+        int scaleH = bHeight / 2;
+
+        board = board.getScaledInstance(550, 850, Image.SCALE_SMOOTH);
+
+        setPreferredSize(new Dimension(600, 900));
+    }
+
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+
+        g.drawImage(board, bWidth, bHeight, this);
     }
 }
