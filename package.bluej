@@ -1,5 +1,31 @@
 #BlueJ package file
+<<<<<<< HEAD
 dependency1.from=DeckOfCards
+=======
+<<<<<<< HEAD
+dependency1.from=TicketDeck
+dependency1.to=TicketCard
+dependency1.type=UsesDependency
+dependency2.from=deckOfCards
+dependency2.to=TrainCard
+dependency2.type=UsesDependency
+editor.fx.0.height=738
+editor.fx.0.width=816
+editor.fx.0.x=232
+editor.fx.0.y=82
+objectbench.height=119
+objectbench.width=760
+package.divider.horizontal=0.6
+package.divider.vertical=0.7485029940119761
+package.editor.height=368
+package.editor.width=670
+package.editor.x=1682
+package.editor.y=330
+package.frame.height=600
+package.frame.width=800
+=======
+dependency1.from=deckOfCards
+>>>>>>> f09ef415d8ad3f6220ca75c7b4a87eb710ad51d1
 dependency1.to=TrainCard
 dependency1.type=UsesDependency
 dependency2.from=TicketDeck
@@ -20,6 +46,7 @@ package.editor.height=667
 package.editor.width=1418
 package.editor.x=-8
 package.editor.y=-8
+<<<<<<< HEAD
 package.numDependencies=5
 package.numTargets=9
 package.showExtends=true
@@ -32,8 +59,30 @@ target1.editor.y=12
 target1.height=50
 target1.name=Player
 target1.naviview.expanded=false
+=======
+>>>>>>> b6a17fab1c9717d1dae042e0e702676d24f5e60b
+package.numDependencies=2
+package.numTargets=7
+package.showExtends=true
+package.showUses=true
+project.charset=windows-1252
+readme.height=58
+readme.name=@README
+readme.width=47
+readme.x=10
+readme.y=10
+target1.height=50
+target1.name=TicketDeck
+>>>>>>> f09ef415d8ad3f6220ca75c7b4a87eb710ad51d1
 target1.showInterface=false
 target1.type=ClassTarget
+<<<<<<< HEAD
+target1.width=90
+target1.x=410
+target1.y=90
+target2.height=50
+target2.name=playGame
+=======
 target1.typeParameters=
 target1.width=80
 target1.x=370
@@ -45,8 +94,10 @@ target2.editor.y=12
 target2.height=50
 target2.name=playGame
 target2.naviview.expanded=false
+>>>>>>> b6a17fab1c9717d1dae042e0e702676d24f5e60b
 target2.showInterface=false
 target2.type=ClassTarget
+<<<<<<< HEAD
 target2.typeParameters=
 target2.width=80
 target2.x=100
@@ -55,24 +106,44 @@ target3.editor.height=840
 target3.editor.width=1552
 target3.editor.x=-8
 target3.editor.y=-8
+=======
+target2.width=90
+<<<<<<< HEAD
+target2.x=100
+target2.y=10
+=======
+target2.x=440
+target2.y=100
+>>>>>>> b6a17fab1c9717d1dae042e0e702676d24f5e60b
+>>>>>>> f09ef415d8ad3f6220ca75c7b4a87eb710ad51d1
 target3.height=50
 target3.name=TicketDeck
 target3.naviview.expanded=false
 target3.showInterface=false
 target3.type=ClassTarget
+<<<<<<< HEAD
+target3.width=100
+=======
 target3.typeParameters=
 target3.width=90
+<<<<<<< HEAD
 target3.x=570
 target3.y=100
 target4.editor.height=700
 target4.editor.width=900
 target4.editor.x=32
 target4.editor.y=12
+=======
+>>>>>>> b6a17fab1c9717d1dae042e0e702676d24f5e60b
+target3.x=250
+target3.y=10
+>>>>>>> f09ef415d8ad3f6220ca75c7b4a87eb710ad51d1
 target4.height=50
 target4.name=boardPanel
 target4.naviview.expanded=false
 target4.showInterface=false
 target4.type=ClassTarget
+<<<<<<< HEAD
 target4.typeParameters=
 target4.width=90
 target4.x=250
@@ -81,6 +152,26 @@ target5.editor.height=840
 target5.editor.width=1552
 target5.editor.x=-8
 target5.editor.y=-8
+=======
+target4.width=80
+<<<<<<< HEAD
+target4.x=10
+target4.y=80
+target5.height=50
+target5.name=TicketCard
+target5.showInterface=false
+target5.type=ClassTarget
+target5.width=90
+target5.x=530
+target5.y=190
+=======
+target4.x=350
+target4.y=100
+target5.editor.height=700
+target5.editor.width=900
+target5.editor.x=0
+target5.editor.y=0
+>>>>>>> f09ef415d8ad3f6220ca75c7b4a87eb710ad51d1
 target5.height=50
 target5.name=DeckOfCards
 target5.naviview.expanded=false
@@ -94,11 +185,24 @@ target6.editor.height=840
 target6.editor.width=1552
 target6.editor.x=-8
 target6.editor.y=-8
+>>>>>>> b6a17fab1c9717d1dae042e0e702676d24f5e60b
 target6.height=50
 target6.name=People
 target6.naviview.expanded=false
 target6.showInterface=false
 target6.type=ClassTarget
+<<<<<<< HEAD
+target6.width=90
+target6.x=200
+target6.y=120
+target7.height=50
+target7.name=deckOfCards
+target7.showInterface=false
+target7.type=ClassTarget
+target7.width=100
+target7.x=60
+target7.y=220
+=======
 target6.typeParameters=
 target6.width=80
 target6.x=440
@@ -113,6 +217,7 @@ target7.naviview.expanded=false
 target7.showInterface=false
 target7.type=ClassTarget
 target7.typeParameters=
+<<<<<<< HEAD
 target7.width=90
 target7.x=500
 target7.y=360
@@ -142,3 +247,9 @@ target9.typeParameters=
 target9.width=80
 target9.x=100
 target9.y=150
+=======
+target7.width=100
+target7.x=240
+target7.y=100
+>>>>>>> b6a17fab1c9717d1dae042e0e702676d24f5e60b
+>>>>>>> f09ef415d8ad3f6220ca75c7b4a87eb710ad51d1
