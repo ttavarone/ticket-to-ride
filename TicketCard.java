@@ -1,4 +1,6 @@
-
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 /**
  * Write a description of class TicketCard here.
  *
@@ -10,16 +12,18 @@ public class TicketCard
     private final String START_CITY, END_CITY, LENGTH;
     private final int VALUE;
     private boolean isRouteComplete;
+    private Image i;
      
     /**
      * Constructor for objects of class TicketCard
      */
-    public TicketCard(String startCity, String endCity, String length, int value)
+    public TicketCard(String startCity, String endCity, String length, int value, Image i)
     {
         START_CITY = startCity;
         END_CITY = endCity;
         LENGTH = length;
         VALUE = value;
+        this.i = i;
         isRouteComplete = false;
     }
     

@@ -1,4 +1,7 @@
 import java.util.Random;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 /**
  * Write a description of class TicketDeck here.
  *
@@ -8,14 +11,14 @@ import java.util.Random;
 public class TicketDeck
 {
     private static TicketCard[] ticketCardsDeck = new TicketCard[89];
-    
+    protected Toolkit toolkit = Toolkit.getDefaultToolkit();
     private static String[] cityNames = new String[39];
     
     public TicketDeck(){
         // long cards
-        ticketCardsDeck[0] = new TicketCard("Berlin", "Chemnitz","short", 6);
-        ticketCardsDeck[1] = new TicketCard("Berlin", "Dusseldorf", "long", 13);
-        ticketCardsDeck[2] = new TicketCard("Berlin", "Erfurt", "short",  7);
+        ticketCardsDeck[0] = new TicketCard("Berlin", "Chemnitz","short", 6, toolkit.getImage("TicketToRidePics\\BerlChem"));
+        ticketCardsDeck[1] = new TicketCard("Berlin", "Dusseldorf", "long", 13, toolkit.getImage("TicketToRidePics\\BerlChem"));
+        ticketCardsDeck[2] = new TicketCard("Berlin", "Erfurt", "short",  7, toolkit.getImage("TicketToRidePics\\BerlChem"));
         ticketCardsDeck[3] = new TicketCard("Berlin", "Frankfurt","long", 14);
         ticketCardsDeck[4] = new TicketCard("Berlin", "Koln","long", 14);
         ticketCardsDeck[5] = new TicketCard("Berlin", "Leipzig", "short", 4);
