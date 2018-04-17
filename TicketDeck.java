@@ -15,6 +15,8 @@ public class TicketDeck
     private static ArrayList<TicketCard> ticketcardsDeck = new ArrayList<TicketCard>();
     protected Toolkit toolkit = Toolkit.getDefaultToolkit();
     private static String[] cityNames = new String[39];
+    private static ArrayList<TicketCard> shortRoutesDeck = new ArrayList<TicketCard>();
+    private static ArrayList<TicketCard> longRoutesDeck = new ArrayList<TicketCard>();
     
     public TicketDeck(){
         ticketcardsDeck.add(new TicketCard("Berlin", "Chemnitz","short", 6, toolkit.getImage("TicketToRidePics\\BerlChem")));
@@ -109,7 +111,17 @@ public class TicketDeck
         ticketcardsDeck.add(new TicketCard("Schwerin", "Koblenz", "long", 12, toolkit.getImage("TicketToRidePics\\SchKob")));
         ticketcardsDeck.add(new TicketCard("Schwerin", "Frankfurt", "long", 13, toolkit.getImage("TicketToRidePics\\SchwFran")));
         
-        Collections.shuffle(ticketcardsDeck);
+        for(TicketCard t: ticketcardsDeck){
+            if(t.getLength().equals("short")){
+                shortRoutesDeck.add(t);
+            }
+            else{
+                longRoutesDeck.add(t);
+            }
+        }
+        
+        Collections.shuffle(shortRoutesDeck);
+        Collections.shuffle(longRoutesDeck);
     }
     
     /*public TicketCard[] shuffle(){
