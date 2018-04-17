@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * Main class to run the game
@@ -12,15 +13,13 @@ public class PlayGame
             //Create and set up the window.
             JFrame frame = new JFrame("Ticket To Ride Board");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-
+            frame.setSize(1200, 900);
+            frame.setResizable(false);
             BoardPanel bPanel = new BoardPanel();
             frame.getContentPane().add(bPanel);
 
             //Display the window.
-            frame.pack();
             frame.setVisible(true);
-
         }
 
         /**

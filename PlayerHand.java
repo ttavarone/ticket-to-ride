@@ -1,17 +1,23 @@
 import java.util.ArrayList;
 /**
- * Write a description of class PlayerHand here.
+ * Contains an array that shows the player what cards they have
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Tucker Tavarone, Josh DelSignore, Logan Brandt,
+ * Tom Fresenius, Eamonn Conway)
+ * @version (1.0)
  */
-public class PlayerHand
+public class PlayerHand extends JPanel
 {
     private Player person;
     private ArrayList<TrainCard> hand = new ArrayList<TrainCard>();
+    private in[] amountOfCards;
+
+    //imgArr = new Image[]{blackTrain, blueTrain, greenTrain, orangeTrain, purpleTrain,
+    //        redTrain, whiteTrain, yellowTrain, wildCard};
 
     public PlayerHand(Player p)
     {
+        amountOfCards = new int[hand.size()];
         person = p;
     }
 
@@ -28,6 +34,18 @@ public class PlayerHand
             {
                 hand.add(d.dequeue());
             }
+        }
+    }
+
+    public void addToHand(TrainCard c){
+        int cardNum = c.getCurrentNum();
+        hand.add(c, cardNum);
+        amountOfCards[cardNum]++;
+    }
+
+    public ArrayList returnCurrentHand(){
+        for(int i = 0; i < hand.size(); i++){
+            amountOfCards[i];
         }
     }
     
