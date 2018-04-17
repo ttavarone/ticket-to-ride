@@ -19,12 +19,7 @@ public class PlayGame
             frame.setLayout(new BorderLayout());
 
             BoardPanel bPanel = new BoardPanel();
-            frame.getContentPane().add(bPanel, BorderLayout.WEST);
-
-            CardPanel cPanel = new CardPanel();
-            frame.getContentPane().add(cPanel, BorderLayout.SOUTH);
-
-
+            frame.getContentPane().add(bPanel);
 
             //Display the window.
             frame.setVisible(true);

@@ -2,6 +2,8 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+
 /**
  * This method creates a single instance of one of the train cards a
  * player would draw.
@@ -16,15 +18,15 @@ public class TrainCard
     protected Toolkit toolkit = Toolkit.getDefaultToolkit();
     private Image[] imgArr;
     //All the different trains.
-    private Image blackTrain = toolkit.getImage("TicketToRidePics\\BlackCard");
-    private Image blueTrain = toolkit.getImage("TicketToRidePics\\BlueCard");
-    private Image greenTrain = toolkit.getImage("TicketToRidePics\\GreenCard");
-    private Image orangeTrain = toolkit.getImage("TicketToRidePics\\OrangeCard");
-    private Image purpleTrain = toolkit.getImage("TicketToRidePics\\PurpleCard");
-    private Image redTrain = toolkit.getImage("TicketToRidePics\\RedCard");
-    private Image whiteTrain = toolkit.getImage("TicketToRidePics\\WhiteCard");
-    private Image yellowTrain = toolkit.getImage("TicketToRidePics\\YellowCard");
-    private Image wildCard = toolkit.getImage("TicketToRidePics\\RainbowCard");
+    private Image blackTrain = toolkit.getImage("TicketToRidePics"+File.separator+"BlackCard.jpg");
+    private Image blueTrain = toolkit.getImage("TicketToRidePics"+File.separator+"BlueCard.jpg");
+    private Image greenTrain = toolkit.getImage("TicketToRidePics"+File.separator+"GreenCard.jpg");
+    private Image orangeTrain = toolkit.getImage("TicketToRidePics"+File.separator+"OrangeCard.jpg");
+    private Image purpleTrain = toolkit.getImage("TicketToRidePics"+File.separator+"PurpleCard.jpg");
+    private Image redTrain = toolkit.getImage("TicketToRidePics"+File.separator+"RedCard.jpg");
+    private Image whiteTrain = toolkit.getImage("TicketToRidePics"+File.separator+"WhiteCard.jpg");
+    private Image yellowTrain = toolkit.getImage("TicketToRidePics"+File.separator+"YellowCard.jpg");
+    private Image wildCard = toolkit.getImage("TicketToRidePics"+File.separator+"RainbowCard.jpg");
 
     /**
      * This method initializes the TrainCard with the type of
@@ -37,13 +39,15 @@ public class TrainCard
         
         imgArr = new Image[]{blackTrain, blueTrain, greenTrain, orangeTrain, purpleTrain,
         redTrain, whiteTrain, yellowTrain, wildCard};
+
+        imgArr[newCardNum] = imgArr[newCardNum].getScaledInstance(70, 118, Image.SCALE_FAST);
     }
     
     /**
      * This method returns the current Image of the object.
      * @return - the train in use by this object
      */
-    public Image getTrainCard(int cardNum)
+    public Image getTrainCard()
     {
         return imgArr[cardNum];
     }
