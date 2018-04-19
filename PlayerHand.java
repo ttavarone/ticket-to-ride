@@ -49,11 +49,12 @@ public class PlayerHand extends JPanel
         return hand;
     }
 
-    private int[] generateAmtEachCard(){
+    public int[] generateAmtEachCard(){
         int[] amountEachCard = new int[9];
         for(int i = 0; i < hand.size(); i++){
             int cardNum = hand.get(i).getCurrentNum();
             amountEachCard[cardNum]++;
         }
+        return amountEachCard;
     }
 }
