@@ -88,7 +88,7 @@ public class BoardPanel extends JPanel {
         has in their 'hand'
          */
         g.setColor(Color.BLACK);
-        g.drawString(600, 50, 25, 25);//black
+        //g.drawString();//black
         g.fillRect(600, 178, 25, 25);
         g.fillRect(600, 306, 25, 25);
         g.fillRect(680, 50, 25, 25);

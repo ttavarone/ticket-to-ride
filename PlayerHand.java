@@ -11,14 +11,12 @@ public class PlayerHand extends JPanel
 {
     private Player person;
     private ArrayList<TrainCard> hand = new ArrayList<>();
-    private int[] amountOfCards;
 
     //imgArr = new Image[]{blackTrain, blueTrain, greenTrain, orangeTrain, purpleTrain,
     //        redTrain, whiteTrain, yellowTrain, wildCard};
 
     public PlayerHand(Player p)
     {
-        amountOfCards = new int[hand.size()];
         person = p;
     }
 
@@ -41,20 +39,21 @@ public class PlayerHand extends JPanel
     public void addToHand(TrainCard c){
         int cardNum = c.getCurrentNum();
         hand.add(cardNum, c);
-        amountOfCards[cardNum]++;
     }
 
     /**
-     * NOT CORRECT OR FINISHED
-     * @return
+     * For returning the current that the player has
+     * @return ArrayList representing the players current hand
      */
     public ArrayList returnCurrentHand(){
-        for(int i = 0; i < hand.size(); i++){
-            int x = amountOfCards[i];
-        }
         return hand;
-
     }
-    
-    
+
+    private int[] generateAmtEachCard(){
+        int[] amountEachCard = new int[9];
+        for(int i = 0; i < hand.size(); i++){
+            int cardNum = hand.get(i).getCurrentNum();
+            amountEachCard[cardNum]++;
+        }
+    }
 }
