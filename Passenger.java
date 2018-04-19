@@ -1,20 +1,22 @@
+////////////////////////////////////////////////////////////////////////////////
 import java.awt.*;
-import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.Random;
 /**
- * Class for the people placed at each city
+ * Class for the colored passengers placed at each city and taken at the 
+ * end of a turn when a connection is made.
  *
- * @author Tom, Eamonn, Logan, Tucker, and Josh
+ * @author (Tucker Tavarone, Josh DelSignore, Logan Brandt,
+ * Tom Fresenius, Eamonn Conway)
  * @version 4/13/18
  */
-public class People implements MouseListener
+public class Passenger
 {
     Color red, black, white, blue, yellow, green;
     ArrayList<Color> remainingToPlace; //number remaining that can be placed
     ArrayList<Color> remainingOnBoard; //number remaining on board
 
-    People(){
+    Passenger(){
         red = new Color(255,0,0);
         black = new Color(0,0,0);
         white = new Color(255,0,0);
@@ -42,9 +44,9 @@ public class People implements MouseListener
         Random rand = new Random();
         for(int i = 0; i < num; i++){
             int index = rand.nextInt(remainingToPlace.size());
-            
+
             //add person to city using (remainingToPlace(index));
-            
+
             remainingOnBoard.add(remainingToPlace.get(index));
             remainingToPlace.remove(index);
         }
@@ -54,30 +56,33 @@ public class People implements MouseListener
      * Takes the person and adds to the player's stack
      * @param c - color to take
      */
-    public void take(Color c){
+    public void take(Player p, Color c){
         for(int i = 0; i < remainingOnBoard.size(); i++){
             if(remainingOnBoard.get(i).equals(c)){
-                                
-                //add to person's stack of people 
+
+                if(c.equals(red)){
+                    p.redMeeple++;
+                }
+                else if(c.equals(black)){
+                    p.blackMeeple++;
+                }
+                else if(c.equals(white)){
+                    p.whiteMeeple++;
+                }
+                else if(c.equals(blue)){
+                    p.blueMeeple++;
+                }
+                else if(c.equals(yellow)){
+                    p.yellowMeeple++;
+                }
+                else if(c.equals(green)){
+                    p.greenMeeple++;
+                }
+                
+                //remove from city once city class is created
                 
                 remainingOnBoard.remove(i);
             }
         }
-    }
-    
-    // dont need yet but just incase
-    public void mousePressed(MouseEvent e) {
-    }
-
-    public void mouseReleased(MouseEvent e) {
-    }
-
-    public void mouseEntered(MouseEvent e) {
-    }
-
-    public void mouseExited(MouseEvent e) {
-    }
-
-    public void mouseClicked(MouseEvent e) {
     }
 }
