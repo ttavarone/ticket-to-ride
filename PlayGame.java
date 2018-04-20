@@ -14,12 +14,13 @@ public class PlayGame
             //Create and set up the window.
             JFrame frame = new JFrame("Ticket To Ride Board");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(new Dimension(1200, 900));
+            //frame.setSize(new Dimension(1200, 875));
             frame.setResizable(false);
 
-            MainPanel mPanel = new MainPanel();
-            frame.getContentPane().add(mPanel);
+            frame.getContentPane().add(new MainPanel());
+
             //Display the window.
+            frame.pack();
             frame.setVisible(true);
         }
 

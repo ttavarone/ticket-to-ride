@@ -1,22 +1,22 @@
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Put all the JPanel objects in here
+ */
 public class MainPanel extends JPanel{
 
 
     public MainPanel(){
-        setLayout(new GridBagLayout());
-        setPreferredSize(new Dimension(1200, 900));
-        GridBagConstraints a = new GridBagConstraints();
-        a.fill = GridBagConstraints.HORIZONTAL;
-        a.gridx = 0;
-        a.gridy = 0;
+        setLayout(new BorderLayout());
+        setPreferredSize(new Dimension(1200, 875));
+
 
         BoardPanel bPanel = new BoardPanel();
-        CardPanel cPanel = new CardPanel();
+        PlayerHand cPanel = new PlayerHand(null);
 
-        add(bPanel, a);
-        add(cPanel);
+        add(bPanel, BorderLayout.WEST);
+        add(cPanel, BorderLayout.CENTER);
     }
 
 }
