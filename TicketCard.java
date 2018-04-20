@@ -4,10 +4,11 @@ import java.awt.event.*;
 /**
  * Write a description of class TicketCard here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author (Tucker Tavarone, Logan Brandt, Josh DelSignore,
+ * Eamonn Conway, Tom Fresenius)
+ * @version (1.0)
  */
-public class TicketCard
+public class TicketCard extends JPanel
 {
     private final String START_CITY, END_CITY, LENGTH;
     private final int VALUE;
@@ -19,6 +20,7 @@ public class TicketCard
      */
     public TicketCard(String startCity, String endCity, String length, int value, Image i)
     {
+        super();
         START_CITY = startCity;
         END_CITY = endCity;
         LENGTH = length;
@@ -45,5 +47,10 @@ public class TicketCard
     
     public int getValue(){
         return VALUE;
+    }
+
+    @Override
+    public void paintComponent(Graphics g){
+
     }
 }

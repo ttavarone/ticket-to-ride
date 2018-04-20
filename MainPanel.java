@@ -9,7 +9,7 @@ public class MainPanel extends JPanel{
 
     public MainPanel(){
         setLayout(new BorderLayout());
-        setPreferredSize(new Dimension(1200, 875));
+        //setPreferredSize(new Dimension(1200, 875));
 
 
         BoardPanel bPanel = new BoardPanel();
