@@ -1,5 +1,4 @@
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 
 /**
@@ -11,16 +10,14 @@ import java.awt.*;
 public class PlayGame
 {
         private static void createAndShowGUI() {
-            //Create and set up the window.
             JFrame frame = new JFrame("Ticket To Ride Board");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            //frame.setSize(new Dimension(1200, 875));
+            frame.setSize(new Dimension(1200, 875));
             frame.setResizable(false);
 
-            frame.getContentPane().add(new MainPanel());
+            frame.getContentPane().add(new Layout());
 
-            //Display the window.
-            frame.pack();
+            //frame.pack();
             frame.setVisible(true);
         }
 
@@ -30,9 +27,6 @@ public class PlayGame
          * @param args - Command line arguments.
          */
         public static void main(String[] args) {
-            //Schedule a job for the event-dispatching thread:
-            //creating and showing this application's GUI.
-
             javax.swing.SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
                     createAndShowGUI();

@@ -51,6 +51,5 @@ public class TicketCard extends JPanel
 
     @Override
     public void paintComponent(Graphics g){
-
     }
 }

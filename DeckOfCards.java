@@ -1,5 +1,6 @@
+import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.Collections;
 /**
  * This method creates a deck of train cards to be used for Ticket to Ride.
@@ -8,8 +9,10 @@ import java.util.Collections;
  * Eamonn Conway, Joshua DelSignore 
  * @version 1.0
  */
-public final class DeckOfCards
+public final class DeckOfCards extends JPanel
 {
+    private static Image trainCardBack;
+    private Toolkit toolkit;
     private ArrayList<TrainCard> deck = new ArrayList<TrainCard>();
     private ArrayList<TrainCard> discard = new ArrayList<TrainCard>();
 
@@ -79,6 +82,11 @@ public final class DeckOfCards
      */
     public DeckOfCards()
     {
+        super();
+        setOpaque(true);
+        toolkit = Toolkit.getDefaultToolkit();
+        trainCardBack = toolkit.getImage("TrainCardBack.JPG");
+
         for(int color = 0; color < 9; color++)
         {
             int loco = 0;
@@ -124,5 +132,12 @@ public final class DeckOfCards
         Collections.shuffle(deck);
         discard.clear();
         return true;
+    }
+
+    @Override
+    public void paintComponent(Graphics g){
+        super.paintComponent(g);
+
+        g.drawImage(trainCardBack, 0, 0, this);
     }
 }

@@ -18,15 +18,15 @@ public class PlayerHand extends JPanel
     //        redTrain, whiteTrain, yellowTrain, wildCard};
 
     private Toolkit toolkit;
-    private TrainCard blackTrain;
-    private TrainCard blueTrain;
-    private TrainCard greenTrain;
-    private TrainCard orangeTrain;
-    private TrainCard purpleTrain;
-    private TrainCard redTrain;
-    private TrainCard whiteTrain;
-    private TrainCard yellowTrain;
-    private TrainCard wildCard;
+    private static TrainCard blackTrain;
+    private static TrainCard blueTrain;
+    private static TrainCard greenTrain;
+    private static TrainCard orangeTrain;
+    private static TrainCard purpleTrain;
+    private static TrainCard redTrain;
+    private static TrainCard whiteTrain;
+    private static TrainCard yellowTrain;
+    private static TrainCard wildCard;
 
     public PlayerHand(Player p)
     {
