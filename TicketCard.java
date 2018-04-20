@@ -49,7 +49,12 @@ public class TicketCard extends JPanel
         return VALUE;
     }
 
+    /**
+     * This displays the players current ticket cards
+     * @param g graphics object to use
+     */
     @Override
     public void paintComponent(Graphics g){
+
     }
 }

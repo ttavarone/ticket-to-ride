@@ -33,9 +33,8 @@ public final class DeckOfCards extends JPanel
     }
 
     /**
-     * This method removes the top card of the deck and adds it to the discard 
-     * pile, then returns the card that was on top.
-     * @return - The card that was on top of the deck, of nothing if the deck is empty.
+     * This method removes the top card of the deck, then returns the card that was on top.
+     * @return - The card that was on top of the deck, or nothing if the deck is empty.
      */
     public TrainCard dequeue()
     {
@@ -45,7 +44,7 @@ public final class DeckOfCards extends JPanel
         }
         TrainCard answer = deck.get(0);
         deck.remove(0);
-        discard.add(answer);
+        //discard.add(answer);
         return answer;
     }
 
@@ -134,10 +133,24 @@ public final class DeckOfCards extends JPanel
         return true;
     }
 
+    public void initialLayout(Graphics g){
+        g.drawImage(dequeue().getTrainCard(), 0,0, this);
+        g.drawImage(dequeue().getTrainCard(), 0,0, this);
+        g.drawImage(dequeue().getTrainCard(), 0,0, this);
+        g.drawImage(dequeue().getTrainCard(), 0,0, this);
+        g.drawImage(dequeue().getTrainCard(), 0,0, this);
+    }
+
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
 
         g.drawImage(trainCardBack, 0, 0, this);
+
+        //if a player draws a card, these have to update to something new from the deck
+        //this is the initial layout
+        initialLayout(g);
+
+        //there should be methods here to update cards as they are chosen or removed
     }
 }

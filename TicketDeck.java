@@ -1,8 +1,6 @@
 import java.io.File;
-import java.util.Random;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.Collections;
 /**
@@ -11,8 +9,10 @@ import java.util.Collections;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class TicketDeck
+public class TicketDeck extends JPanel
 {
+    private static Image orangeDest;
+    private static Image blueDest;
     private static ArrayList<TicketCard> ticketcardsDeck = new ArrayList<TicketCard>();
     protected Toolkit toolkit = Toolkit.getDefaultToolkit();
     private static String[] cityNames = new String[39];
@@ -20,6 +20,9 @@ public class TicketDeck
     private static ArrayList<TicketCard> longRoutesDeck = new ArrayList<TicketCard>();
     
     public TicketDeck(){
+        super();
+        orangeDest = toolkit.getImage("TicketToRidePics"+File.separator+"OrangeDest.jpg");
+        blueDest = toolkit.getImage("TicketToRidePics"+File.separator+"BlueDest.jpg");
         ticketcardsDeck.add(new TicketCard("Berlin", "Chemnitz","short", 6, toolkit.getImage("TicketToRidePics"+File.separator+"BerlChem")));
         ticketcardsDeck.add(new TicketCard("Berlin", "Dusseldorf", "long", 13, toolkit.getImage("TicketToRidePics"+File.separator+"BerlDuss")));
         ticketcardsDeck.add(new TicketCard("Berlin", "Erfurt", "short",  7, toolkit.getImage("TicketToRidePics"+File.separator+"BurlErfu")));
@@ -177,7 +180,12 @@ public class TicketDeck
         cityNames[37] = "Rostock";
         cityNames[38] = "Danemark";
     }
-    
-    public static void main(String args[]){
+
+    @Override
+    public void paintComponent(Graphics g){
+        super.paintComponent(g);
+
+        g.drawImage(orangeDest, 0, 0, this);
+        g.drawImage(blueDest, 0, 0, this);
     }
 }
