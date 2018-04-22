@@ -133,23 +133,19 @@ public final class DeckOfCards extends JPanel
         return true;
     }
 
-    public void initialLayout(Graphics g){
-        g.drawImage(dequeue().getTrainCard(), 0,0, this);
-        g.drawImage(dequeue().getTrainCard(), 0,0, this);
-        g.drawImage(dequeue().getTrainCard(), 0,0, this);
-        g.drawImage(dequeue().getTrainCard(), 0,0, this);
-        g.drawImage(dequeue().getTrainCard(), 0,0, this);
-    }
-
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
 
         g.drawImage(trainCardBack, 0, 0, this);
 
-        //if a player draws a card, these have to update to something new from the deck
-        //this is the initial layout
-        initialLayout(g);
+        /*
+        g.drawImage(dequeue().getTrainCard(), 0,0, this);
+        g.drawImage(dequeue().getTrainCard(), 0,0, this);
+        g.drawImage(dequeue().getTrainCard(), 0,0, this);
+        g.drawImage(dequeue().getTrainCard(), 0,0, this);
+        g.drawImage(dequeue().getTrainCard(), 0,0, this);
+        */
 
         //there should be methods here to update cards as they are chosen or removed
     }

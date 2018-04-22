@@ -47,7 +47,7 @@ public class PlayerHand extends JPanel
         wildCard = new TrainCard(8);
         amountEachCard = new int[9];
 
-        setPreferredSize(new Dimension(160, 256));
+        setPreferredSize(new Dimension(230, 385));
     }
 
     public void drawCard(DeckOfCards d)
@@ -93,15 +93,15 @@ public class PlayerHand extends JPanel
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        g.drawImage(blackTrain.getTrainCard(), 600, 50, this);
-        g.drawImage(blueTrain.getTrainCard(), 600, 178, this);
-        g.drawImage(greenTrain.getTrainCard(), 600, 306, this);
-        g.drawImage(orangeTrain.getTrainCard(), 680, 50, this);
-        g.drawImage(purpleTrain.getTrainCard(), 680, 178, this);
-        g.drawImage(redTrain.getTrainCard(), 680, 306, this);
-        g.drawImage(whiteTrain.getTrainCard(), 760, 50, this);
-        g.drawImage(yellowTrain.getTrainCard(), 760, 178, this);
-        g.drawImage(wildCard.getTrainCard(), 760, 306, this);
+        g.drawImage(blackTrain.getTrainCard(), 0, 0, this);
+        g.drawImage(blueTrain.getTrainCard(), 0, 128, this);
+        g.drawImage(greenTrain.getTrainCard(), 0, 256, this);
+        g.drawImage(orangeTrain.getTrainCard(), 80, 0, this);
+        g.drawImage(purpleTrain.getTrainCard(), 80, 128, this);
+        g.drawImage(redTrain.getTrainCard(), 80, 256, this);
+        g.drawImage(whiteTrain.getTrainCard(), 160, 0, this);
+        g.drawImage(yellowTrain.getTrainCard(), 160, 128, this);
+        g.drawImage(wildCard.getTrainCard(), 160, 256, this);
 
         //imgArr = new Image[]{blackTrain, blueTrain, greenTrain, orangeTrain, purpleTrain,
         //        redTrain, whiteTrain, yellowTrain, wildCard};
@@ -111,15 +111,15 @@ public class PlayerHand extends JPanel
         a number that represents how many of the card a player has
          */
         g.setColor(Color.LIGHT_GRAY);
-        g.fillRect(600, 50, 25, 25);//black
-        g.fillRect(600, 178, 25, 25);//
-        g.fillRect(600, 306, 25, 25);
-        g.fillRect(680, 50, 25, 25);
-        g.fillRect(680, 178, 25, 25);
-        g.fillRect(680, 306, 25, 25);
-        g.fillRect(760, 50, 25, 25);
-        g.fillRect(760, 178, 25, 25);
-        g.fillRect(760, 306, 25, 25);
+        g.fillRect(0, 0, 25, 25);//black
+        g.fillRect(0, 128, 25, 25);//
+        g.fillRect(0, 256, 25, 25);
+        g.fillRect(80, 0, 25, 25);
+        g.fillRect(80, 128, 25, 25);
+        g.fillRect(80, 256, 25, 25);
+        g.fillRect(160, 0, 25, 25);
+        g.fillRect(160, 128, 25, 25);
+        g.fillRect(160, 256, 25, 25);
 
         /*
         The following statements put the numbers in the black boxes
@@ -129,15 +129,15 @@ public class PlayerHand extends JPanel
 
         g.setColor(Color.BLUE);
         g.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 25));
-        g.drawString(Integer.toString(returnAmtCard(0)), 600, 70);//black
-        g.drawString(Integer.toString(returnAmtCard(3)), 680, 70);//orange
-        g.drawString(Integer.toString(returnAmtCard(6)), 760, 70);//white
-        g.drawString(Integer.toString(returnAmtCard(1)), 600, 198);//blue
-        g.drawString(Integer.toString(returnAmtCard(4)), 680, 198);//purple
-        g.drawString(Integer.toString(returnAmtCard(7)), 760, 198);//yellow
-        g.drawString(Integer.toString(returnAmtCard(2)), 600, 326);//green
-        g.drawString(Integer.toString(returnAmtCard(5)), 680, 326);//red
-        g.drawString(Integer.toString(returnAmtCard(8)), 760, 326);//wild
+        g.drawString(Integer.toString(returnAmtCard(0)), 0, 20);//black
+        g.drawString(Integer.toString(returnAmtCard(3)), 80, 20);//orange
+        g.drawString(Integer.toString(returnAmtCard(6)), 160, 20);//white
+        g.drawString(Integer.toString(returnAmtCard(1)), 0, 148);//blue
+        g.drawString(Integer.toString(returnAmtCard(4)), 80, 148);//purple
+        g.drawString(Integer.toString(returnAmtCard(7)), 160, 148);//yellow
+        g.drawString(Integer.toString(returnAmtCard(2)), 0, 276);//green
+        g.drawString(Integer.toString(returnAmtCard(5)), 80, 276);//red
+        g.drawString(Integer.toString(returnAmtCard(8)), 160, 276);//wild
 
     }
 }

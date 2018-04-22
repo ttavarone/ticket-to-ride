@@ -12,12 +12,12 @@ public class PlayGame
         private static void createAndShowGUI() {
             JFrame frame = new JFrame("Ticket To Ride Board");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(new Dimension(1200, 875));
+            //frame.setSize(new Dimension(1200, 875));
             frame.setResizable(false);
 
             frame.getContentPane().add(new Layout());
 
-            //frame.pack();
+            frame.pack();
             frame.setVisible(true);
         }
 

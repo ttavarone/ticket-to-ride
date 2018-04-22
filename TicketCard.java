@@ -1,6 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+
 /**
  * Write a description of class TicketCard here.
  *
