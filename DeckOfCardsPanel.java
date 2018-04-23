@@ -31,6 +31,8 @@ public class DeckOfCardsPanel extends JPanel {
     public void paintComponent(Graphics g){
         super.paintComponent(g);
 
+        g.setColor(Color.BLACK);
+        g.drawString("Cards you can draw", 0,128);
         g.drawImage(trainCardBack, 0, 0, this);
 
         g.drawImage(deck.peek(0).getTrainCard(), 80, 0, this);

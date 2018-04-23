@@ -37,8 +37,17 @@ public class Layout extends JPanel {
         e.ipadx = 10;
         e.ipady = 10;
 
+        JPanel temp = new JPanel();
+        temp.setPreferredSize(new Dimension(150, 150));
+        temp.setOpaque(true);
+        temp.setBackground(Color.WHITE);
+        GridBagConstraints f = new GridBagConstraints();
+        f.anchor = GridBagConstraints.CENTER;
+        f.gridx = 850;
+
         add(bPanel, c);
         add(cPanel, d);
         add(dPanel, e);
+        add(temp, f);
     }
 }

@@ -93,6 +93,9 @@ public class PlayerHand extends JPanel
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
+
+        g.drawString("Player cards", 0, 385);
+
         g.drawImage(blackTrain.getTrainCard(), 0, 0, this);
         g.drawImage(blueTrain.getTrainCard(), 0, 128, this);
         g.drawImage(greenTrain.getTrainCard(), 0, 256, this);
