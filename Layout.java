@@ -9,7 +9,7 @@ public class Layout extends JPanel {
 
     public Layout() {
 
-        
+
         setLayout(new GridBagLayout());
         //setPreferredSize(new Dimension(1200, 875));
 
@@ -29,9 +29,9 @@ public class Layout extends JPanel {
         d.ipadx = 10;
         d.ipady = 10;
 
-        DeckOfCards dPanel = new DeckOfCards();
+        DeckOfCardsPanel dPanel = new DeckOfCardsPanel();
         GridBagConstraints e = new GridBagConstraints();
-        e.anchor = GridBagConstraints.SOUTHEAST;
+        e.anchor = GridBagConstraints.SOUTH;
         e.gridx = 850;
         e.gridy = 0;
         e.ipadx = 10;

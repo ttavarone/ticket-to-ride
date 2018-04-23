@@ -54,13 +54,11 @@ public final class DeckOfCards extends JPanel
      * Potentially useful for determining if there are going to be three wild cards face up.
      * @return - the next TrainCard that is going to be displayed, or null if the deck is empty.
      */
-    public TrainCard peek()
-    {
-        if(isEmpty())
-        {
+    public TrainCard peek(int loc) {
+        if (isEmpty()) {
             return null;
         }
-        return deck.get(0);
+        return deck.get(loc);
     }
 
     /**
@@ -82,12 +80,7 @@ public final class DeckOfCards extends JPanel
      */
     public DeckOfCards()
     {
-        super();
-        setOpaque(true);
-        setBackground(Color.WHITE);
-        toolkit = Toolkit.getDefaultToolkit();
-        trainCardBack = toolkit.getImage("TicketToRidePics"+File.separator+"TrainCardBack.JPG");
-        trainCardBack = trainCardBack.getScaledInstance(70, 118, Image.SCALE_FAST);
+
 
         for(int color = 0; color < 9; color++)
         {
@@ -102,12 +95,10 @@ public final class DeckOfCards extends JPanel
             }
         }
 
-
-        setPreferredSize(new Dimension(75, 123));
+        Collections.shuffle(deck);
     }
     
-    public void print()
-    {
+    public void print() {
         for(int i = 0; i < discard.size(); i++)
         {
             System.out.println(discard.get(i).getCurrentNum());
@@ -133,22 +124,5 @@ public final class DeckOfCards extends JPanel
         Collections.shuffle(deck);
         discard.clear();
         return true;
-    }
-
-    @Override
-    public void paintComponent(Graphics g){
-        super.paintComponent(g);
-
-        g.drawImage(trainCardBack, 0, 0, this);
-
-        /*
-        g.drawImage(dequeue().getTrainCard(), 0,0, this);
-        g.drawImage(dequeue().getTrainCard(), 0,0, this);
-        g.drawImage(dequeue().getTrainCard(), 0,0, this);
-        g.drawImage(dequeue().getTrainCard(), 0,0, this);
-        g.drawImage(dequeue().getTrainCard(), 0,0, this);
-        */
-
-        //there should be methods here to update cards as they are chosen or removed
     }
 }
