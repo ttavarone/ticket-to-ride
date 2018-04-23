@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 /**
@@ -83,8 +84,10 @@ public final class DeckOfCards extends JPanel
     {
         super();
         setOpaque(true);
+        setBackground(Color.WHITE);
         toolkit = Toolkit.getDefaultToolkit();
-        trainCardBack = toolkit.getImage("TrainCardBack.JPG");
+        trainCardBack = toolkit.getImage("TicketToRidePics"+ File.separator+"TrainCardBack.JPG");
+        trainCardBack = trainCardBack.getScaledInstance(70, 118, Image.SCALE_FAST);
 
         for(int color = 0; color < 9; color++)
         {
@@ -97,11 +100,10 @@ public final class DeckOfCards extends JPanel
             {
                 enqueue(new TrainCard(color));
             }
-        }/*
-        print();
-        Collections.shuffle(deck);
-        System.out.println("\n");
-        print();*/
+        }
+
+
+        setPreferredSize(new Dimension(75, 123));
     }
     
     public void print()
