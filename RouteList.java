@@ -135,4 +135,44 @@ public enum RouteList
         doubleRoute = dRoute;
         othersClaimed = others;
     }
+
+    public City getCITY1() {
+        return CITY1;
+    }
+
+    public void setCITY1(City CITY1) {
+        this.CITY1 = CITY1;
+    }
+
+    public City getCITY2() {
+        return CITY2;
+    }
+
+    public void setCITY2(City CITY2) {
+        this.CITY2 = CITY2;
+    }
+
+    public Color getRouteColor() {
+        return routeColor;
+    }
+
+    public void setRouteColor(Color routeColor) {
+        this.routeColor = routeColor;
+    }
+
+    public int getRouteLength() {
+        return routeLength;
+    }
+
+    public void setRouteLength(int routeLength) {
+        this.routeLength = routeLength;
+    }
+
+    public boolean isRouteClaimed() {
+        return routeClaimed;
+    }
+
+    public void setRouteClaimed(boolean routeClaimed) {
+        this.routeClaimed = routeClaimed;
+    }
 }

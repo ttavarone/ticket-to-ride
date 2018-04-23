@@ -86,7 +86,7 @@ public final class DeckOfCards extends JPanel
         setOpaque(true);
         setBackground(Color.WHITE);
         toolkit = Toolkit.getDefaultToolkit();
-        trainCardBack = toolkit.getImage("TicketToRidePics"+ File.separator+"TrainCardBack.JPG");
+        trainCardBack = toolkit.getImage("TicketToRidePics"+File.separator+"TrainCardBack.JPG");
         trainCardBack = trainCardBack.getScaledInstance(70, 118, Image.SCALE_FAST);
 
         for(int color = 0; color < 9; color++)
