@@ -1,12 +1,16 @@
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
-public class DeckOfCardsPanel extends JPanel {
+public class DeckOfCardsPanel extends JPanel{
 
     private Toolkit toolkit;
     private Image trainCardBack;
     private DeckOfCards deck;
+    private boolean cardDrawn = false;
 
     public DeckOfCardsPanel(){
         super();
@@ -20,10 +24,9 @@ public class DeckOfCardsPanel extends JPanel {
         setPreferredSize(new Dimension(480, 128));
     }
 
-
     public Image getScaledInstanceOf(TrainCard trainCard){
         return trainCard.getTrainCard()
-                .getScaledInstance(70, 118, Image.SCALE_FAST);
+        .getScaledInstance(70, 118, Image.SCALE_FAST);
 
     }
 
@@ -42,5 +45,47 @@ public class DeckOfCardsPanel extends JPanel {
         g.drawImage(deck.peek(4).getTrainCard(), 400, 0, this);
 
         //there should be methods here to update cards as they are chosen or removed
+        addMouseListener(new MouseAdapter() { 
+                public void mouseClicked(MouseEvent e) { 
+                    if(cardDrawn)
+                    {
+                        cardDrawn = false;
+                    }
+                    else
+                    {
+                        if(e.getX() >= 80 && e.getX() < 160)
+                        {
+                            deck.dequeue();
+                            cardDrawn = true;
+                            repaint();
+                        }
+                        else if(e.getX() >= 160 && e.getX() < 240)
+                        {
+                            deck.dequeue(1);
+                            cardDrawn = true;
+                            repaint();
+                        }
+                        else if(e.getX() >= 240 && e.getX() < 320)
+                        {
+                            deck.dequeue(2);
+                            cardDrawn = true;
+                            repaint();
+                        }
+                        else if(e.getX() >= 320 && e.getX() < 400)
+                        {
+                            deck.dequeue(3);
+                            cardDrawn = true;
+                            repaint();
+                        }
+                        else if(e.getX() >= 400 && e.getX() < 480)
+                        {
+                            deck.dequeue(4);
+                            cardDrawn = true;
+                            repaint();
+                        }
+                    }
+                } 
+            }); 
+
     }
 }
