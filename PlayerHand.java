@@ -8,10 +8,9 @@ import java.util.ArrayList;
  * Tom Fresenius, Eamonn Conway)
  * @version (1.0)
  */
-public class PlayerHand extends DefaultPanel
+public class PlayerHand extends JPanel
 {
     private Player person;
-    private ArrayList<TrainCard> hand = new ArrayList<>();
     private int[] amountEachCard;
 
     //imgArr = new Image[]{blackTrain, blueTrain, greenTrain, orangeTrain, purpleTrain,
@@ -28,9 +27,8 @@ public class PlayerHand extends DefaultPanel
     private static TrainCard yellowTrain;
     private static TrainCard wildCard;
 
-    public PlayerHand(Player p)
+    public PlayerHand(Player p, DeckOfCards deck)
     {
-        super();
         setOpaque(true);
         setBackground(Color.WHITE);
 
@@ -49,64 +47,25 @@ public class PlayerHand extends DefaultPanel
         TrainCard t;
         for(int i = 0; i < 5; i++)
         {
-            t = super.deck.dequeue(i - i);
+            t = deck.dequeue(0);
             int toAdd = t.getCurrentNum();
             person.addToHand(t);
         }
         
         setPreferredSize(new Dimension(230, 385));
     }
-    
-    /*
-    public void drawCard(DeckOfCards d)
-    {
-        if(!d.isEmpty())
-        {
-            hand.add(d.dequeue());
-        }
-        else
-        {
-            d.reshuffle();
-            if(!d.isEmpty())
-            {
-                hand.add(d.dequeue());
-            }
-        }
-    }
-
-    public void addToHand(TrainCard c){
-        int cardNum = c.getCurrentNum();
-        hand.add(cardNum, c);
-    }
-
-    /**
-     * For returning the current that the player has
-     * @return ArrayList representing the players current hand
-     
-    public ArrayList returnCurrentHand(){
-        return hand;
-    }
-    */
-    public void generateAmtEachCard(){
-        for(int i = 0; i < hand.size(); i++){
-            int cardNum = hand.get(i).getCurrentNum();
-            amountEachCard[cardNum]++;
-        }
-    }
-    
-    public void updatePlayer(int i)
-    {
-        person = players[i];
-    }
 
     public int returnAmtCard(int cardNumIn){
         return person.getAmount(cardNumIn);
     }
+    
+    public void addCard(TrainCard t)
+    {
+        person.addToHand(t);
+    }
 
     @Override
     public void paintComponent(Graphics g){
-        super.paintComponent(g);
-
         g.drawString("Player cards", 0, 385);
 
         g.drawImage(blackTrain.getTrainCard(), 0, 0, this);
