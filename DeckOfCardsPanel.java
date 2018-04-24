@@ -5,11 +5,10 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class DeckOfCardsPanel extends JPanel{
+public class DeckOfCardsPanel extends DefaultPanel{
 
     private Toolkit toolkit;
     private Image trainCardBack;
-    protected DeckOfCards deck;
     private boolean cardDrawn = false;
     //PlayerHand p = new PlayerHand(null);
 
@@ -20,7 +19,6 @@ public class DeckOfCardsPanel extends JPanel{
         toolkit = Toolkit.getDefaultToolkit();
         trainCardBack = toolkit.getImage("TicketToRidePics"+File.separator+"TrainCardBack.JPG");
         trainCardBack = trainCardBack.getScaledInstance(70, 118, Image.SCALE_FAST);
-        deck = new DeckOfCards();
 
         setPreferredSize(new Dimension(480, 128));
 
@@ -33,7 +31,7 @@ public class DeckOfCardsPanel extends JPanel{
                         if(e.getX() >= 80 + (80 * i) && e.getX() < 160 + (80 * i))
                         {
                             t = deck.dequeue(i);
-                            //players[0].addToHand(t);
+                            players[0].addToHand(t);
                             cardDrawn = true;
                             break;
                         }

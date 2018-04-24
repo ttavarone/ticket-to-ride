@@ -12,9 +12,9 @@ public class Player
     private int numTrains = 45;
     private int playerNum; 
     private Color playerColor;
-    private ArrayList<TrainCard> hand = new ArrayList<>();
     private ArrayList<TicketCard> tickets = new ArrayList<TicketCard>();
     private ArrayList<RouteList> controlledRoutes = new ArrayList<RouteList>();
+    private int[] amountEachCard = new int[9];
     
     public Player(int playerNumber, Color pColor)
     {
@@ -47,6 +47,11 @@ public class Player
     
     public void addToHand(TrainCard c){
         int cardNum = c.getCurrentNum();
-        hand.add(cardNum, c);
+        amountEachCard[cardNum]++;
+    }
+    
+    public int getAmount(int numIn)
+    {
+        return amountEachCard[numIn];
     }
 }

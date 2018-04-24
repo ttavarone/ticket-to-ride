@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * Tom Fresenius, Eamonn Conway)
  * @version (1.0)
  */
-public class PlayerHand extends DeckOfCardsPanel
+public class PlayerHand extends DefaultPanel
 {
     private Player person;
     private ArrayList<TrainCard> hand = new ArrayList<>();
@@ -45,18 +45,18 @@ public class PlayerHand extends DeckOfCardsPanel
         whiteTrain = new TrainCard(6);
         yellowTrain = new TrainCard(7);
         wildCard = new TrainCard(8);
-        amountEachCard = new int[9];
 
         TrainCard t;
         for(int i = 0; i < 5; i++)
         {
             t = super.deck.dequeue(i - i);
             int toAdd = t.getCurrentNum();
-            amountEachCard[toAdd]++;
+            person.addToHand(t);
         }
         
         setPreferredSize(new Dimension(230, 385));
     }
+    
     /*
     public void drawCard(DeckOfCards d)
     {
@@ -78,24 +78,29 @@ public class PlayerHand extends DeckOfCardsPanel
         int cardNum = c.getCurrentNum();
         hand.add(cardNum, c);
     }
-    */
+
     /**
      * For returning the current that the player has
      * @return ArrayList representing the players current hand
-     */
+     
     public ArrayList returnCurrentHand(){
         return hand;
     }
-
+    */
     public void generateAmtEachCard(){
         for(int i = 0; i < hand.size(); i++){
             int cardNum = hand.get(i).getCurrentNum();
             amountEachCard[cardNum]++;
         }
     }
+    
+    public void updatePlayer(int i)
+    {
+        person = players[i];
+    }
 
     public int returnAmtCard(int cardNumIn){
-        return amountEachCard[cardNumIn];
+        return person.getAmount(cardNumIn);
     }
 
     @Override

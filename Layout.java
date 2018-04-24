@@ -7,7 +7,6 @@ import java.awt.*;
 public class Layout extends JPanel {
     public Layout() {
 
-
         setLayout(new GridBagLayout());
         //setPreferredSize(new Dimension(1200, 875));
 
@@ -19,7 +18,9 @@ public class Layout extends JPanel {
         c.ipadx = 10;
         c.ipady = 10;
 
-        PlayerHand cPanel = new PlayerHand(new Player(0, Color.RED));
+        Player[] players = {new Player(0, Color.RED)};
+        
+        PlayerHand cPanel = new PlayerHand(players[0]);
         GridBagConstraints d = new GridBagConstraints();
         d.anchor = GridBagConstraints.NORTH;
         d.gridx = 850;
