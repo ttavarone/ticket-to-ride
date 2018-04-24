@@ -27,7 +27,7 @@ public class DeckOfCardsPanel extends JPanel{
         {
             deck.dequeue();
         }
-        
+
         setPreferredSize(new Dimension(480, 128));
 
         addMouseListener(new MouseAdapter() { 
@@ -59,7 +59,7 @@ public class DeckOfCardsPanel extends JPanel{
         .getScaledInstance(70, 118, Image.SCALE_FAST);
 
     }
-    
+
     public int getPlayerNum()
     {
         return displayCurrentHand;
@@ -72,14 +72,13 @@ public class DeckOfCardsPanel extends JPanel{
         g.setColor(Color.BLACK);
         g.drawString("Cards you can draw", 0,128);
         g.drawImage(trainCardBack, 0, 0, this);
-
-        g.drawImage(deck.peek(0).getTrainCard(), 80, 0, this);
-        g.drawImage(deck.peek(1).getTrainCard(), 160, 0, this);
-        g.drawImage(deck.peek(2).getTrainCard(), 240, 0, this);
-        g.drawImage(deck.peek(3).getTrainCard(), 320, 0, this);
-        g.drawImage(deck.peek(4).getTrainCard(), 400, 0, this);
-        
-        
+        for(int i = 0; i < 5; i++)
+        {
+            if(deck.peek(i) != null)
+            {
+                g.drawImage(deck.peek(i).getTrainCard(), (80 + 80 * i), 0, this);
+            }
+        }
 
         //there should be methods here to update cards as they are chosen or removed
     }
