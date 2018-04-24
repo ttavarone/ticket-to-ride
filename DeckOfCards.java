@@ -55,7 +55,7 @@ public final class DeckOfCards extends JPanel
      */
     public TrainCard dequeue(int index)
     {
-        if(isEmpty())
+        if(isEmpty() || index > deck.size())
         {
             return null;
         }

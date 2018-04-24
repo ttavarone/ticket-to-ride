@@ -47,6 +47,7 @@ public class DeckOfCardsPanel extends JPanel{
         //there should be methods here to update cards as they are chosen or removed
         addMouseListener(new MouseAdapter() { 
                 public void mouseClicked(MouseEvent e) { 
+                    TrainCard t;
                     if(cardDrawn)
                     {
                         cardDrawn = false;
@@ -55,32 +56,32 @@ public class DeckOfCardsPanel extends JPanel{
                     {
                         if(e.getX() >= 80 && e.getX() < 160)
                         {
-                            deck.dequeue();
+                            t = deck.dequeue();
                             cardDrawn = true;
-                            repaint();
                         }
                         else if(e.getX() >= 160 && e.getX() < 240)
                         {
-                            deck.dequeue(1);
+                            t = deck.dequeue(1);
                             cardDrawn = true;
-                            repaint();
                         }
                         else if(e.getX() >= 240 && e.getX() < 320)
                         {
-                            deck.dequeue(2);
+                            t = deck.dequeue(2);
                             cardDrawn = true;
-                            repaint();
                         }
                         else if(e.getX() >= 320 && e.getX() < 400)
                         {
-                            deck.dequeue(3);
+                            t = deck.dequeue(3);
                             cardDrawn = true;
-                            repaint();
                         }
                         else if(e.getX() >= 400 && e.getX() < 480)
                         {
-                            deck.dequeue(4);
+                            t = deck.dequeue(4);
                             cardDrawn = true;
+                        }
+                        if(cardDrawn)
+                        {
+                            //add it to a player's hand
                             repaint();
                         }
                     }
