@@ -5,14 +5,16 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class DeckOfCardsPanel extends DefaultPanel{
+public class DeckOfCardsPanel extends JPanel{
 
     private Toolkit toolkit;
     private Image trainCardBack;
     private boolean cardDrawn = false;
+    protected DeckOfCards deck;
+    int displayCurrentHand  = 0;
     //PlayerHand p = new PlayerHand(null);
 
-    public DeckOfCardsPanel(){
+    public DeckOfCardsPanel(PlayerHand[] p, DeckOfCards d){
         super();
         setOpaque(true);
         setBackground(Color.WHITE);
@@ -20,6 +22,12 @@ public class DeckOfCardsPanel extends DefaultPanel{
         trainCardBack = toolkit.getImage("TicketToRidePics"+File.separator+"TrainCardBack.JPG");
         trainCardBack = trainCardBack.getScaledInstance(70, 118, Image.SCALE_FAST);
 
+        deck = d;
+        for(int i = 0; i < 5; i++)
+        {
+            deck.dequeue();
+        }
+        
         setPreferredSize(new Dimension(480, 128));
 
         addMouseListener(new MouseAdapter() { 
@@ -31,13 +39,14 @@ public class DeckOfCardsPanel extends DefaultPanel{
                         if(e.getX() >= 80 + (80 * i) && e.getX() < 160 + (80 * i))
                         {
                             t = deck.dequeue(i);
-                            players[0].addToHand(t);
+                            p[getPlayerNum()].addCard(t);
                             cardDrawn = true;
                             break;
                         }
                     }
                     if(cardDrawn)
                     {
+                        p[getPlayerNum()].repaint();
                         repaint();
                     }
 
@@ -49,6 +58,11 @@ public class DeckOfCardsPanel extends DefaultPanel{
         return trainCard.getTrainCard()
         .getScaledInstance(70, 118, Image.SCALE_FAST);
 
+    }
+    
+    public int getPlayerNum()
+    {
+        return displayCurrentHand;
     }
 
     @Override
@@ -64,6 +78,8 @@ public class DeckOfCardsPanel extends DefaultPanel{
         g.drawImage(deck.peek(2).getTrainCard(), 240, 0, this);
         g.drawImage(deck.peek(3).getTrainCard(), 320, 0, this);
         g.drawImage(deck.peek(4).getTrainCard(), 400, 0, this);
+        
+        
 
         //there should be methods here to update cards as they are chosen or removed
     }
