@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * Tom Fresenius, Eamonn Conway)
  * @version (1.0)
  */
-public class PlayerHand extends JPanel
+public class PlayerHand extends DeckOfCardsPanel
 {
     private Player person;
     private ArrayList<TrainCard> hand = new ArrayList<>();
@@ -47,9 +47,17 @@ public class PlayerHand extends JPanel
         wildCard = new TrainCard(8);
         amountEachCard = new int[9];
 
+        TrainCard t;
+        for(int i = 0; i < 5; i++)
+        {
+            t = super.deck.dequeue(i - i);
+            int toAdd = t.getCurrentNum();
+            amountEachCard[toAdd]++;
+        }
+        
         setPreferredSize(new Dimension(230, 385));
     }
-
+    
     public void drawCard(DeckOfCards d)
     {
         if(!d.isEmpty())

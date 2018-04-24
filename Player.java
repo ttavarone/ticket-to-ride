@@ -36,4 +36,9 @@ public class Player
             return true;
         }
     }
+    
+    public int getPlayerNum()
+    {
+        return playerNum;
+    }
 }
