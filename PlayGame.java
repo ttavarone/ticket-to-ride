@@ -32,14 +32,13 @@ public class PlayGame
     public static void main(String[] args) {
         Icon icon = new ImageIcon("TicketToRidePics"+File.separator+"Thomas.gif");
         JLabel label = new JLabel(icon);
-
         JFrame f = new JFrame("Animation");
-        f.getContentPane().add(label, BorderLayout.NORTH);
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        f.setSize(400, 320);
         f.setLayout(new BorderLayout());
+        f.add(label, BorderLayout.NORTH);
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        f.setSize(400, 330);
         f.setLocationRelativeTo(null);
-        f.setVisible(true);
+
         JButton btnStart = new JButton("Start");
         f.add(btnStart, BorderLayout.SOUTH);
         btnStart.addActionListener(new ActionListener() {
@@ -52,6 +51,7 @@ public class PlayGame
                 });
             }
         });
+        f.setVisible(true);
 
     }
 }
