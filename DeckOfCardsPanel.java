@@ -22,6 +22,28 @@ public class DeckOfCardsPanel extends JPanel{
         deck = new DeckOfCards();
 
         setPreferredSize(new Dimension(480, 128));
+
+        addMouseListener(new MouseAdapter() { 
+                public void mouseClicked(MouseEvent e) { 
+                    TrainCard t;
+
+                    for(int i = 0; i < 5; i++)
+                    {
+                        if(e.getX() >= 80 + (80 * i) && e.getX() < 160 + (80 * i))
+                        {
+                            t = deck.dequeue(i);
+                            cardDrawn = true;
+                            break;
+                        }
+                    }
+                    if(cardDrawn)
+                    {
+                        //add it to a player's hand
+                        repaint();
+                    }
+
+                } 
+            }); 
     }
 
     public Image getScaledInstanceOf(TrainCard trainCard){
@@ -45,48 +67,5 @@ public class DeckOfCardsPanel extends JPanel{
         g.drawImage(deck.peek(4).getTrainCard(), 400, 0, this);
 
         //there should be methods here to update cards as they are chosen or removed
-        addMouseListener(new MouseAdapter() { 
-                public void mouseClicked(MouseEvent e) { 
-                    TrainCard t;
-                    if(cardDrawn)
-                    {
-                        cardDrawn = false;
-                    }
-                    else
-                    {
-                        if(e.getX() >= 80 && e.getX() < 160)
-                        {
-                            t = deck.dequeue();
-                            cardDrawn = true;
-                        }
-                        else if(e.getX() >= 160 && e.getX() < 240)
-                        {
-                            t = deck.dequeue(1);
-                            cardDrawn = true;
-                        }
-                        else if(e.getX() >= 240 && e.getX() < 320)
-                        {
-                            t = deck.dequeue(2);
-                            cardDrawn = true;
-                        }
-                        else if(e.getX() >= 320 && e.getX() < 400)
-                        {
-                            t = deck.dequeue(3);
-                            cardDrawn = true;
-                        }
-                        else if(e.getX() >= 400 && e.getX() < 480)
-                        {
-                            t = deck.dequeue(4);
-                            cardDrawn = true;
-                        }
-                        if(cardDrawn)
-                        {
-                            //add it to a player's hand
-                            repaint();
-                        }
-                    }
-                } 
-            }); 
-
     }
 }
