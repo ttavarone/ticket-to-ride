@@ -5,8 +5,6 @@ import java.awt.*;
  * Put all the JPanel objects in here
  */
 public class Layout extends JPanel {
-
-
     public Layout() {
 
 
@@ -21,7 +19,7 @@ public class Layout extends JPanel {
         c.ipadx = 10;
         c.ipady = 10;
 
-        PlayerHand cPanel = new PlayerHand(null);
+        PlayerHand cPanel = new PlayerHand(new Player(0, Color.RED));
         GridBagConstraints d = new GridBagConstraints();
         d.anchor = GridBagConstraints.NORTH;
         d.gridx = 850;

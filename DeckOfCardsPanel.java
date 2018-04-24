@@ -33,7 +33,7 @@ public class DeckOfCardsPanel extends JPanel{
                         if(e.getX() >= 80 + (80 * i) && e.getX() < 160 + (80 * i))
                         {
                             t = deck.dequeue(i);
-                            //p.addToHand(t);
+                            //players[0].addToHand(t);
                             cardDrawn = true;
                             break;
                         }

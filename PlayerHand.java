@@ -57,7 +57,7 @@ public class PlayerHand extends DeckOfCardsPanel
         
         setPreferredSize(new Dimension(230, 385));
     }
-    
+    /*
     public void drawCard(DeckOfCards d)
     {
         if(!d.isEmpty())
@@ -78,7 +78,7 @@ public class PlayerHand extends DeckOfCardsPanel
         int cardNum = c.getCurrentNum();
         hand.add(cardNum, c);
     }
-
+    */
     /**
      * For returning the current that the player has
      * @return ArrayList representing the players current hand
