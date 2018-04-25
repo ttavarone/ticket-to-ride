@@ -5,7 +5,7 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class DeckOfCardsPanel extends JPanel{
+public class DeckOfCardsPanel extends BasePanel{
 
     private Toolkit toolkit;
     private Image trainCardBack;
@@ -13,8 +13,6 @@ public class DeckOfCardsPanel extends JPanel{
     protected DeckOfCards deck;
     int displayCurrentHand  = 0;
     private int cardsDrawn;
-    int currentPlayer = 0;
-    int totalPlayers = 2;
     PlayerHand[] p = new PlayerHand[1];
 
     public DeckOfCardsPanel(PlayerHand[] p, DeckOfCards d){
@@ -25,7 +23,7 @@ public class DeckOfCardsPanel extends JPanel{
         trainCardBack = toolkit.getImage("TicketToRidePics"+File.separator+"TrainCardBack.JPG");
         trainCardBack = trainCardBack.getScaledInstance(70, 118, Image.SCALE_FAST);
 
-        totalPlayers = p.length;
+        super.totalPlayers = p.length;
         deck = d;
         setPreferredSize(new Dimension(480, 128));
 
@@ -116,7 +114,7 @@ public class DeckOfCardsPanel extends JPanel{
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-
+        currentPlayer = super.currentPlayer;
         g.setColor(Color.BLACK);
         g.drawString("Cards you can draw", 0,128);
         if(deck.isEmpty())
@@ -149,6 +147,7 @@ public class DeckOfCardsPanel extends JPanel{
         {
             cardsDrawn = 0;
             currentPlayer = (currentPlayer + 1) % totalPlayers;
+            super.currentPlayer = currentPlayer;
             p[currentPlayer].repaint();
         }
         //there should be methods here to update cards as they are chosen or removed

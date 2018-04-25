@@ -19,13 +19,15 @@ public class Layout extends JPanel {
         c.gridy = 0;
         add(bPanel, c);
 
-        Player[] players = {new Player(0, Color.RED)};
+        Player[] players = {new Player(0, Color.RED), new Player(1, Color.BLUE)};
         
-        PlayerHand cPanel = new PlayerHand(players[0], deck);
+        PlayerHand cPanela = new PlayerHand(players[0], deck);
         c.anchor = GridBagConstraints.NORTH;
         c.gridx = 1;
         c.gridy = 0;
-        add(cPanel, c);
+        add(cPanela, c);
+        PlayerHand cPanelb = new PlayerHand(players[1], deck);
+        add(cPanelb, c);
 
         TicketDeck tPanel = new TicketDeck();
         c.anchor = GridBagConstraints.EAST;
@@ -33,7 +35,7 @@ public class Layout extends JPanel {
         c.gridy = 0;
         add(tPanel, c);
 
-        DeckOfCardsPanel dPanel = new DeckOfCardsPanel(new PlayerHand[] {cPanel}, deck);
+        DeckOfCardsPanel dPanel = new DeckOfCardsPanel(new PlayerHand[] {cPanela, cPanelb}, deck);
         c.anchor = GridBagConstraints.SOUTH;
         c.gridx = 1;
         c.gridy = 0;
