@@ -5,6 +5,7 @@ import java.awt.*;
  * Put all the JPanel objects in here
  */
 public class Layout extends JPanel {
+    private boolean endGame = false;
     public Layout() {
 
         setLayout(new GridBagLayout());
@@ -20,18 +21,19 @@ public class Layout extends JPanel {
         c.ipadx = 10;
         c.ipady = 10;
 
-        Player[] players = {new Player(0, Color.RED)};
+        Player[] players = {new Player(0, Color.RED), new Player(0, Color.WHITE)};
         
-        PlayerHand cPanel = new PlayerHand(players[0], deck);
-        //CardsPanel cPanel = new CardsPanel(players[0]);
+        PlayerHand cPanela = new PlayerHand(players[0], deck);
         GridBagConstraints d = new GridBagConstraints();
         d.anchor = GridBagConstraints.NORTH;
         d.gridx = 850;
         d.gridy = 0;
         d.ipadx = 10;
         d.ipady = 10;
+        
+        PlayerHand cPanelb = new PlayerHand(players[1], deck);
 
-        DeckOfCardsPanel dPanel = new DeckOfCardsPanel(new PlayerHand[] {cPanel}, deck);
+        DeckOfCardsPanel dPanel = new DeckOfCardsPanel(new PlayerHand[] {cPanela, cPanelb}, deck);
         GridBagConstraints e = new GridBagConstraints();
         e.anchor = GridBagConstraints.SOUTH;
         e.gridx = 850;
@@ -48,7 +50,8 @@ public class Layout extends JPanel {
         f.gridx = 850;
 
         add(bPanel, c);
-        add(cPanel, d);
+        add(cPanela, d);
+        add(cPanelb, d);
         add(dPanel, e);
         add(temp, f);
     }

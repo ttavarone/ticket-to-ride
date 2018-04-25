@@ -139,7 +139,7 @@ public class TicketDeck extends JPanel
         return ticketCardsDeck;
     }*/
     
-    public void names(){
+    /*public void names(){
         cityNames[0] = "Osterreich";
         cityNames[1] = "Munchen";
         cityNames[2] = "Lindau";
@@ -179,7 +179,7 @@ public class TicketDeck extends JPanel
         cityNames[36] = "Kiel";
         cityNames[37] = "Rostock";
         cityNames[38] = "Danemark";
-    }
+    }*/
 
     @Override
     public void paintComponent(Graphics g){

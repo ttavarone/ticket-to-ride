@@ -48,6 +48,9 @@ dependency20.type=UsesDependency
 dependency21.from=Layout
 dependency21.to=DeckOfCards
 dependency21.type=UsesDependency
+dependency22.from=DeckOfCardsPanel
+dependency22.to=PlayerHand
+dependency22.type=UsesDependency
 dependency3.from=PlayGame
 dependency3.to=Layout
 >>>>>>> 98f8ad2e9fffc71fc0c76c73456e4472a8f323d4
@@ -94,7 +97,7 @@ package.editor.height=667
 package.editor.width=1418
 package.editor.x=-8
 package.editor.y=-8
-package.numDependencies=21
+package.numDependencies=22
 package.numTargets=17
 >>>>>>> 98f8ad2e9fffc71fc0c76c73456e4472a8f323d4
 package.showExtends=true
@@ -139,7 +142,7 @@ target11.y=10
 =======
 target11.width=100
 target11.x=110
-target11.y=80
+target11.y=90
 target12.editor.height=700
 target12.editor.width=900
 target12.editor.x=32
@@ -220,8 +223,8 @@ target16.x=650
 target16.y=50
 =======
 target16.width=100
-target16.x=750
-target16.y=180
+target16.x=820
+target16.y=190
 target17.height=50
 target17.name=Route
 target17.naviview.expanded=false
@@ -231,7 +234,14 @@ target17.typeParameters=
 target17.width=80
 target17.x=650
 target17.y=50
+<<<<<<< HEAD
 >>>>>>> 98f8ad2e9fffc71fc0c76c73456e4472a8f323d4
+=======
+target2.editor.height=700
+target2.editor.width=900
+target2.editor.x=32
+target2.editor.y=12
+>>>>>>> 573578322adad8d0c5075d3c60d0d63944eb0b36
 target2.height=50
 target2.name=TicketDeck
 target2.naviview.expanded=false
@@ -239,12 +249,12 @@ target2.showInterface=false
 target2.type=ClassTarget
 target2.typeParameters=
 target2.width=90
-target2.x=530
-target2.y=220
-target3.editor.height=700
+target2.x=510
+target2.y=200
+target3.editor.height=701
 target3.editor.width=900
 target3.editor.x=32
-target3.editor.y=12
+target3.editor.y=11
 target3.height=50
 target3.name=DeckOfCards
 target3.naviview.expanded=false
@@ -267,6 +277,10 @@ target4.typeParameters=
 target4.width=100
 target4.x=630
 target4.y=150
+target5.editor.height=700
+target5.editor.width=900
+target5.editor.x=32
+target5.editor.y=12
 target5.height=50
 target5.name=PlayGame
 target5.naviview.expanded=false
@@ -297,7 +311,14 @@ target6.x=230
 target6.y=290
 =======
 target6.y=300
+<<<<<<< HEAD
 >>>>>>> 98f8ad2e9fffc71fc0c76c73456e4472a8f323d4
+=======
+target7.editor.height=700
+target7.editor.width=900
+target7.editor.x=32
+target7.editor.y=12
+>>>>>>> 573578322adad8d0c5075d3c60d0d63944eb0b36
 target7.height=50
 target7.name=TrainCard
 target7.naviview.expanded=false
