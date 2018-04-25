@@ -45,7 +45,7 @@ public class PlayerHand extends JPanel
         wildCard = new TrainCard(8);
 
         TrainCard t;
-        for(int i = 0; i < 104; i++)
+        for(int i = 0; i < 5; i++)
         {
             t = deck.dequeue(0);
             int toAdd = t.getCurrentNum();
