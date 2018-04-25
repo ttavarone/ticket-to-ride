@@ -29,6 +29,7 @@ public class PlayerHand extends JPanel
 
     public PlayerHand(Player p, DeckOfCards deck)
     {
+        super();
         setOpaque(true);
         setBackground(Color.WHITE);
 
