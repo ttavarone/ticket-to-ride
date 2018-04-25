@@ -32,6 +32,19 @@ public final class DeckOfCards extends JPanel
         }
         return false;
     }
+    
+    public void discardTrain(TrainCard t)
+    {
+        discard.add(t);
+    }
+    
+    public void discardTrains(TrainCard[] t)
+    {
+        for(int i = 0; i < t.length; i++)
+        {
+            discard.add(t[i]);
+        }
+    }
 
     /**
      * This method removes the top card of the deck, then returns the card that was on top.
@@ -45,7 +58,6 @@ public final class DeckOfCards extends JPanel
         }
         TrainCard answer = deck.get(0);
         deck.remove(0);
-        discard.add(answer);
         return answer;
     }
     
@@ -61,7 +73,6 @@ public final class DeckOfCards extends JPanel
         }
         TrainCard answer = deck.get(index);
         deck.remove(index);
-        discard.add(answer);
         return answer;
     }
 
@@ -96,8 +107,6 @@ public final class DeckOfCards extends JPanel
      */
     public DeckOfCards()
     {
-
-
         for(int color = 0; color < 9; color++)
         {
             int loco = 0;
@@ -140,5 +149,10 @@ public final class DeckOfCards extends JPanel
         Collections.shuffle(deck);
         discard.clear();
         return true;
+    }
+    
+    public int getDeckSize()
+    {
+        return deck.size();
     }
 }

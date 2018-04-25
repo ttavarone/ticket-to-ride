@@ -64,9 +64,16 @@ public class PlayerHand extends JPanel
     {
         person.addToHand(t);
     }
+    
+    public Player getPlayer()
+    {
+        return person;
+    }
 
     @Override
     public void paintComponent(Graphics g){
+        super.paintComponent(g); 
+        
         g.drawString("Player cards", 0, 385);
 
         g.drawImage(blackTrain.getTrainCard(), 0, 0, this);
