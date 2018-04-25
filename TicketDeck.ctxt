@@ -1,11 +1,7 @@
 #BlueJ class context
-comment0.target=TicketDeck
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ TicketDeck\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=
-comment1.target=TicketDeck()
-comment2.params=
-comment2.target=void\ names()
-comment2.text=public\ TicketCard[]\ shuffle(){\r\n\ \ \ \ \ \ \ \ Random\ rand\ \=\ new\ Random();\r\n\ \ \ \ \ \ \ \ for(int\ i\ \=\ 0;\ i\ <\ ticketCardsDeck.length;\ i++){\r\n\ \ \ \ \ \ \ \ \ \ \ \ //int\ randomPos\ \=\ rand.nextInt(ticketCardsDeck.length);\r\n\ \ \ \ \ \ \ \ \ \ \ \ //TicketCard\ temp\ \=\ ticketcardsDeck.add();\r\n\ \ \ \ \ \ \ \ \ \ \ \ //ticketcardsDeck.add(iticketcardsDeck.add(randomPos];\r\n\ \ \ \ \ \ \ \ \ \ \ \ //ticketcardsDeck.add(randomPostemp);\r\n\ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ return\ ticketCardsDeck;\r\n}
-comment3.params=g
-comment3.target=void\ paintComponent(java.awt.Graphics)
-numComments=4
+comment0.params=
+comment0.target=TicketDeck()
+comment1.params=g
+comment1.target=void\ paintComponent(java.awt.Graphics)
+comment1.text=public\ void\ names(){\r\n\ \ \ \ \ \ \ \ cityNames[0]\ \=\ "Osterreich";\r\n\ \ \ \ \ \ \ \ cityNames[1]\ \=\ "Munchen";\r\n\ \ \ \ \ \ \ \ cityNames[2]\ \=\ "Lindau";\r\n\ \ \ \ \ \ \ \ cityNames[3]\ \=\ "Konstanz";\r\n\ \ \ \ \ \ \ \ cityNames[4]\ \=\ "Schweiz";\r\n\ \ \ \ \ \ \ \ cityNames[5]\ \=\ "Freiburg";\r\n\ \ \ \ \ \ \ \ cityNames[6]\ \=\ "Franbreich";\r\n\ \ \ \ \ \ \ \ cityNames[7]\ \=\ "Saarbrucken";\r\n\ \ \ \ \ \ \ \ cityNames[8]\ \=\ "Karlsruhe";\r\n\ \ \ \ \ \ \ \ cityNames[9]\ \=\ "Manheim";\r\n\ \ \ \ \ \ \ \ cityNames[10]\ \=\ "Stuttgart";\r\n\ \ \ \ \ \ \ \ cityNames[11]\ \=\ "Augsburg";\r\n\ \ \ \ \ \ \ \ cityNames[12]\ \=\ "Regensburg";\r\n\ \ \ \ \ \ \ \ cityNames[13]\ \=\ "Nurnberg";\r\n\ \ \ \ \ \ \ \ cityNames[14]\ \=\ "Wurzburg";\r\n\ \ \ \ \ \ \ \ cityNames[15]\ \=\ "Frankfurt";\r\n\ \ \ \ \ \ \ \ cityNames[16]\ \=\ "Mainz";\r\n\ \ \ \ \ \ \ \ cityNames[17]\ \=\ "Koblenz";\r\n\ \ \ \ \ \ \ \ cityNames[18]\ \=\ "Koln";\r\n\ \ \ \ \ \ \ \ cityNames[19]\ \=\ "Dusseldorf";\r\n\ \ \ \ \ \ \ \ cityNames[20]\ \=\ "Kassel";\r\n\ \ \ \ \ \ \ \ cityNames[21]\ \=\ "Erfurt";\r\n\ \ \ \ \ \ \ \ cityNames[22]\ \=\ "Chemnitz";\r\n\ \ \ \ \ \ \ \ cityNames[23]\ \=\ "Leipzig";\r\n\ \ \ \ \ \ \ \ cityNames[24]\ \=\ "Dresden";\r\n\ \ \ \ \ \ \ \ cityNames[25]\ \=\ "Dortmund";\r\n\ \ \ \ \ \ \ \ cityNames[26]\ \=\ "Munster";\r\n\ \ \ \ \ \ \ \ cityNames[27]\ \=\ "Magdeburg";\r\n\ \ \ \ \ \ \ \ cityNames[28]\ \=\ "Berlin";\r\n\ \ \ \ \ \ \ \ cityNames[29]\ \=\ "Hannover";\r\n\ \ \ \ \ \ \ \ cityNames[30]\ \=\ "Niederlande";\r\n\ \ \ \ \ \ \ \ cityNames[31]\ \=\ "Bremen";\r\n\ \ \ \ \ \ \ \ cityNames[32]\ \=\ "Hamburg";\r\n\ \ \ \ \ \ \ \ cityNames[33]\ \=\ "Schwerin";\r\n\ \ \ \ \ \ \ \ cityNames[34]\ \=\ "Bremerhaven";\r\n\ \ \ \ \ \ \ \ cityNames[35]\ \=\ "Emden";\r\n\ \ \ \ \ \ \ \ cityNames[36]\ \=\ "Kiel";\r\n\ \ \ \ \ \ \ \ cityNames[37]\ \=\ "Rostock";\r\n\ \ \ \ \ \ \ \ cityNames[38]\ \=\ "Danemark";\r\n}
+numComments=2
