@@ -59,6 +59,7 @@ public enum City
     ; 
     private int xCoord;
     private int yCoord;
+    private Passenger[] p;
     
     public String getName()
     {
@@ -75,9 +76,10 @@ public enum City
         return yCoord;
     }
     
-    private City(int x, int y)
-    {
+    private City(int x, int y)//, Passenger[] newP)
+    { 
         xCoord = x;
         yCoord = y;
+        //p = newP;
     }
 }

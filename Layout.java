@@ -5,14 +5,13 @@ import java.awt.*;
  * Put all the JPanel objects in here
  */
 public class Layout extends JPanel {
-
-
     public Layout() {
-
 
         setLayout(new GridBagLayout());
         //setPreferredSize(new Dimension(1200, 875));
 
+        DeckOfCards deck = new DeckOfCards();
+        
         BoardPanel bPanel = new BoardPanel();
         GridBagConstraints c = new GridBagConstraints();
         c.anchor = GridBagConstraints.WEST;
@@ -21,7 +20,10 @@ public class Layout extends JPanel {
         c.ipadx = 10;
         c.ipady = 10;
 
-        PlayerHand cPanel = new PlayerHand(null);
+        Player[] players = {new Player(0, Color.RED)};
+        
+        PlayerHand cPanel = new PlayerHand(players[0], deck);
+        //CardsPanel cPanel = new CardsPanel(players[0]);
         GridBagConstraints d = new GridBagConstraints();
         d.anchor = GridBagConstraints.NORTH;
         d.gridx = 850;
@@ -29,7 +31,7 @@ public class Layout extends JPanel {
         d.ipadx = 10;
         d.ipady = 10;
 
-        DeckOfCardsPanel dPanel = new DeckOfCardsPanel();
+        DeckOfCardsPanel dPanel = new DeckOfCardsPanel(new PlayerHand[] {cPanel}, deck);
         GridBagConstraints e = new GridBagConstraints();
         e.anchor = GridBagConstraints.SOUTH;
         e.gridx = 850;

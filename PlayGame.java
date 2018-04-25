@@ -1,6 +1,9 @@
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
 /**
  * Main class to run the game
  *
@@ -9,28 +12,46 @@ import java.awt.*;
  */
 public class PlayGame
 {
-        private static void createAndShowGUI() {
-            JFrame frame = new JFrame("Ticket To Ride Board");
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            //frame.setSize(new Dimension(1200, 875));
-            frame.setResizable(false);
+    private static void createAndShowGUI() {
+        JFrame frame = new JFrame("Ticket To Ride Board");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //frame.setSize(new Dimension(1200, 875));
+        frame.setResizable(false);
 
-            frame.getContentPane().add(new Layout());
+        frame.getContentPane().add(new Layout());
 
-            frame.pack();
-            frame.setVisible(true);
-        }
+        frame.pack();
+        frame.setVisible(true);
+    }
 
-        /**
-         * This method creates the GUI that will begin to execute the program.
-         *
-         * @param args - Command line arguments.
-         */
-        public static void main(String[] args) {
-            javax.swing.SwingUtilities.invokeLater(new Runnable() {
-                public void run() {
-                    createAndShowGUI();
-                }
-            });
-        }
+    /**
+     * This method creates the GUI that will begin to execute the program.
+     *
+     * @param args - Command line arguments.
+     */
+    public static void main(String[] args) {
+        Icon icon = new ImageIcon("TicketToRidePics"+File.separator+"Thomas.gif");
+        JLabel label = new JLabel(icon);
+
+        JFrame f = new JFrame("Animation");
+        f.getContentPane().add(label, BorderLayout.NORTH);
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        f.setSize(400, 320);
+        f.setLayout(new BorderLayout());
+        f.setLocationRelativeTo(null);
+        f.setVisible(true);
+        JButton btnStart = new JButton("Start");
+        f.add(btnStart, BorderLayout.SOUTH);
+        btnStart.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                javax.swing.SwingUtilities.invokeLater(new Runnable() {
+                    public void run() {
+                        createAndShowGUI();
+                    }
+                });
+            }
+        });
+
+    }
 }

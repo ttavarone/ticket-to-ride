@@ -9,37 +9,52 @@ public class DeckOfCardsPanel extends JPanel{
 
     private Toolkit toolkit;
     private Image trainCardBack;
-    protected DeckOfCards deck;
     private boolean cardDrawn = false;
+    protected DeckOfCards deck;
+    int displayCurrentHand  = 0;
     //PlayerHand p = new PlayerHand(null);
 
-    public DeckOfCardsPanel(){
+    public DeckOfCardsPanel(PlayerHand[] p, DeckOfCards d){
         super();
         setOpaque(true);
         setBackground(Color.WHITE);
         toolkit = Toolkit.getDefaultToolkit();
         trainCardBack = toolkit.getImage("TicketToRidePics"+File.separator+"TrainCardBack.JPG");
         trainCardBack = trainCardBack.getScaledInstance(70, 118, Image.SCALE_FAST);
-        deck = new DeckOfCards();
 
+        deck = d;
         setPreferredSize(new Dimension(480, 128));
 
         addMouseListener(new MouseAdapter() { 
                 public void mouseClicked(MouseEvent e) { 
                     TrainCard t;
-
-                    for(int i = 0; i < 5; i++)
+                    int deckSize = deck.getDeckSize();
+                    if(e.getX() >= 0 && e.getX() < 80)
+                    {
+                        if(deckSize >= 6)
+                        {
+                            t = deck.dequeue(5);
+                            p[getPlayerNum()].addCard(t);
+                            cardDrawn = true;
+                        }
+                    }
+                    for(int i = 0; i < Math.min(5, deckSize); i++)
                     {
                         if(e.getX() >= 80 + (80 * i) && e.getX() < 160 + (80 * i))
                         {
+                            if(deck.peek(i) == null)
+                            {
+                                break;
+                            }
                             t = deck.dequeue(i);
-                            //p.addToHand(t);
+                            p[getPlayerNum()].addCard(t);
                             cardDrawn = true;
                             break;
                         }
                     }
                     if(cardDrawn)
                     {
+                        p[getPlayerNum()].repaint();
                         repaint();
                     }
 
@@ -53,19 +68,37 @@ public class DeckOfCardsPanel extends JPanel{
 
     }
 
+    public int getPlayerNum()
+    {
+        return displayCurrentHand;
+    }
+
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
 
         g.setColor(Color.BLACK);
         g.drawString("Cards you can draw", 0,128);
-        g.drawImage(trainCardBack, 0, 0, this);
-
-        g.drawImage(deck.peek(0).getTrainCard(), 80, 0, this);
-        g.drawImage(deck.peek(1).getTrainCard(), 160, 0, this);
-        g.drawImage(deck.peek(2).getTrainCard(), 240, 0, this);
-        g.drawImage(deck.peek(3).getTrainCard(), 320, 0, this);
-        g.drawImage(deck.peek(4).getTrainCard(), 400, 0, this);
+        if(deck.getDeckSize() >= 6)
+        {
+            g.drawImage(trainCardBack, 0, 0, this);
+        }
+        for(int i = 0; i < Math.min(5, deck.getDeckSize()); i++)
+        {
+            if(deck.peek(i) != null)
+            {
+                g.drawImage(deck.peek(i).getTrainCard(), (80 + 80 * i), 0, this);
+            }
+            else
+            {
+                deck.reshuffle();
+                if(deck.peek(i) != null)
+                {
+                    g.drawImage(deck.peek(i).getTrainCard(), (80 + 80 * i), 0, this);
+                }
+                else break;
+            }
+        }
 
         //there should be methods here to update cards as they are chosen or removed
     }

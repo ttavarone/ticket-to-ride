@@ -1,4 +1,5 @@
 #BlueJ class context
+<<<<<<< HEAD
 comment0.target=DeckOfCards
 comment0.text=\r\n\ This\ method\ creates\ a\ deck\ of\ train\ cards\ to\ be\ used\ for\ Ticket\ to\ Ride.\r\n\ \r\n\ @author\ Logan\ Brandt,\ Tom\ Fressenius,\ Tucker\ Tavarone,\ \r\n\ Eamonn\ Conway,\ Joshua\ DelSignore\ \r\n\ @version\ 1.0\r\n
 comment1.params=
@@ -13,3 +14,35 @@ comment4.params=
 comment4.target=boolean\ reshuffle()
 comment4.text=\r\n\ This\ method\ is\ called\ to\ shuffle\ the\ discard\ pile\ back\ into\ the\ main\ deck.\ It\ then\r\n\ shuffles\ the\ main\ deck.\ If\ the\ discard\ pile\ is\ empty,\ returns\ false.\r\n\ @return\ -\ true\ if\ the\ discard\ pile\ was\ shuffled\ into\ the\ deck\ false\ otherwise\r\n
 numComments=5
+=======
+comment0.params=c
+comment0.target=boolean\ enqueue(TrainCard)
+comment0.text=\r\n\ This\ method\ adds\ a\ card\ to\ the\ deck\ if\ it\ has\ less\ than\ 110,\ since\ \r\n\ 110\ is\ the\ max.\r\n\ @param\ c\ -\ Train\ Card\ to\ be\ added\ to\ the\ deck.\r\n\ @return\ -\ true\ if\ the\ card\ was\ added,\ false\ otherwise.\r\n
+comment1.params=t
+comment1.target=void\ discardTrain(TrainCard)
+comment10.params=
+comment10.target=int\ getDeckSize()
+comment2.params=t
+comment2.target=void\ discardTrains(TrainCard[])
+comment3.params=
+comment3.target=TrainCard\ dequeue()
+comment3.text=\r\n\ This\ method\ removes\ the\ top\ card\ of\ the\ deck,\ then\ returns\ the\ card\ that\ was\ on\ top.\r\n\ @return\ -\ The\ card\ that\ was\ on\ top\ of\ the\ deck,\ or\ nothing\ if\ the\ deck\ is\ empty.\r\n
+comment4.params=index
+comment4.target=TrainCard\ dequeue(int)
+comment4.text=\r\n\ This\ method\ removes\ the\ top\ card\ of\ the\ deck,\ then\ returns\ the\ card\ that\ was\ on\ top.\r\n\ @return\ -\ The\ card\ that\ was\ on\ top\ of\ the\ deck,\ or\ nothing\ if\ the\ deck\ is\ empty.\r\n
+comment5.params=loc
+comment5.target=TrainCard\ peek(int)
+comment5.text=\r\n\ This\ method\ peeks\ at\ the\ next\ card,\ but\ doesn't\ remove\ it\ from\ the\ deck.\r\n\ Potentially\ useful\ for\ determining\ if\ there\ are\ going\ to\ be\ three\ wild\ cards\ face\ up.\r\n\ @return\ -\ the\ next\ TrainCard\ that\ is\ going\ to\ be\ displayed,\ or\ null\ if\ the\ deck\ is\ empty.\r\n
+comment6.params=
+comment6.target=boolean\ isEmpty()
+comment6.text=\r\n\ This\ method\ sees\ if\ the\ deck\ has\ any\ TrainCards\ left\ in\ it.\r\n\ @return\ -\ true\ if\ there\ are\ no\ cards\ left,\ false\ if\ there\ is\ a\ card\r\n
+comment7.params=
+comment7.target=DeckOfCards()
+comment7.text=\r\n\ This\ constructor\ creates\ a\ deck\ of\ 110\ cards\ of\ the\ appropriate\ amount\ \r\n\ of\ cards,\ then\ proceeds\ shuffle\ the\ deck.\r\n
+comment8.params=
+comment8.target=void\ print()
+comment9.params=
+comment9.target=boolean\ reshuffle()
+comment9.text=\r\n\ This\ method\ is\ called\ to\ shuffle\ the\ discard\ pile\ back\ into\ the\ main\ deck.\ It\ then\r\n\ shuffles\ the\ main\ deck.\ If\ the\ discard\ pile\ is\ empty,\ returns\ false.\r\n\ @return\ -\ true\ if\ the\ discard\ pile\ was\ shuffled\ into\ the\ deck\ false\ otherwise\r\n
+numComments=11
+>>>>>>> 98f8ad2e9fffc71fc0c76c73456e4472a8f323d4
