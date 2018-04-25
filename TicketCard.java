@@ -15,8 +15,6 @@ public class TicketCard extends JPanel
     private final int VALUE;
     private boolean isRouteComplete;
     private Toolkit toolkit;
-    private Image blueDest;
-    private Image orangeDest;
 
     /**
      * Default constructor, ONLY used to display the backs of ticket cards
@@ -31,10 +29,6 @@ public class TicketCard extends JPanel
         toolkit = Toolkit.getDefaultToolkit();
         START_CITY = END_CITY = LENGTH = null;
         VALUE = 0;
-        blueDest = toolkit.getImage("TicketToRidePics"+ File.separator+"BlueDest.JPG");
-        orangeDest = toolkit.getImage("TicketToRidePics"+ File.separator+"OrangeDest.JPG");
-        blueDest = blueDest.getScaledInstance(70, 118, Image.SCALE_FAST);
-        orangeDest = orangeDest.getScaledInstance(70, 118, Image.SCALE_FAST);
         setPreferredSize(new Dimension(150, 125));
     }
 
@@ -52,11 +46,6 @@ public class TicketCard extends JPanel
         LENGTH = length;
         VALUE = value;
         isRouteComplete = false;
-        blueDest = toolkit.getImage("TicketToRidePics"+File.separator+"BlueDest.JPG");
-        orangeDest = toolkit.getImage("TicketToRidePics"+File.separator+"OrangeDest.JPG");
-        blueDest = blueDest.getScaledInstance(70, 118, Image.SCALE_FAST);
-        orangeDest = orangeDest.getScaledInstance(70, 118, Image.SCALE_FAST);
-
         setPreferredSize(new Dimension(150, 125));
     }
     
@@ -87,9 +76,5 @@ public class TicketCard extends JPanel
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-
-        g.fillRect(0,0,100, 100);
-        g.drawImage(blueDest, 0, 0, this);
-        g.drawImage(orangeDest, 80, 0, this);
     }
 }
