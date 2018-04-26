@@ -134,7 +134,7 @@ public class PlayerHand extends JPanel
         
         if(person.claimedTickets() > 0)
         {
-            g.drawImage(person.getTicket(currentTrainTicket).getImage(), 240, 0, this);
+            g.drawImage(person.getTicket(currentTrainTicket).getImage(), 80, 375, this);
         }
     }
 }

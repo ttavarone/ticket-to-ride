@@ -133,5 +133,13 @@ public class TicketDeckPanel extends BasePanel
                 g.drawImage(t, (0 + 80 * (i / 2)), (118 + 118 * (i % 2)), this);
             }
         }
+        
+        if(ticketsDrawn == 4)
+        {
+            ticketsDrawn = ticketsTaken = 0;
+            currentPlayer = (currentPlayer + 1) % super.totalPlayers;
+            super.currentPlayer = currentPlayer;
+            p[currentPlayer].repaint();
+        }
     }
 }
