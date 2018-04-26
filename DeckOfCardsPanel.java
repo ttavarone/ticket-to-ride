@@ -13,7 +13,7 @@ public class DeckOfCardsPanel extends BasePanel{
     protected DeckOfCards deck;
     int displayCurrentHand  = 0;
     private int cardsDrawn;
-    PlayerHand[] p = new PlayerHand[1];
+    PlayerHand[] p;
 
     public DeckOfCardsPanel(PlayerHand[] p, DeckOfCards d){
         super();

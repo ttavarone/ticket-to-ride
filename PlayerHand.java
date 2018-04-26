@@ -53,7 +53,7 @@ public class PlayerHand extends JPanel
             person.addToHand(t);
         }
         
-        setPreferredSize(new Dimension(230, 385));
+        setPreferredSize(new Dimension(230, 485));
     }
 
     public int returnAmtCard(int cardNumIn){

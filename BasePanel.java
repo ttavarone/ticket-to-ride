@@ -14,4 +14,12 @@ public class BasePanel extends JPanel
 {
     protected int currentPlayer = 0;
     protected int totalPlayers = 2;
+    protected Player[] players;
+    
+    public BasePanel(){  }
+    
+    public BasePanel(Player[] p)
+    {
+        players = p;
+    }
 }

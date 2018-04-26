@@ -40,6 +40,11 @@ public class Player
         }
     }
     
+    public void claimTicket(TicketCard t)
+    {
+        tickets.add(t);
+    }
+    
     public int getPlayerNum()
     {
         return playerNum;

@@ -15,6 +15,7 @@ public class TicketCard extends JPanel
     private final int VALUE;
     private boolean isRouteComplete;
     private Toolkit toolkit;
+    private Image currentImage;
 
     /**
      * Default constructor, ONLY used to display the backs of ticket cards
@@ -23,13 +24,9 @@ public class TicketCard extends JPanel
      * be initialized
      */
     public TicketCard(){
-        super();
-        setOpaque(true);
-        setBackground(Color.WHITE);
-        toolkit = Toolkit.getDefaultToolkit();
         START_CITY = END_CITY = LENGTH = null;
         VALUE = 0;
-        setPreferredSize(new Dimension(150, 125));
+        currentImage = null;
     }
 
     /**
@@ -37,16 +34,22 @@ public class TicketCard extends JPanel
      */
     public TicketCard(String startCity, String endCity, String length, int value, Image i)
     {
-        super();
-        setOpaque(true);
-        setBackground(Color.WHITE);
-        toolkit = Toolkit.getDefaultToolkit();
         START_CITY = startCity;
         END_CITY = endCity;
         LENGTH = length;
         VALUE = value;
         isRouteComplete = false;
-        setPreferredSize(new Dimension(150, 125));
+        currentImage = i;
+    }
+    
+    public Image getImage()
+    {
+        return currentImage;
+    }
+    
+    public void setImage(Image i)
+    {
+        currentImage = i;
     }
     
     public void setRouteComplete(){
@@ -67,14 +70,5 @@ public class TicketCard extends JPanel
     
     public int getValue(){
         return VALUE;
-    }
-
-    /**
-     * This displays the players current ticket cards
-     * @param g graphics object to use
-     */
-    @Override
-    public void paintComponent(Graphics g){
-        super.paintComponent(g);
     }
 }
