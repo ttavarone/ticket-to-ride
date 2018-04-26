@@ -31,13 +31,15 @@ public class Layout extends JPanel {
 
         TicketDeck t = new TicketDeck();
         
-        TicketDeckPanel tPanel = new TicketDeckPanel(t);
+        PlayerHand[] playerHands = new PlayerHand[]{cPanela, cPanelb};
+        
+        TicketDeckPanel tPanel = new TicketDeckPanel(t, playerHands);
         c.anchor = GridBagConstraints.EAST;
         c.gridx = 2;
         c.gridy = 0;
         add(tPanel, c);
-
-        DeckOfCardsPanel dPanel = new DeckOfCardsPanel(new PlayerHand[] {cPanela, cPanelb}, deck);
+        
+        DeckOfCardsPanel dPanel = new DeckOfCardsPanel(playerHands, deck);
         c.anchor = GridBagConstraints.SOUTH;
         c.gridx = 1;
         c.gridy = 0;

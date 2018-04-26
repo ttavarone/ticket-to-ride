@@ -15,19 +15,23 @@ public class TicketDeckPanel extends BasePanel
     private static Image orangeDest;
     private static Image blueDest;
     protected Toolkit toolkit;
-    protected TicketCard shortsTaken[] = new TicketCard[4];
-    protected int currentShortIndex = 0;
-    protected TicketCard longsTaken[] = new TicketCard[4];
-    protected int currentLongIndex = 0; 
     protected TicketCard toDraw[] = new TicketCard[4];
+    protected int ticketsTaken;
     protected Image test1;
-    public TicketDeckPanel(TicketDeck d){
+    protected PlayerHand[] p;
+    protected int currentPlayer;
+    protected int ticketsDrawn = 0;
+    
+    public TicketDeckPanel(TicketDeck d, PlayerHand[] players){
         super();
         setOpaque(true);
         setBackground(Color.WHITE);
         toolkit = Toolkit.getDefaultToolkit();
 
         setPreferredSize(new Dimension(150, 400));
+        
+        p = players;
+        currentPlayer = super.currentPlayer;
 
         orangeDest = toolkit.getImage("TicketToRidePics"+File.separator+"OrangeDest.jpg");
         blueDest = toolkit.getImage("TicketToRidePics"+File.separator+"BlueDest.jpg");
@@ -38,31 +42,75 @@ public class TicketDeckPanel extends BasePanel
         addMouseListener(new MouseAdapter() { 
                 public void mouseClicked(MouseEvent e) { 
                     TrainCard t;
-                    if(currentShortIndex + currentLongIndex < 4)
+                    if(ticketsTaken < 4)
                     {
-                        if(e.getX() >= 0 && e.getX() < 80 )
+                        if(e.getX() >= 0 && e.getX() < 80 && e.getY() <= 118)
                         {
                             if(!d.shortEmpty())
                             {
-                                shortsTaken[currentShortIndex] = d.dequeueShort();
-                                Image temp = shortsTaken[currentShortIndex].getImage();
+                                toDraw[ticketsTaken] = d.dequeueShort();
+                                Image temp = toDraw[ticketsTaken].getImage();
                                 temp = temp.getScaledInstance(75, 118, Image.SCALE_FAST);
-                                shortsTaken[currentShortIndex].setImage(temp);
-                                currentShortIndex++;
+                                toDraw[ticketsTaken].setImage(temp);
+                                ticketsTaken++;
                                 repaint();
                             }
                         }
-                        else if(e.getX() >= 80 && e.getX() < 160)
+                        else if(e.getX() >= 80 && e.getX() < 160 && e.getY() <= 118)
                         {
                             if(!d.longEmpty())
                             {
-                                longsTaken[currentLongIndex] = d.dequeueLong();
-                                Image temp = longsTaken[currentLongIndex].getImage();
+                                toDraw[ticketsTaken] = d.dequeueLong();
+                                Image temp = toDraw[ticketsTaken].getImage();
                                 temp = temp.getScaledInstance(75, 118, Image.SCALE_FAST);
-                                longsTaken[currentLongIndex].setImage(temp);
-                                currentLongIndex++;
+                                toDraw[ticketsTaken].setImage(temp);
+                                ticketsTaken++;
                                 repaint();
                             }
+                        }
+                    }
+                    if(e.getX() >= 0 && e.getX() < 80 && e.getY() >= 118 && e.getY() <= 236)
+                    {
+                        if(toDraw[0] != null)
+                        {
+                            p[currentPlayer].addTicketCard(toDraw[0]);
+                            toDraw[0] = null;
+                            ticketsDrawn++;
+                            p[currentPlayer].repaint();
+                            repaint();
+                        }
+                    }
+                    else if(e.getX() >= 0 && e.getX() < 80 && e.getY() >= 236 && e.getY() <= 354)
+                    {
+                        if(toDraw[1] != null)
+                        {
+                            p[currentPlayer].addTicketCard(toDraw[1]);
+                            toDraw[1] = null;
+                            ticketsDrawn++;
+                            p[currentPlayer].repaint();
+                            repaint();
+                        }
+                    }
+                    else if(e.getX() >= 80 && e.getX() < 160 && e.getY() >= 118 && e.getY() <= 236)
+                    {
+                        if(toDraw[2] != null)
+                        {
+                            p[currentPlayer].addTicketCard(toDraw[2]);
+                            toDraw[2] = null;
+                            ticketsDrawn++;
+                            p[currentPlayer].repaint();
+                            repaint();
+                        }
+                    }
+                    else if(e.getX() >= 80 && e.getX() < 160 && e.getY() >= 236 && e.getY() <= 354)
+                    {
+                        if(toDraw[3] != null)
+                        {
+                            p[currentPlayer].addTicketCard(toDraw[3]);
+                            toDraw[3] = null;
+                            ticketsDrawn++;
+                            p[currentPlayer].repaint();
+                            repaint();
                         }
                     }
                 } 
@@ -77,33 +125,13 @@ public class TicketDeckPanel extends BasePanel
         g.drawImage(blueDest, 0, 0, this);
         g.drawImage(orangeDest, 80, 0, this);
         
-        int j = 0;
-        for(int i = 0; i < 4; i++)
-        {
-            if(shortsTaken[i] != null)
-            {
-                toDraw[j] = shortsTaken[i];
-                j++;
-            }
-            else break;
-        }
-        for(int i = 0; i < 4; i++)
-        {
-            if(longsTaken[i] != null)
-            {
-                toDraw[j] = longsTaken[i];
-                j++;
-            }
-            else break;
-        }
         for(int i = 0; i < 4; i++)
         {
             if(toDraw[i] != null)
             {
                 Image t = toDraw[i].getImage();
-                g.drawImage(t, 0, 128, this);//(0 + 80 * (i / 2)), (80 + 80 * (i % 2)), this);
+                g.drawImage(t, (0 + 80 * (i / 2)), (118 + 118 * (i % 2)), this);
             }
-            else break;
         }
     }
 }

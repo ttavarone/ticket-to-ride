@@ -14,12 +14,12 @@ public class BasePanel extends JPanel
 {
     protected int currentPlayer = 0;
     protected int totalPlayers = 2;
-    protected Player[] players;
+    protected PlayerHand[] p;
     
     public BasePanel(){  }
     
-    public BasePanel(Player[] p)
+    public void setPlayerHand(PlayerHand[] players)
     {
-        players = p;
+        p = players;
     }
 }

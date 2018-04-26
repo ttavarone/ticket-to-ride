@@ -1,6 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 /**
  * Contains an array that shows the player what cards they have
  * 
@@ -26,6 +29,8 @@ public class PlayerHand extends JPanel
     private static TrainCard whiteTrain;
     private static TrainCard yellowTrain;
     private static TrainCard wildCard;
+    
+    private int currentTrainTicket = 0;
 
     public PlayerHand(Player p, DeckOfCards deck)
     {
@@ -68,6 +73,11 @@ public class PlayerHand extends JPanel
     public Player getPlayer()
     {
         return person;
+    }
+    
+    public void addTicketCard(TicketCard t)
+    {
+        person.claimTicket(t);
     }
 
     @Override
@@ -121,6 +131,10 @@ public class PlayerHand extends JPanel
         g.drawString(Integer.toString(returnAmtCard(2)), 0, 276);//green
         g.drawString(Integer.toString(returnAmtCard(5)), 80, 276);//red
         g.drawString(Integer.toString(returnAmtCard(8)), 160, 276);//wild
-
+        
+        if(person.claimedTickets() > 0)
+        {
+            g.drawImage(person.getTicket(currentTrainTicket).getImage(), 240, 0, this);
+        }
     }
 }

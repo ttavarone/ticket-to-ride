@@ -45,6 +45,16 @@ public class Player
         tickets.add(t);
     }
     
+    public TicketCard getTicket(int index)
+    {
+        return tickets.get(index);
+    }
+    
+    public int claimedTickets()
+    {
+        return tickets.size();
+    }
+    
     public int getPlayerNum()
     {
         return playerNum;
