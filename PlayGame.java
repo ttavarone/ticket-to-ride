@@ -30,27 +30,27 @@ public class PlayGame
      * @param args - Command line arguments.
      */
     public static void main(String[] args) {
-        Icon icon = new ImageIcon("TicketToRidePics"+File.separator+"Thomas.gif");
+        Icon icon = new ImageIcon("TicketToRidePics"+File.separator+"ThomasTheTank2.gif");
         JLabel label = new JLabel(icon);
-        JFrame f = new JFrame("Animation");
+        JFrame f = new JFrame("Ticket to Ride");
         f.setLayout(new BorderLayout());
         f.add(label, BorderLayout.NORTH);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        f.setSize(400, 330);
+        f.setSize(1000, 750);
         f.setLocationRelativeTo(null);
 
         JButton btnStart = new JButton("Start");
         f.add(btnStart, BorderLayout.SOUTH);
         btnStart.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                javax.swing.SwingUtilities.invokeLater(new Runnable() {
-                    public void run() {
-                        createAndShowGUI();
-                    }
-                });
-            }
-        });
+                @Override
+                public void actionPerformed(ActionEvent evt) {
+                    javax.swing.SwingUtilities.invokeLater(new Runnable() {
+                            public void run() {
+                                createAndShowGUI();
+                            }
+                        });
+                }
+            });
         f.setVisible(true);
 
     }
