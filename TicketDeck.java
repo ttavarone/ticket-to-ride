@@ -9,7 +9,7 @@ import java.util.Collections;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class TicketDeck extends JPanel
+public class TicketDeck
 {
     private static Image orangeDest;
     private static Image blueDest;
@@ -20,9 +20,6 @@ public class TicketDeck extends JPanel
     private static ArrayList<TicketCard> longRoutesDeck = new ArrayList<TicketCard>();
     
     public TicketDeck(){
-        super();
-        setOpaque(true);
-        setBackground(Color.WHITE);
         orangeDest = toolkit.getImage("TicketToRidePics"+File.separator+"OrangeDest.jpg");
         blueDest = toolkit.getImage("TicketToRidePics"+File.separator+"BlueDest.jpg");
         ticketcardsDeck.add(new TicketCard("Berlin", "Chemnitz","short", 6, toolkit.getImage("TicketToRidePics"+File.separator+"BerlChem")));
@@ -131,8 +128,60 @@ public class TicketDeck extends JPanel
 
         blueDest = blueDest.getScaledInstance(70, 118, Image.SCALE_FAST);
         orangeDest = orangeDest.getScaledInstance(70, 118, Image.SCALE_FAST);
-
-        setPreferredSize(new Dimension(150, 125));
+    }
+    
+    /**
+     * This method removes the top card of the deck, then returns the card that was on top.
+     * @return - The card that was on top of the deck, or nothing if the deck is empty.
+     */
+    public TicketCard dequeueShort()
+    {
+        if(shortEmpty())
+        {
+            return null;
+        }
+        TicketCard answer = shortRoutesDeck.get(0);
+        shortRoutesDeck.remove(0);
+        return answer;
+    }
+    
+    public TicketCard dequeueLong()
+    {
+        if(longEmpty())
+        {
+            return null;
+        }
+        TicketCard answer = longRoutesDeck.get(0);
+        longRoutesDeck.remove(0);
+        return answer;
+    }
+    
+    public boolean shortEmpty()
+    {
+        if(shortRoutesDeck.size() == 0)
+        {
+            return true;
+        }
+        return false;
+    }
+    
+    public boolean longEmpty()
+    {
+        if(longRoutesDeck.size() == 0)
+        {
+            return true;
+        }
+        return false;
+    }
+    
+    public void discardShort(TicketCard t)
+    {
+        shortRoutesDeck.add(shortRoutesDeck.size() - 1, t);
+    }
+    
+    public void discardLong(TicketCard t)
+    {
+        longRoutesDeck.add(longRoutesDeck.size() - 1, t);
     }
     
     /*public TicketCard[] shuffle(){
@@ -187,12 +236,4 @@ public class TicketDeck extends JPanel
         cityNames[37] = "Rostock";
         cityNames[38] = "Danemark";
     }*/
-
-    @Override
-    public void paintComponent(Graphics g){
-        super.paintComponent(g);
-
-        g.drawImage(blueDest, 0, 0, this);
-        g.drawImage(orangeDest, 80, 0, this);
-    }
 }

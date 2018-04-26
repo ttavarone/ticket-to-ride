@@ -29,7 +29,9 @@ public class Layout extends JPanel {
         PlayerHand cPanelb = new PlayerHand(players[1], deck);
         add(cPanelb, c);
 
-        TicketDeck tPanel = new TicketDeck();
+        TicketDeck t = new TicketDeck();
+        
+        TicketDeckPanel tPanel = new TicketDeckPanel(t);
         c.anchor = GridBagConstraints.EAST;
         c.gridx = 2;
         c.gridy = 0;
