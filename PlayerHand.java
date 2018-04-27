@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseWheelListener;
+import java.awt.event.MouseWheelEvent;
 /**
  * Contains an array that shows the player what cards they have
  * 
@@ -11,7 +13,7 @@ import java.awt.event.MouseEvent;
  * Tom Fresenius, Eamonn Conway)
  * @version (1.0)
  */
-public class PlayerHand extends JPanel
+public class PlayerHand extends JPanel// implements MouseWheelListener
 {
     private Player person;
     private int[] amountEachCard;
@@ -29,8 +31,9 @@ public class PlayerHand extends JPanel
     private static TrainCard whiteTrain;
     private static TrainCard yellowTrain;
     private static TrainCard wildCard;
-    
+
     private int currentTrainTicket = 0;
+    private int playerNumber = 0;
 
     public PlayerHand(Player p, DeckOfCards deck)
     {
@@ -50,6 +53,8 @@ public class PlayerHand extends JPanel
         yellowTrain = new TrainCard(7);
         wildCard = new TrainCard(8);
 
+        playerNumber = p.getPlayerNum();
+
         TrainCard t;
         for(int i = 0; i < 5; i++)
         {
@@ -57,7 +62,8 @@ public class PlayerHand extends JPanel
             int toAdd = t.getCurrentNum();
             person.addToHand(t);
         }
-        
+
+        //addMouseWheelListener(this);
         setPreferredSize(new Dimension(230, 485));
     }
 
@@ -65,16 +71,17 @@ public class PlayerHand extends JPanel
         return person.getAmount(cardNumIn);
     }
     
+
     public void addCard(TrainCard t)
     {
         person.addToHand(t);
     }
-    
+
     public Player getPlayer()
     {
         return person;
     }
-    
+
     public void addTicketCard(TicketCard t)
     {
         person.claimTicket(t);
@@ -83,7 +90,7 @@ public class PlayerHand extends JPanel
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g); 
-        
+
         g.drawString("Player cards", 0, 385);
 
         g.drawImage(blackTrain.getTrainCard(), 0, 0, this);
@@ -131,10 +138,5 @@ public class PlayerHand extends JPanel
         g.drawString(Integer.toString(returnAmtCard(2)), 0, 276);//green
         g.drawString(Integer.toString(returnAmtCard(5)), 80, 276);//red
         g.drawString(Integer.toString(returnAmtCard(8)), 160, 276);//wild
-        
-        if(person.claimedTickets() > 0)
-        {
-            g.drawImage(person.getTicket(currentTrainTicket).getImage(), 80, 375, this);
-        }
     }
 }

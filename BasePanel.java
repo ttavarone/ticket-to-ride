@@ -15,6 +15,11 @@ public class BasePanel extends JPanel
     protected int currentPlayer = 0;
     protected int totalPlayers = 2;
     protected PlayerHand[] p;
+    protected int currentTrainTicket = 0;
+    protected TicketDeckPanel tDeck;
+    protected DeckOfCardsPanel dPanel;
+    protected int ticketsDrawn = 0;
+    protected int ticketsTaken = 0;
     
     public BasePanel(){  }
     
