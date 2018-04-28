@@ -25,6 +25,10 @@ public class BoardPanel extends BasePanel implements MouseListener, MouseMotionL
     PlayerTicketsb tickets2;
     City c1;
     City c2;
+    protected boolean printWorked;
+    protected boolean printValid;
+    Color[] colorsUsed = new Color[]{Color.RED, Color.PINK, Color.ORANGE,
+        Color.WHITE, Color.BLACK, Color.YELLOW, Color.GREEN, Color.BLUE, Color.GRAY};
 
     public BoardPanel(PlayerHand[] p, PlayerTicketsa player1, PlayerTicketsb player2, BasePanel bPanel) {
         super();
@@ -65,16 +69,38 @@ public class BoardPanel extends BasePanel implements MouseListener, MouseMotionL
         if(firstClick)
         {
             String cityName = c1.getName();
-            cityName = cityName.replaceAll("[^A-Z]","");
             g.drawString(cityName, 150, 150);
         }
-        
+
         if(c2 != null)
         {
             String cityName = c2.getName();
-            cityName = cityName.replaceAll("[^A-Z]","");
             g.drawString(cityName, 250, 250);
         }
+
+        if(printWorked)
+        {
+            g.drawString("Route successfully claimed!", 350, 250);
+        }
+    }
+
+    public boolean checkValidRoute()
+    {
+        for(RouteList r : RouteList.values())
+        {
+            if(c1 == r.getCITY1() && c2 == r.getCITY2() ||
+            c1 == r.getCITY2() && c2 == r.getCITY1())
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public boolean checkTrainCount()
+    {
+        Player current = players[baseline.currentPlayer].getPlayer();
+        return true;
     }
 
     /**
@@ -109,6 +135,7 @@ public class BoardPanel extends BasePanel implements MouseListener, MouseMotionL
     public void mousePressed( MouseEvent e ) {
         if(!baseline.blockRouteClaim)
         {
+            printWorked = false;
             if(!firstClick)
             {
                 for(City c: City.values()){
@@ -132,6 +159,14 @@ public class BoardPanel extends BasePanel implements MouseListener, MouseMotionL
                         if(e.getY() >= (c.getY() - 11) && e.getY() <= (c.getY() + 11))
                         {
                             c2 = c;
+                            if(checkValidRoute())
+                            {
+                                //printValid = true;
+                                //if(checkTrainCount())
+                                //{
+                                    printWorked = true;                                
+                                //}
+                            }
                             break;
                         }
                     }
@@ -156,6 +191,7 @@ public class BoardPanel extends BasePanel implements MouseListener, MouseMotionL
     @Override
     public void mouseMoved( MouseEvent e ){
         //cities
+        isMouseOnCity = false;
         for(City c: City.values()){
             if(e.getX() >= (c.getX() - 11) && e.getX() <= (c.getX() + 11)){
                 if(e.getY() >= (c.getY() - 11) && e.getY() <= (c.getY() + 11))
@@ -177,11 +213,8 @@ public class BoardPanel extends BasePanel implements MouseListener, MouseMotionL
                     break;
                 }
             }
-            else{
-                isMouseOnCity = false;
-            }
-            repaint();
         }
+        repaint();
         //Danemark
         // if(e.getX() >= (233 - 27) && e.getX() <= (233 + 27)){
         // if(e.getY() >= 0 && e.getY() <= (25 + 28))
