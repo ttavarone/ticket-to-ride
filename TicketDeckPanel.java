@@ -50,7 +50,7 @@ public class TicketDeckPanel extends BasePanel// implements MouseWheelListener
         //addMouseWheelListener(this);
         addMouseListener(new MouseAdapter() { 
                 public void mouseClicked(MouseEvent e) { 
-                    TrainCard t;
+                    TicketCard t;
                     if(ticketsTaken < 4)
                     {
                         if(e.getX() >= 0 && e.getX() < 80 && e.getY() <= 118)
@@ -164,6 +164,30 @@ public class TicketDeckPanel extends BasePanel// implements MouseWheelListener
                                 repaint();
                             }
                         }
+                        else if(ticketsDrawn > 0)
+                        {
+                            if(e.getX() >= 20 && e.getX() < 145 && e.getY() >= 450 && e.getY() < 475)
+                            {
+                                for(int i = 0; i < 4; i++)
+                                {
+                                    if(toDraw[i] != null)
+                                    {
+                                        t = toDraw[i];
+                                        if(t.getLength().equals("short"))
+                                        {
+                                            d.discardShort(t);
+                                        }
+                                        else
+                                        {
+                                            d.discardLong(t);
+                                        }
+                                        toDraw[i] = null;
+                                    }
+                                }
+                                ticketsDrawn = 4;
+                                repaint();
+                            }
+                        }
                     }
                 } 
             }); 
@@ -176,6 +200,10 @@ public class TicketDeckPanel extends BasePanel// implements MouseWheelListener
 
         g.drawImage(blueDest, 0, 0, this);
         g.drawImage(orangeDest, 80, 0, this);
+        //g.setColor(Color.BLACK);
+        g.fillRect(20, 450, 125, 25);
+        g.setColor(Color.WHITE);
+        g.drawString("Stop drawing tickets", 25, 460);
 
         for(int i = 0; i < 4; i++)
         {
