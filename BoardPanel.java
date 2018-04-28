@@ -99,7 +99,7 @@ public class BoardPanel extends BasePanel implements MouseListener, MouseMotionL
             c1 == r.getCITY2() && c2 == r.getCITY1())
             {
                 currentRoutea = r;
-                if(r.isDoubleRoute())
+                if(r.isDoubleRoute() && r.getRouteColor() != Color.GRAY)
                 {
                     for(RouteList r2 : RouteList.values())
                     {
@@ -142,10 +142,10 @@ public class BoardPanel extends BasePanel implements MouseListener, MouseMotionL
                 }
                 else
                 {
-                    int wilds = p[baseline.currentPlayer].returnAmtCard(8);
+                    int wilds = current.getAmount(8);
                     for(int index = 0; index < 8; index++)
                     {
-                        int trains = p[baseline.currentPlayer].returnAmtCard(index);
+                        int trains = current.getAmount(index);
                         if(trains + wilds >= currentRoutea.getRouteLength())
                         {
                             return true;
