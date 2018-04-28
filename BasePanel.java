@@ -23,6 +23,7 @@ public class BasePanel extends JPanel
     protected boolean blockTrainDraw = true;
     protected boolean blockTicketDraw = false;
     protected boolean firstTurn = true;
+    protected boolean blockRouteClaim = true;
     
     public BasePanel(){  }
     

@@ -45,37 +45,41 @@ public class DeckOfCardsPanel extends BasePanel{
                             if(deckSize >= 6)
                             {
                                 t = deck.dequeue(5);
-                                p[getPlayerNum()].addCard(t);
+                                p[baseline.currentPlayer].addCard(t);
                                 cardDrawn = true;
                                 cardsDrawn++;
                             }
                         }
-                        for(int i = 0; i < Math.min(5, deckSize); i++)
+                        else
                         {
-                            if(e.getX() >= 80 + (80 * i) && e.getX() < 160 + (80 * i))
+                            for(int i = 0; i < Math.min(5, deckSize); i++)
                             {
-                                if(deck.peek(i).getCurrentNum() == 8 && cardsDrawn == 1)
+                                if(e.getX() >= 80 + (80 * i) && e.getX() < 160 + (80 * i))
                                 {
-                                    break;
-                                }
-                                else
-                                {
-                                    t = deck.dequeue(i);
-                                    if(t.getCurrentNum() == 8)
+                                    if(deck.peek(i).getCurrentNum() == 8 && cardsDrawn == 1)
                                     {
-                                        cardsDrawn++;
+                                        break;
                                     }
-                                    cardsDrawn++;
-                                    p[currentPlayer].addCard(t);
-                                    cardDrawn = true;
-                                    break;
+                                    else
+                                    {
+                                        t = deck.dequeue(i);
+                                        if(t.getCurrentNum() == 8)
+                                        {
+                                            cardsDrawn++;
+                                        }
+                                        cardsDrawn++;
+                                        p[baseline.currentPlayer].addCard(t);
+                                        cardDrawn = true;
+                                        break;
+                                    }
                                 }
                             }
                         }
                         if(cardDrawn)
                         {
-                            p[currentPlayer].repaint();
+                            p[baseline.currentPlayer].repaint();
                             baseline.blockTicketDraw = true;
+                            baseline.blockRouteClaim = true;
                             repaint();
                         }
                     } 
@@ -161,6 +165,7 @@ public class DeckOfCardsPanel extends BasePanel{
             player1.setPlayerTurn(baseline.currentPlayer);
             baseline.currentTrainTicket = 0;
             baseline.blockTicketDraw = false;
+            baseline.blockRouteClaim = false;
             player0.repaint();
             player1.repaint();
             p[baseline.currentPlayer].repaint();

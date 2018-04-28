@@ -64,6 +64,7 @@ public class TicketDeckPanel extends BasePanel// implements MouseWheelListener
                                     toDraw[ticketsTaken].setImage(temp);
                                     ticketsTaken++;
                                     baseline.blockTrainDraw = true;
+                                    baseline.blockRouteClaim = true;
                                     repaint();
                                 }
                             }
@@ -77,6 +78,7 @@ public class TicketDeckPanel extends BasePanel// implements MouseWheelListener
                                     toDraw[ticketsTaken].setImage(temp);
                                     ticketsTaken++;
                                     baseline.blockTrainDraw = true;
+                                    baseline.blockRouteClaim = true;
                                     repaint();
                                 }
                             }
@@ -234,6 +236,7 @@ public class TicketDeckPanel extends BasePanel// implements MouseWheelListener
             else
             {
                 baseline.setBlockTrainDraw(false);
+                baseline.blockRouteClaim = false;
             }
             player0.repaint();
             player1.repaint();
