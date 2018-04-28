@@ -175,4 +175,9 @@ public enum RouteList
     public void setRouteClaimed(boolean routeClaimed) {
         this.routeClaimed = routeClaimed;
     }
+    
+    public boolean isDoubleRoute()
+    {
+        return doubleRoute;
+    }
 }

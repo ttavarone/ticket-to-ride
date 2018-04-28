@@ -14,7 +14,7 @@ public class Player
     private Color playerColor;
     private ArrayList<TicketCard> tickets = new ArrayList<TicketCard>();
     private ArrayList<RouteList> controlledRoutes = new ArrayList<RouteList>();
-    private int[] amountEachCard = new int[9];
+    private int[] amountEachCard = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
     
     public Player(int playerNumber, Color pColor)
     {

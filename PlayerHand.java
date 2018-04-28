@@ -71,7 +71,6 @@ public class PlayerHand extends JPanel// implements MouseWheelListener
         return person.getAmount(cardNumIn);
     }
     
-
     public void addCard(TrainCard t)
     {
         person.addToHand(t);
@@ -80,11 +79,6 @@ public class PlayerHand extends JPanel// implements MouseWheelListener
     public Player getPlayer()
     {
         return person;
-    }
-
-    public void addTicketCard(TicketCard t)
-    {
-        person.claimTicket(t);
     }
 
     @Override

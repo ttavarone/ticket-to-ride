@@ -27,8 +27,10 @@ public class BoardPanel extends BasePanel implements MouseListener, MouseMotionL
     City c2;
     protected boolean printWorked;
     protected boolean printValid;
-    Color[] colorsUsed = new Color[]{Color.RED, Color.PINK, Color.ORANGE,
-        Color.WHITE, Color.BLACK, Color.YELLOW, Color.GREEN, Color.BLUE, Color.GRAY};
+    Color[] colorsUsed = new Color[]{Color.BLACK, Color.BLUE, Color.GREEN, Color.ORANGE, Color.PINK,
+            Color.RED, Color.WHITE, Color.YELLOW, Color.GRAY};
+    RouteList currentRoutea;
+    RouteList currentRouteb;
 
     public BoardPanel(PlayerHand[] p, PlayerTicketsa player1, PlayerTicketsb player2, BasePanel bPanel) {
         super();
@@ -78,9 +80,14 @@ public class BoardPanel extends BasePanel implements MouseListener, MouseMotionL
             g.drawString(cityName, 250, 250);
         }
 
-        if(printWorked)
+        if(printValid)
         {
             g.drawString("Route successfully claimed!", 350, 250);
+        }
+
+        if(printWorked)
+        {
+            g.drawString("Route has enough colors!", 350, 350);
         }
     }
 
@@ -91,16 +98,93 @@ public class BoardPanel extends BasePanel implements MouseListener, MouseMotionL
             if(c1 == r.getCITY1() && c2 == r.getCITY2() ||
             c1 == r.getCITY2() && c2 == r.getCITY1())
             {
+                currentRoutea = r;
+                if(r.isDoubleRoute())
+                {
+                    for(RouteList r2 : RouteList.values())
+                    {
+                        if(c1 == r.getCITY1() && c2 == r.getCITY2() ||
+                        c1 == r.getCITY2() && c2 == r.getCITY1())
+                        {
+                            if(r2 == r)
+                            {
+                                continue;
+                            }
+                            currentRouteb = r;
+                            return true;
+                        }
+                    }
+                }
+                currentRouteb = null;
                 return true;
             }
         }
         return false;
     }
-    
+
     public boolean checkTrainCount()
     {
         Player current = players[baseline.currentPlayer].getPlayer();
-        return true;
+        Color currentColor = Color.GRAY;
+        for(int i = 0; i < 9; i++)
+        {
+            if(colorsUsed[i] == currentRoutea.getRouteColor())
+            {
+                currentColor = colorsUsed[i];
+                if(currentColor != Color.GRAY)
+                {
+                    int trains = current.getAmount(i);
+                    int wilds = current.getAmount(8);
+                    if(trains + wilds >= currentRoutea.getRouteLength())
+                    {
+                        return true;
+                    }
+                }
+                else
+                {
+                    int wilds = p[baseline.currentPlayer].returnAmtCard(8);
+                    for(int index = 0; index < 8; index++)
+                    {
+                        int trains = p[baseline.currentPlayer].returnAmtCard(index);
+                        if(trains + wilds >= currentRoutea.getRouteLength())
+                        {
+                            return true;
+                        }
+                    }
+                }
+                return false;
+            }
+            if(currentRouteb != null)
+            {
+                if(colorsUsed[i] == currentRouteb.getRouteColor())
+                {
+                    currentColor = colorsUsed[i];
+                    if(currentColor != Color.GRAY)
+                    {
+                        int trains = current.getAmount(i);
+                        int wilds = current.getAmount(8);
+                        if(trains + wilds >= currentRouteb.getRouteLength())
+                        {
+                            return true;
+                        }
+                    }
+                    else
+                    {
+                        int wilds = p[baseline.currentPlayer].returnAmtCard(8);
+                        for(int index = 0; index < 8; index++)
+                        {
+                            int trains = p[baseline.currentPlayer].returnAmtCard(index);
+                            if(trains + wilds >= currentRouteb.getRouteLength())
+                            {
+                                return true;
+                            }
+                        }
+                    }
+                    return false;
+                }
+            }
+        }
+        return false;
     }
 
     /**
@@ -136,6 +220,7 @@ public class BoardPanel extends BasePanel implements MouseListener, MouseMotionL
         if(!baseline.blockRouteClaim)
         {
             printWorked = false;
+            printValid = false;
             if(!firstClick)
             {
                 for(City c: City.values()){
@@ -161,11 +246,11 @@ public class BoardPanel extends BasePanel implements MouseListener, MouseMotionL
                             c2 = c;
                             if(checkValidRoute())
                             {
-                                //printValid = true;
-                                //if(checkTrainCount())
-                                //{
+                                printValid = true;
+                                if(checkTrainCount())
+                                {
                                     printWorked = true;                                
-                                //}
+                                }
                             }
                             break;
                         }
