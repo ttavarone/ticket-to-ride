@@ -24,17 +24,19 @@ public class TicketDeckPanel extends BasePanel// implements MouseWheelListener
     protected int currentPlayer;
     protected int ticketsDrawn = 0;
     protected int currentTrainTicket = 0;
-    PlayerTickets[] playerT;
-    
-    public TicketDeckPanel(TicketDeck d, PlayerHand[] players, PlayerTickets[] tick){
+    PlayerTicketsa player0;
+    PlayerTicketsb player1;
+
+    public TicketDeckPanel(TicketDeck d, PlayerHand[] players, PlayerTicketsa p0, PlayerTicketsb p1){
         super();
         setOpaque(true);
         setBackground(Color.WHITE);
         toolkit = Toolkit.getDefaultToolkit();
 
         setPreferredSize(new Dimension(150, 550));
-        
-        playerT = tick;
+
+        player0 = p0;
+        player1 = p1;
 
         p = players;
         currentPlayer = super.currentPlayer;
@@ -82,10 +84,20 @@ public class TicketDeckPanel extends BasePanel// implements MouseWheelListener
                         {
                             if(toDraw[0] != null)
                             {
-                                playerT[currentPlayer].addTicketCard(toDraw[0]);
-                                toDraw[0] = null;
-                                ticketsDrawn++;
-                                playerT[currentPlayer].repaint();
+                                if(currentPlayer == 0)
+                                {
+                                    player0.addTicketCard(toDraw[0]);
+                                    toDraw[0] = null;
+                                    ticketsDrawn++;
+                                    player0.repaint();
+                                }
+                                else if(currentPlayer == 1)
+                                {
+                                    player1.addTicketCard(toDraw[0]);
+                                    toDraw[0] = null;
+                                    ticketsDrawn++;
+                                    player1.repaint();
+                                }
                                 repaint();
                             }
                         }
@@ -93,10 +105,20 @@ public class TicketDeckPanel extends BasePanel// implements MouseWheelListener
                         {
                             if(toDraw[1] != null)
                             {
-                                playerT[currentPlayer].addTicketCard(toDraw[1]);
-                                toDraw[1] = null;
-                                ticketsDrawn++;
-                                playerT[currentPlayer].repaint();
+                                if(currentPlayer == 0)
+                                {
+                                    player0.addTicketCard(toDraw[1]);
+                                    toDraw[1] = null;
+                                    ticketsDrawn++;
+                                    player0.repaint();
+                                }
+                                else if(currentPlayer == 1)
+                                {
+                                    player1.addTicketCard(toDraw[1]);
+                                    toDraw[1] = null;
+                                    ticketsDrawn++;
+                                    player1.repaint();
+                                }
                                 repaint();
                             }
                         }
@@ -104,10 +126,20 @@ public class TicketDeckPanel extends BasePanel// implements MouseWheelListener
                         {
                             if(toDraw[2] != null)
                             {
-                                playerT[currentPlayer].addTicketCard(toDraw[2]);
-                                toDraw[2] = null;
-                                ticketsDrawn++;
-                                playerT[currentPlayer].repaint();
+                                if(currentPlayer == 0)
+                                {
+                                    player0.addTicketCard(toDraw[2]);
+                                    toDraw[2] = null;
+                                    ticketsDrawn++;
+                                    player0.repaint();
+                                }
+                                else if(currentPlayer == 1)
+                                {
+                                    player1.addTicketCard(toDraw[2]);
+                                    toDraw[2] = null;
+                                    ticketsDrawn++;
+                                    player1.repaint();
+                                }
                                 repaint();
                             }
                         }
@@ -115,10 +147,20 @@ public class TicketDeckPanel extends BasePanel// implements MouseWheelListener
                         {
                             if(toDraw[3] != null)
                             {
-                                playerT[currentPlayer].addTicketCard(toDraw[3]);
-                                toDraw[3] = null;
-                                ticketsDrawn++;
-                                playerT[currentPlayer].repaint();
+                                if(currentPlayer == 0)
+                                {
+                                    player0.addTicketCard(toDraw[3]);
+                                    toDraw[3] = null;
+                                    ticketsDrawn++;
+                                    player0.repaint();
+                                }
+                                else if(currentPlayer == 1)
+                                {
+                                    player1.addTicketCard(toDraw[3]);
+                                    toDraw[3] = null;
+                                    ticketsDrawn++;
+                                    player1.repaint();
+                                }
                                 repaint();
                             }
                         }
@@ -149,24 +191,29 @@ public class TicketDeckPanel extends BasePanel// implements MouseWheelListener
             ticketsDrawn = ticketsTaken = 0;
             currentPlayer = (currentPlayer + 1) % super.totalPlayers;
             super.currentPlayer = currentPlayer;
-            playerT[currentPlayer].setTrainTicket(0);
+            player0.setTrainTicket(0);
+            player0.setPlayerTurn(currentPlayer);
+            player1.setTrainTicket(0);
+            player1.setPlayerTurn(currentPlayer);
             super.currentTrainTicket = 0;
-            playerT[currentPlayer].repaint();
+            player0.repaint();
+            player1.repaint();
+            p[currentPlayer].repaint();
             repaint();
         }
     }
 
     /*public void mouseWheelMoved(MouseWheelEvent e)
     {
-        int ticketNum = playerT[currentPlayer].getTrainTicket();
-        if(e.getX() >= 40 && e.getX() < 120 && e.getY() >= 425)
-        {
-            if(playerT[currentPlayer].getPlayer().claimedTickets() >= 2)
-            {
-                super.currentTrainTicket = (ticketNum + 1) % playerT[currentPlayer].getPlayer().claimedTickets();
-                playerT[currentPlayer].setTrainTicket(super.currentTrainTicket);
-                repaint();
-            }
-        }
+    int ticketNum = playerT[currentPlayer].getTrainTicket();
+    if(e.getX() >= 40 && e.getX() < 120 && e.getY() >= 425)
+    {
+    if(playerT[currentPlayer].getPlayer().claimedTickets() >= 2)
+    {
+    super.currentTrainTicket = (ticketNum + 1) % playerT[currentPlayer].getPlayer().claimedTickets();
+    playerT[currentPlayer].setTrainTicket(super.currentTrainTicket);
+    repaint();
+    }
+    }
     }*/
 }

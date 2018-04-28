@@ -30,26 +30,28 @@ public class Layout extends JPanel {
         PlayerHand cPanelb = new PlayerHand(players[1], deck);
         add(cPanelb, c);
         
-        PlayerTickets hPanela = new PlayerTickets(players[0]);
+        PlayerTicketsa hPanela = new PlayerTicketsa(players[0]);
         c.anchor = GridBagConstraints.NORTHWEST;
         c.gridx = 1;
         c.gridy = 0;
         add(hPanela, c);
-        PlayerTickets hPanelb = new PlayerTickets(players[1]);
+        PlayerTicketsb hPanelb = new PlayerTicketsb(players[1]);
+        c.anchor = GridBagConstraints.NORTHEAST;
+        c.gridx = 1;
+        c.gridy = 0;
         add(hPanelb, c);
 
         TicketDeck t = new TicketDeck();
         
         PlayerHand[] playerHands = new PlayerHand[]{cPanela, cPanelb};
-        PlayerTickets[] playerT = new PlayerTickets[]{hPanela, hPanelb};
         
-        TicketDeckPanel tPanel = new TicketDeckPanel(t, playerHands, playerT);
+        TicketDeckPanel tPanel = new TicketDeckPanel(t, playerHands, hPanela, hPanelb);
         c.anchor = GridBagConstraints.EAST;
         c.gridx = 2;
         c.gridy = 0;
         add(tPanel, c);
         
-        DeckOfCardsPanel dPanel = new DeckOfCardsPanel(playerHands, deck, playerT);
+        DeckOfCardsPanel dPanel = new DeckOfCardsPanel(playerHands, deck, hPanela, hPanelb);
         c.anchor = GridBagConstraints.SOUTH;
         c.gridx = 1;
         c.gridy = 0;

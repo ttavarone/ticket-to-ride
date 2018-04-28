@@ -12,7 +12,7 @@ import java.awt.event.MouseWheelEvent;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class PlayerTickets extends JPanel implements MouseWheelListener
+public class PlayerTicketsa extends JPanel implements MouseWheelListener
 {
     private Player person;
 
@@ -22,7 +22,7 @@ public class PlayerTickets extends JPanel implements MouseWheelListener
     private int playerNumber = 0;
     private int playerTurn = 0;
 
-    public PlayerTickets(Player p)
+    public PlayerTicketsa(Player p)
     {
         super();
         setOpaque(true);
@@ -33,7 +33,8 @@ public class PlayerTickets extends JPanel implements MouseWheelListener
 
         playerNumber = p.getPlayerNum();
 
-        setPreferredSize(new Dimension(80, 485));
+        addMouseWheelListener(this);
+        setPreferredSize(new Dimension(80, 150));
     }
 
     public int returnAmtCard(int cardNumIn){
@@ -69,23 +70,19 @@ public class PlayerTickets extends JPanel implements MouseWheelListener
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         
-        if(person.getPlayerNum() == 0 && playerTurn == 0)
+        if(playerTurn == 0)
         {
             g.setColor(Color.WHITE);
             g.fillRect(0, 0, 20, 118);
             if(person.claimedTickets() > 0)
             {
-                g.drawImage(person.getTicket(currentTrainTicket).getImage(), 0, 118, this);
+                g.drawImage(person.getTicket(currentTrainTicket).getImage(), 0, 0, this);
             }
         }
         else
         {
             g.setColor(Color.WHITE);
             g.fillRect(0, 118, 20, 118);
-            if(person.claimedTickets() > 0)
-            {
-                g.drawImage(person.getTicket(currentTrainTicket).getImage(), 0, 0, this);
-            }
         }
 
         g.drawString("Player Tickets", 0, 385);
@@ -93,20 +90,9 @@ public class PlayerTickets extends JPanel implements MouseWheelListener
     
     public void mouseWheelMoved(MouseWheelEvent e)
     {
-        if(playerNumber == 0 && playerNumber == playerTurn)
+        if(playerTurn == 0)
         {
             if(e.getY() <= 118)
-            {
-                if(person.claimedTickets() > 1)
-                {
-                    currentTrainTicket = (currentTrainTicket + 1) % person.claimedTickets();
-                    repaint();
-                }
-            }
-        }
-        else
-        {
-            if(e.getY() > 118 && e.getY() <= 236)
             {
                 if(person.claimedTickets() > 1)
                 {

@@ -14,9 +14,10 @@ public class DeckOfCardsPanel extends BasePanel{
     int displayCurrentHand  = 0;
     private int cardsDrawn;
     PlayerHand[] p;
-    PlayerTickets[] t;
+    PlayerTicketsa player0;
+    PlayerTicketsb player1;
 
-    public DeckOfCardsPanel(PlayerHand[] p, DeckOfCards d, PlayerTickets[] t){
+    public DeckOfCardsPanel(PlayerHand[] p, DeckOfCards d, PlayerTicketsa p0, PlayerTicketsb p1){
         super();
         setOpaque(true);
         setBackground(Color.WHITE);
@@ -27,10 +28,11 @@ public class DeckOfCardsPanel extends BasePanel{
         super.totalPlayers = p.length;
         deck = d;
         setPreferredSize(new Dimension(480, 256));//128));
-        
+
         this.p = p;
-        this.t = t;
-        
+        player0 = p0;
+        player1 = p1;
+
         addMouseListener(new MouseAdapter() { 
                 public void mouseClicked(MouseEvent e) { 
                     TrainCard t;
@@ -143,16 +145,20 @@ public class DeckOfCardsPanel extends BasePanel{
                 else break;
             }
         }
-        
+
         if(cardsDrawn == 2)
         {
             cardsDrawn = 0;
-            currentPlayer = (currentPlayer + 1) % totalPlayers;
+            currentPlayer = (currentPlayer + 1) % super.totalPlayers;
             super.currentPlayer = currentPlayer;
+            player0.setTrainTicket(0);
+            player0.setPlayerTurn(currentPlayer);
+            player1.setTrainTicket(0);
+            player1.setPlayerTurn(currentPlayer);
             super.currentTrainTicket = 0;
-            t[currentPlayer].setTrainTicket(0);
+            player0.repaint();
+            player1.repaint();
             p[currentPlayer].repaint();
-            t[currentPlayer].repaint();
             repaint();
         }
         //there should be methods here to update cards as they are chosen or removed
