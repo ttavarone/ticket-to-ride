@@ -20,11 +20,29 @@ public class BasePanel extends JPanel
     protected DeckOfCardsPanel dPanel;
     protected int ticketsDrawn = 0;
     protected int ticketsTaken = 0;
+    protected boolean blockTrainDraw = true;
+    protected boolean blockTicketDraw = false;
+    protected boolean firstTurn = true;
     
     public BasePanel(){  }
     
     public void setPlayerHand(PlayerHand[] players)
     {
         p = players;
+    }
+    
+    public void setBlockTrainDraw(boolean trainDraw)
+    {
+        blockTrainDraw = trainDraw;
+    }
+    
+    public void setBlockTicketDraw(boolean ticketDraw)
+    {
+        blockTicketDraw = ticketDraw;
+    }
+    
+    public void setFirstTurn(boolean first)
+    {
+        firstTurn = first;
     }
 }

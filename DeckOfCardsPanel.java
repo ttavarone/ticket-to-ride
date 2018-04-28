@@ -16,65 +16,70 @@ public class DeckOfCardsPanel extends BasePanel{
     PlayerHand[] p;
     PlayerTicketsa player0;
     PlayerTicketsb player1;
+    BasePanel baseline;
 
-    public DeckOfCardsPanel(PlayerHand[] p, DeckOfCards d, PlayerTicketsa p0, PlayerTicketsb p1){
-        super();
+    public DeckOfCardsPanel(PlayerHand[] p, DeckOfCards d, PlayerTicketsa p0, PlayerTicketsb p1, BasePanel bp){
+        baseline = bp;
         setOpaque(true);
         setBackground(Color.WHITE);
         toolkit = Toolkit.getDefaultToolkit();
         trainCardBack = toolkit.getImage("TicketToRidePics"+File.separator+"TrainCardBack.JPG");
         trainCardBack = trainCardBack.getScaledInstance(70, 118, Image.SCALE_FAST);
 
-        super.totalPlayers = p.length;
+        baseline.totalPlayers = p.length;
         deck = d;
-        setPreferredSize(new Dimension(480, 256));//128));
+        setPreferredSize(new Dimension(480, 256));//128));   
 
         this.p = p;
         player0 = p0;
         player1 = p1;
 
         addMouseListener(new MouseAdapter() { 
-                public void mouseClicked(MouseEvent e) { 
+                public void mousePressed(MouseEvent e) { 
                     TrainCard t;
                     int deckSize = deck.getDeckSize();
-                    if(e.getX() >= 0 && e.getX() < 80)
+                    if(!baseline.blockTrainDraw)
                     {
-                        if(deckSize >= 6)
+                        if(e.getX() >= 0 && e.getX() < 80)
                         {
-                            t = deck.dequeue(5);
-                            p[getPlayerNum()].addCard(t);
-                            cardDrawn = true;
-                            cardsDrawn++;
-                        }
-                    }
-                    for(int i = 0; i < Math.min(5, deckSize); i++)
-                    {
-                        if(e.getX() >= 80 + (80 * i) && e.getX() < 160 + (80 * i))
-                        {
-                            if(deck.peek(i).getCurrentNum() == 8 && cardsDrawn == 1)
+                            if(deckSize >= 6)
                             {
-                                break;
-                            }
-                            else
-                            {
-                                t = deck.dequeue(i);
-                                if(t.getCurrentNum() == 8)
-                                {
-                                    cardsDrawn++;
-                                }
-                                cardsDrawn++;
-                                p[currentPlayer].addCard(t);
+                                t = deck.dequeue(5);
+                                p[getPlayerNum()].addCard(t);
                                 cardDrawn = true;
-                                break;
+                                cardsDrawn++;
                             }
                         }
-                    }
-                    if(cardDrawn)
-                    {
-                        p[currentPlayer].repaint();
-                        repaint();
-                    }
-                } 
+                        for(int i = 0; i < Math.min(5, deckSize); i++)
+                        {
+                            if(e.getX() >= 80 + (80 * i) && e.getX() < 160 + (80 * i))
+                            {
+                                if(deck.peek(i).getCurrentNum() == 8 && cardsDrawn == 1)
+                                {
+                                    break;
+                                }
+                                else
+                                {
+                                    t = deck.dequeue(i);
+                                    if(t.getCurrentNum() == 8)
+                                    {
+                                        cardsDrawn++;
+                                    }
+                                    cardsDrawn++;
+                                    p[currentPlayer].addCard(t);
+                                    cardDrawn = true;
+                                    break;
+                                }
+                            }
+                        }
+                        if(cardDrawn)
+                        {
+                            p[currentPlayer].repaint();
+                            baseline.blockTicketDraw = true;
+                            repaint();
+                        }
+                    } 
+                }
             }); 
     }
 
@@ -149,16 +154,16 @@ public class DeckOfCardsPanel extends BasePanel{
         if(cardsDrawn == 2)
         {
             cardsDrawn = 0;
-            currentPlayer = (currentPlayer + 1) % super.totalPlayers;
-            super.currentPlayer = currentPlayer;
+            baseline.currentPlayer = (baseline.currentPlayer + 1) % baseline.totalPlayers;
             player0.setTrainTicket(0);
-            player0.setPlayerTurn(currentPlayer);
+            player0.setPlayerTurn(baseline.currentPlayer);
             player1.setTrainTicket(0);
-            player1.setPlayerTurn(currentPlayer);
-            super.currentTrainTicket = 0;
+            player1.setPlayerTurn(baseline.currentPlayer);
+            baseline.currentTrainTicket = 0;
+            baseline.blockTicketDraw = false;
             player0.repaint();
             player1.repaint();
-            p[currentPlayer].repaint();
+            p[baseline.currentPlayer].repaint();
             repaint();
         }
         //there should be methods here to update cards as they are chosen or removed

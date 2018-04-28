@@ -26,9 +26,10 @@ public class TicketDeckPanel extends BasePanel// implements MouseWheelListener
     protected int currentTrainTicket = 0;
     PlayerTicketsa player0;
     PlayerTicketsb player1;
+    BasePanel baseline;
 
-    public TicketDeckPanel(TicketDeck d, PlayerHand[] players, PlayerTicketsa p0, PlayerTicketsb p1){
-        super();
+    public TicketDeckPanel(TicketDeck d, PlayerHand[] players, PlayerTicketsa p0, PlayerTicketsb p1, BasePanel bp){
+        baseline = bp;
         setOpaque(true);
         setBackground(Color.WHITE);
         toolkit = Toolkit.getDefaultToolkit();
@@ -39,7 +40,7 @@ public class TicketDeckPanel extends BasePanel// implements MouseWheelListener
         player1 = p1;
 
         p = players;
-        currentPlayer = super.currentPlayer;
+        currentPlayer = baseline.currentPlayer;
 
         orangeDest = toolkit.getImage("TicketToRidePics"+File.separator+"OrangeDest.jpg");
         blueDest = toolkit.getImage("TicketToRidePics"+File.separator+"BlueDest.jpg");
@@ -49,143 +50,148 @@ public class TicketDeckPanel extends BasePanel// implements MouseWheelListener
 
         //addMouseWheelListener(this);
         addMouseListener(new MouseAdapter() { 
-                public void mouseClicked(MouseEvent e) { 
+                public void mousePressed(MouseEvent e) { 
                     TicketCard t;
-                    if(ticketsTaken < 4)
+                    if(!baseline.blockTicketDraw)
                     {
-                        if(e.getX() >= 0 && e.getX() < 80 && e.getY() <= 118)
+                        if(ticketsTaken < 4)
                         {
-                            if(!d.shortEmpty())
+                            if(e.getX() >= 0 && e.getX() < 80 && e.getY() <= 118)
                             {
-                                toDraw[ticketsTaken] = d.dequeueShort();
-                                Image temp = toDraw[ticketsTaken].getImage();
-                                temp = temp.getScaledInstance(75, 118, Image.SCALE_FAST);
-                                toDraw[ticketsTaken].setImage(temp);
-                                ticketsTaken++;
-                                repaint();
+                                if(!d.shortEmpty())
+                                {
+                                    toDraw[ticketsTaken] = d.dequeueShort();
+                                    Image temp = toDraw[ticketsTaken].getImage();
+                                    temp = temp.getScaledInstance(75, 118, Image.SCALE_FAST);
+                                    toDraw[ticketsTaken].setImage(temp);
+                                    ticketsTaken++;
+                                    baseline.blockTrainDraw = true;
+                                    repaint();
+                                }
+                            }
+                            else if(e.getX() >= 80 && e.getX() < 160 && e.getY() <= 118)
+                            {
+                                if(!d.longEmpty())
+                                {
+                                    toDraw[ticketsTaken] = d.dequeueLong();
+                                    Image temp = toDraw[ticketsTaken].getImage();
+                                    temp = temp.getScaledInstance(75, 118, Image.SCALE_FAST);
+                                    toDraw[ticketsTaken].setImage(temp);
+                                    ticketsTaken++;
+                                    baseline.blockTrainDraw = true;
+                                    repaint();
+                                }
                             }
                         }
-                        else if(e.getX() >= 80 && e.getX() < 160 && e.getY() <= 118)
+                        else if(ticketsTaken == 4)
                         {
-                            if(!d.longEmpty())
+                            if(e.getX() >= 0 && e.getX() < 80 && e.getY() >= 118 && e.getY() <= 236)
                             {
-                                toDraw[ticketsTaken] = d.dequeueLong();
-                                Image temp = toDraw[ticketsTaken].getImage();
-                                temp = temp.getScaledInstance(75, 118, Image.SCALE_FAST);
-                                toDraw[ticketsTaken].setImage(temp);
-                                ticketsTaken++;
-                                repaint();
-                            }
-                        }
-                    }
-                    else if(ticketsTaken == 4)
-                    {
-                        if(e.getX() >= 0 && e.getX() < 80 && e.getY() >= 118 && e.getY() <= 236)
-                        {
-                            if(toDraw[0] != null)
-                            {
-                                if(currentPlayer == 0)
+                                if(toDraw[0] != null)
                                 {
-                                    player0.addTicketCard(toDraw[0]);
-                                    toDraw[0] = null;
-                                    ticketsDrawn++;
-                                    player0.repaint();
-                                }
-                                else if(currentPlayer == 1)
-                                {
-                                    player1.addTicketCard(toDraw[0]);
-                                    toDraw[0] = null;
-                                    ticketsDrawn++;
-                                    player1.repaint();
-                                }
-                                repaint();
-                            }
-                        }
-                        else if(e.getX() >= 0 && e.getX() < 80 && e.getY() >= 236 && e.getY() <= 354)
-                        {
-                            if(toDraw[1] != null)
-                            {
-                                if(currentPlayer == 0)
-                                {
-                                    player0.addTicketCard(toDraw[1]);
-                                    toDraw[1] = null;
-                                    ticketsDrawn++;
-                                    player0.repaint();
-                                }
-                                else if(currentPlayer == 1)
-                                {
-                                    player1.addTicketCard(toDraw[1]);
-                                    toDraw[1] = null;
-                                    ticketsDrawn++;
-                                    player1.repaint();
-                                }
-                                repaint();
-                            }
-                        }
-                        else if(e.getX() >= 80 && e.getX() < 160 && e.getY() >= 118 && e.getY() <= 236)
-                        {
-                            if(toDraw[2] != null)
-                            {
-                                if(currentPlayer == 0)
-                                {
-                                    player0.addTicketCard(toDraw[2]);
-                                    toDraw[2] = null;
-                                    ticketsDrawn++;
-                                    player0.repaint();
-                                }
-                                else if(currentPlayer == 1)
-                                {
-                                    player1.addTicketCard(toDraw[2]);
-                                    toDraw[2] = null;
-                                    ticketsDrawn++;
-                                    player1.repaint();
-                                }
-                                repaint();
-                            }
-                        }
-                        else if(e.getX() >= 80 && e.getX() < 160 && e.getY() >= 236 && e.getY() <= 354)
-                        {
-                            if(toDraw[3] != null)
-                            {
-                                if(currentPlayer == 0)
-                                {
-                                    player0.addTicketCard(toDraw[3]);
-                                    toDraw[3] = null;
-                                    ticketsDrawn++;
-                                    player0.repaint();
-                                }
-                                else if(currentPlayer == 1)
-                                {
-                                    player1.addTicketCard(toDraw[3]);
-                                    toDraw[3] = null;
-                                    ticketsDrawn++;
-                                    player1.repaint();
-                                }
-                                repaint();
-                            }
-                        }
-                        else if(ticketsDrawn > 0)
-                        {
-                            if(e.getX() >= 20 && e.getX() < 145 && e.getY() >= 450 && e.getY() < 475)
-                            {
-                                for(int i = 0; i < 4; i++)
-                                {
-                                    if(toDraw[i] != null)
+                                    if(currentPlayer == 0)
                                     {
-                                        t = toDraw[i];
-                                        if(t.getLength().equals("short"))
-                                        {
-                                            d.discardShort(t);
-                                        }
-                                        else
-                                        {
-                                            d.discardLong(t);
-                                        }
-                                        toDraw[i] = null;
+                                        player0.addTicketCard(toDraw[0]);
+                                        toDraw[0] = null;
+                                        ticketsDrawn++;
+                                        player0.repaint();
                                     }
+                                    else if(currentPlayer == 1)
+                                    {
+                                        player1.addTicketCard(toDraw[0]);
+                                        toDraw[0] = null;
+                                        ticketsDrawn++;
+                                        player1.repaint();
+                                    }
+                                    repaint();
                                 }
-                                ticketsDrawn = 4;
-                                repaint();
+                            }
+                            else if(e.getX() >= 0 && e.getX() < 80 && e.getY() >= 236 && e.getY() <= 354)
+                            {
+                                if(toDraw[1] != null)
+                                {
+                                    if(currentPlayer == 0)
+                                    {
+                                        player0.addTicketCard(toDraw[1]);
+                                        toDraw[1] = null;
+                                        ticketsDrawn++;
+                                        player0.repaint();
+                                    }
+                                    else if(currentPlayer == 1)
+                                    {
+                                        player1.addTicketCard(toDraw[1]);
+                                        toDraw[1] = null;
+                                        ticketsDrawn++;
+                                        player1.repaint();
+                                    }
+                                    repaint();
+                                }
+                            }
+                            else if(e.getX() >= 80 && e.getX() < 160 && e.getY() >= 118 && e.getY() <= 236)
+                            {
+                                if(toDraw[2] != null)
+                                {
+                                    if(currentPlayer == 0)
+                                    {
+                                        player0.addTicketCard(toDraw[2]);
+                                        toDraw[2] = null;
+                                        ticketsDrawn++;
+                                        player0.repaint();
+                                    }
+                                    else if(currentPlayer == 1)
+                                    {
+                                        player1.addTicketCard(toDraw[2]);
+                                        toDraw[2] = null;
+                                        ticketsDrawn++;
+                                        player1.repaint();
+                                    }
+                                    repaint();
+                                }
+                            }
+                            else if(e.getX() >= 80 && e.getX() < 160 && e.getY() >= 236 && e.getY() <= 354)
+                            {
+                                if(toDraw[3] != null)
+                                {
+                                    if(currentPlayer == 0)
+                                    {
+                                        player0.addTicketCard(toDraw[3]);
+                                        toDraw[3] = null;
+                                        ticketsDrawn++;
+                                        player0.repaint();
+                                    }
+                                    else if(currentPlayer == 1)
+                                    {
+                                        player1.addTicketCard(toDraw[3]);
+                                        toDraw[3] = null;
+                                        ticketsDrawn++;
+                                        player1.repaint();
+                                    }
+                                    repaint();
+                                }
+                            }
+                            else if(ticketsDrawn > 0)
+                            {
+                                if(e.getX() >= 20 && e.getX() < 145 && e.getY() >= 450 && e.getY() < 475)
+                                {
+                                    for(int i = 0; i < 4; i++)
+                                    {
+                                        if(toDraw[i] != null)
+                                        {
+                                            t = toDraw[i];
+                                            if(t.getLength().equals("short"))
+                                            {
+                                                d.discardShort(t);
+                                            }
+                                            else
+                                            {
+                                                d.discardLong(t);
+                                            }
+                                            toDraw[i] = null;
+                                        }
+                                    }
+                                    ticketsDrawn = 4;
+                                    repaint();
+                                }
                             }
                         }
                     }
@@ -217,13 +223,21 @@ public class TicketDeckPanel extends BasePanel// implements MouseWheelListener
         if(ticketsDrawn == 4)
         {
             ticketsDrawn = ticketsTaken = 0;
-            currentPlayer = (currentPlayer + 1) % super.totalPlayers;
-            super.currentPlayer = currentPlayer;
+            currentPlayer = (currentPlayer + 1) % baseline.totalPlayers;
+            baseline.currentPlayer = currentPlayer;
             player0.setTrainTicket(0);
             player0.setPlayerTurn(currentPlayer);
             player1.setTrainTicket(0);
             player1.setPlayerTurn(currentPlayer);
-            super.currentTrainTicket = 0;
+            baseline.currentTrainTicket = 0;
+            if(baseline.firstTurn)
+            {
+                baseline.setFirstTurn(false);
+            }
+            else
+            {
+                baseline.setBlockTrainDraw(false);
+            }
             player0.repaint();
             player1.repaint();
             p[currentPlayer].repaint();
@@ -238,8 +252,8 @@ public class TicketDeckPanel extends BasePanel// implements MouseWheelListener
     {
     if(playerT[currentPlayer].getPlayer().claimedTickets() >= 2)
     {
-    super.currentTrainTicket = (ticketNum + 1) % playerT[currentPlayer].getPlayer().claimedTickets();
-    playerT[currentPlayer].setTrainTicket(super.currentTrainTicket);
+    baseline.currentTrainTicket = (ticketNum + 1) % playerT[currentPlayer].getPlayer().claimedTickets();
+    playerT[currentPlayer].setTrainTicket(baseline.currentTrainTicket);
     repaint();
     }
     }

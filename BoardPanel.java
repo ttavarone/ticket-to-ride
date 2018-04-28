@@ -10,7 +10,7 @@ import java.awt.event.MouseMotionListener;
  * @author (Logan, Tucker, Josh, Eamonn, Tom)
  * @version (4 / 8 / 18)
  */
-public class BoardPanel extends JPanel implements MouseListener, MouseMotionListener{
+public class BoardPanel extends BasePanel implements MouseListener, MouseMotionListener{
     private Toolkit toolkit;
     private Image board;
     private int bHeight;
@@ -45,8 +45,9 @@ public class BoardPanel extends JPanel implements MouseListener, MouseMotionList
         
         if(isMouseOnCity){
             g.setColor(Color.BLUE);
-            g.fillRect(meepleBoxX,meepleBoxY,100,40);
+            g.fillRect(meepleBoxX,meepleBoxY,110,40);
             g.setColor(Color.WHITE);
+            currentCityName = currentCityName.replaceAll("[^A-Z]","");
             g.drawString(currentCityName, meepleBoxX + 10, meepleBoxY + 10);
             g.drawString("Has 2 meeples", meepleBoxX + 10, meepleBoxY + 30);
         }

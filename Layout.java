@@ -13,6 +13,8 @@ public class Layout extends JPanel {
 
         DeckOfCards deck = new DeckOfCards();
         
+        BasePanel baseline = new BasePanel();
+        
         BoardPanel bPanel = new BoardPanel();
         GridBagConstraints c = new GridBagConstraints();
         c.anchor = GridBagConstraints.WEST;
@@ -45,13 +47,13 @@ public class Layout extends JPanel {
         
         PlayerHand[] playerHands = new PlayerHand[]{cPanela, cPanelb};
         
-        TicketDeckPanel tPanel = new TicketDeckPanel(t, playerHands, hPanela, hPanelb);
+        TicketDeckPanel tPanel = new TicketDeckPanel(t, playerHands, hPanela, hPanelb, baseline);
         c.anchor = GridBagConstraints.EAST;
         c.gridx = 2;
         c.gridy = 0;
         add(tPanel, c);
         
-        DeckOfCardsPanel dPanel = new DeckOfCardsPanel(playerHands, deck, hPanela, hPanelb);
+        DeckOfCardsPanel dPanel = new DeckOfCardsPanel(playerHands, deck, hPanela, hPanelb, baseline);
         c.anchor = GridBagConstraints.SOUTH;
         c.gridx = 1;
         c.gridy = 0;
