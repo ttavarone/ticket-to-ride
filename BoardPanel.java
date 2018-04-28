@@ -18,10 +18,12 @@ public class BoardPanel extends BasePanel implements MouseListener, MouseMotionL
     private boolean isMouseOnCity = false;
     private int meepleBoxX, meepleBoxY = 0;
     private String currentCityName;
-    
-    
+    BasePanel baseline;
+    PlayerHand[] players;
+    PlayerTicketsa tickets1;
+    PlayerTicketsb tickets2;
 
-    public BoardPanel() {
+    public BoardPanel(PlayerHand[] p, PlayerTicketsa player1, PlayerTicketsb player2, BasePanel bPanel) {
         super();
         setOpaque(true);
         setBackground(Color.WHITE);
@@ -30,6 +32,11 @@ public class BoardPanel extends BasePanel implements MouseListener, MouseMotionL
         bHeight = board.getHeight(this);
         bWidth = board.getWidth(this);
 
+        players = p;
+        baseline = bPanel;
+        tickets1 = player1;
+        tickets2 = player2;
+        
         board = board.getScaledInstance(550, 850, Image.SCALE_SMOOTH);
 
         setPreferredSize(new Dimension(550, 850));
