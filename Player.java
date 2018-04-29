@@ -1,15 +1,16 @@
 import java.awt.Color;
 import java.util.ArrayList;
 /**
- * Write a description of class Player here.
+ * This class contains a player in the game, and the variables they contain.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Logan Brandt, Tom Fressenius, Tucker Tavarone, 
+ * Eamonn Conway, Joshua DelSignore 
+ * @version 1.0
  */
 public class Player
 {
     protected int greenMeeple, redMeeple, blueMeeple, blackMeeple, whiteMeeple, yellowMeeple = 0;
-    private int numTrains = 10;
+    private int numTrains = 45;
     private int playerNum; 
     private Color playerColor;
     private ArrayList<TicketCard> tickets = new ArrayList<TicketCard>();
@@ -18,6 +19,12 @@ public class Player
     private int points = 0;
     public int successfulTickets;
 
+    /**
+     * This is a constuctor that assigns a number and color
+     * to be associated with a player.
+     * @param playerNumber - The number the player is.
+     * @param pColor - The color associated with a player.
+     */
     public Player(int playerNumber, Color pColor)
     {
         playerNum = playerNumber;
@@ -25,10 +32,10 @@ public class Player
     }
 
     /**
-     * This method attempts to add a route to a player object. Returns 
-     * true if it has ot been claimed, false otherwise.
+     * This method attempts to add a route to a player object. 
+     * @param route - The route to add to the players controlled routes.
      */
-    public void claimRoute(RouteList route, int colorIndex)
+    public void claimRoute(RouteList route)
     {
         if(route.isRouteClaimed())
         {

@@ -185,7 +185,7 @@ public class BoardPanel extends BasePanel implements MouseListener, MouseMotionL
                     int wilds = current.getAmount(8);
                     if(trains + wilds >= currentRoutea.getRouteLength())
                     {
-                        current.claimRoute(currentRoutea, i);
+                        current.claimRoute(currentRoutea);
                         current.addPoints(currentRoutea.getRouteLength());
                         discardTrains(currentRoutea.getRouteLength(), i);
                         if(currentRouteb != null)
@@ -203,7 +203,7 @@ public class BoardPanel extends BasePanel implements MouseListener, MouseMotionL
                         int trains = current.getAmount(index);
                         if(trains + wilds >= currentRoutea.getRouteLength())
                         {
-                            current.claimRoute(currentRoutea, index);
+                            current.claimRoute(currentRoutea);
                             current.addPoints(currentRoutea.getRouteLength());
                             discardTrains(currentRoutea.getRouteLength(), index);
                             if(currentRouteb != null)
@@ -228,7 +228,7 @@ public class BoardPanel extends BasePanel implements MouseListener, MouseMotionL
                         {
                             if(current.getTrainsLeft() < currentRouteb.getRouteLength())
                             {
-                                current.claimRoute(currentRouteb, i);
+                                current.claimRoute(currentRouteb);
                                 current.addPoints(currentRouteb.getRouteLength());
                                 discardTrains(currentRouteb.getRouteLength(), i);
                                 currentRoutea.setRouteClaimed(true);
@@ -244,7 +244,7 @@ public class BoardPanel extends BasePanel implements MouseListener, MouseMotionL
                             int trains = p[baseline.currentPlayer].returnAmtCard(index);
                             if(trains + wilds >= currentRouteb.getRouteLength())
                             {
-                                current.claimRoute(currentRouteb, index);
+                                current.claimRoute(currentRouteb);
                                 current.addPoints(currentRouteb.getRouteLength());
                                 discardTrains(currentRouteb.getRouteLength(), index);
                                 currentRoutea.setRouteClaimed(true);
