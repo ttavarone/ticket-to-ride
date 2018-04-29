@@ -129,6 +129,10 @@ public class DeckOfCardsPanel extends BasePanel{
         super.paintComponent(g);
         g.setColor(Color.BLACK);
         g.drawString("Cards you can draw", 0,128);
+        if(baseline.finalTurn)
+        {
+            System.exit(0);
+        }
         if(deck.isEmpty())
         {
             deck.reshuffle();
@@ -166,6 +170,14 @@ public class DeckOfCardsPanel extends BasePanel{
             baseline.currentTrainTicket = 0;
             baseline.blockTicketDraw = false;
             baseline.blockRouteClaim = false;
+            if(baseline.oneTurnLeft)
+            {
+                baseline.finalTurn = true;
+            }
+            else if(baseline.almostFinalTurn)
+            {
+                baseline.oneTurnLeft = true;
+            }
             player0.repaint();
             player1.repaint();
             p[baseline.currentPlayer].repaint();

@@ -31,8 +31,9 @@ public class BoardPanel extends BasePanel implements MouseListener, MouseMotionL
             Color.RED, Color.WHITE, Color.YELLOW, Color.GRAY};
     RouteList currentRoutea;
     RouteList currentRouteb;
+    DeckOfCards deck;
 
-    public BoardPanel(PlayerHand[] p, PlayerTicketsa player1, PlayerTicketsb player2, BasePanel bPanel) {
+    public BoardPanel(PlayerHand[] p, PlayerTicketsa player1, PlayerTicketsb player2, BasePanel bPanel, DeckOfCards d) {
         super();
         setOpaque(true);
         setBackground(Color.WHITE);
@@ -45,6 +46,7 @@ public class BoardPanel extends BasePanel implements MouseListener, MouseMotionL
         baseline = bPanel;
         tickets1 = player1;
         tickets2 = player2;
+        deck = d;
 
         board = board.getScaledInstance(550, 850, Image.SCALE_SMOOTH);
 
@@ -59,6 +61,11 @@ public class BoardPanel extends BasePanel implements MouseListener, MouseMotionL
         super.paintComponent(g);
         g.drawImage(board, bWidth, bHeight, this);
 
+        if(baseline.finalTurn)
+        {
+            System.exit(0);
+        }
+        
         if(isMouseOnCity){
             g.setColor(Color.BLUE);
             g.fillRect(meepleBoxX,meepleBoxY,110,40);
@@ -82,12 +89,34 @@ public class BoardPanel extends BasePanel implements MouseListener, MouseMotionL
 
         if(printValid)
         {
-            g.drawString("Route successfully claimed!", 350, 250);
+            g.drawString("Route valid!", 350, 250);
         }
 
         if(printWorked)
         {
-            g.drawString("Route has enough colors!", 350, 350);
+            printWorked = false;
+            baseline.currentPlayer = (baseline.currentPlayer + 1) % baseline.totalPlayers;
+            tickets1.setTrainTicket(0);
+            tickets1.setPlayerTurn(baseline.currentPlayer);
+            tickets2.setTrainTicket(0);
+            tickets2.setPlayerTurn(baseline.currentPlayer);
+            baseline.currentTrainTicket = 0;
+            if(baseline.oneTurnLeft)
+            {
+                baseline.finalTurn = true;
+            }
+            else if(baseline.almostFinalTurn)
+            {
+                baseline.oneTurnLeft = true;
+            }
+            tickets1.repaint();
+            tickets2.repaint();
+            players[baseline.currentPlayer].repaint();
+            repaint();
+        }
+        if(players[currentPlayer].getPlayer().getTrainsLeft() < 3)
+        {
+            baseline.almostFinalTurn = true;
         }
     }
 
@@ -95,28 +124,31 @@ public class BoardPanel extends BasePanel implements MouseListener, MouseMotionL
     {
         for(RouteList r : RouteList.values())
         {
-            if(c1 == r.getCITY1() && c2 == r.getCITY2() ||
-            c1 == r.getCITY2() && c2 == r.getCITY1())
+            if(!r.isRouteClaimed())
             {
-                currentRoutea = r;
-                if(r.isDoubleRoute() && r.getRouteColor() != Color.GRAY)
+                if(c1 == r.getCITY1() && c2 == r.getCITY2() ||
+                c1 == r.getCITY2() && c2 == r.getCITY1())
                 {
-                    for(RouteList r2 : RouteList.values())
+                    currentRoutea = r;
+                    if(r.isDoubleRoute() && r.getRouteColor() != Color.GRAY)
                     {
-                        if(c1 == r.getCITY1() && c2 == r.getCITY2() ||
-                        c1 == r.getCITY2() && c2 == r.getCITY1())
+                        for(RouteList r2 : RouteList.values())
                         {
-                            if(r2 == r)
+                            if(c1 == r.getCITY1() && c2 == r.getCITY2() ||
+                            c1 == r.getCITY2() && c2 == r.getCITY1())
                             {
-                                continue;
+                                if(r2 == r)
+                                {
+                                    continue;
+                                }
+                                currentRouteb = r;
+                                return true;
                             }
-                            currentRouteb = r;
-                            return true;
                         }
                     }
+                    currentRouteb = null;
+                    return true;
                 }
-                currentRouteb = null;
-                return true;
             }
         }
         return false;
@@ -137,6 +169,13 @@ public class BoardPanel extends BasePanel implements MouseListener, MouseMotionL
                     int wilds = current.getAmount(8);
                     if(trains + wilds >= currentRoutea.getRouteLength())
                     {
+                        current.claimRoute(currentRoutea, i);
+                        current.addPoints(currentRoutea.getRouteLength());
+                        discardTrains(currentRoutea.getRouteLength(), i);
+                        if(currentRouteb != null)
+                        {
+                            currentRouteb.setRouteClaimed(true);
+                        }
                         return true;
                     }
                 }
@@ -148,6 +187,13 @@ public class BoardPanel extends BasePanel implements MouseListener, MouseMotionL
                         int trains = current.getAmount(index);
                         if(trains + wilds >= currentRoutea.getRouteLength())
                         {
+                            current.claimRoute(currentRoutea, index);
+                            current.addPoints(currentRoutea.getRouteLength());
+                            discardTrains(currentRoutea.getRouteLength(), index);
+                            if(currentRouteb != null)
+                            {
+                                currentRouteb.setRouteClaimed(true);
+                            }
                             return true;
                         }
                     }
@@ -165,6 +211,10 @@ public class BoardPanel extends BasePanel implements MouseListener, MouseMotionL
                         int wilds = current.getAmount(8);
                         if(trains + wilds >= currentRouteb.getRouteLength())
                         {
+                            current.claimRoute(currentRouteb, i);
+                            current.addPoints(currentRouteb.getRouteLength());
+                            discardTrains(currentRouteb.getRouteLength(), i);
+                            currentRoutea.setRouteClaimed(true);
                             return true;
                         }
                     }
@@ -176,6 +226,10 @@ public class BoardPanel extends BasePanel implements MouseListener, MouseMotionL
                             int trains = p[baseline.currentPlayer].returnAmtCard(index);
                             if(trains + wilds >= currentRouteb.getRouteLength())
                             {
+                                current.claimRoute(currentRouteb, index);
+                                current.addPoints(currentRouteb.getRouteLength());
+                                discardTrains(currentRouteb.getRouteLength(), index);
+                                currentRoutea.setRouteClaimed(true);
                                 return true;
                             }
                         }
@@ -185,6 +239,27 @@ public class BoardPanel extends BasePanel implements MouseListener, MouseMotionL
             }
         }
         return false;
+    }
+
+    public void discardTrains(int routeLength, int index)
+    {
+        PlayerHand current = players[baseline.currentPlayer];
+        int numTrains;
+        for(int i = 0; i < routeLength; i++)
+        {
+            numTrains = current.returnAmtCard(index);
+            if(numTrains > 0)
+            {
+                deck.discardTrain(new TrainCard(index));
+                current.setAmtCard(index, numTrains - 1); 
+            }
+            else
+            {
+                numTrains = current.returnAmtCard(8);
+                deck.discardTrain(new TrainCard(8));
+                current.setAmtCard(8, numTrains - 1); 
+            }
+        }
     }
 
     /**
@@ -230,6 +305,8 @@ public class BoardPanel extends BasePanel implements MouseListener, MouseMotionL
                             c1 = c;
                             c2 = null;
                             firstClick = true;
+                            baseline.blockTrainDraw = true;
+                            baseline.blockTicketDraw = true;
                             break;
                         }
                     }
@@ -239,6 +316,8 @@ public class BoardPanel extends BasePanel implements MouseListener, MouseMotionL
             else
             {
                 firstClick = false;
+                baseline.blockTicketDraw = false;
+                baseline.blockTrainDraw = false;
                 for(City c: City.values()){
                     if(e.getX() >= (c.getX() - 11) && e.getX() <= (c.getX() + 11)){
                         if(e.getY() >= (c.getY() - 11) && e.getY() <= (c.getY() + 11))

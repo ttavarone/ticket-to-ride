@@ -34,7 +34,7 @@ public class PlayerTicketsa extends JPanel implements MouseWheelListener
         playerNumber = p.getPlayerNum();
 
         addMouseWheelListener(this);
-        setPreferredSize(new Dimension(80, 150));
+        setPreferredSize(new Dimension(90, 160));
     }
 
     public int returnAmtCard(int cardNumIn){
@@ -69,6 +69,9 @@ public class PlayerTicketsa extends JPanel implements MouseWheelListener
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
+        g.drawString("Player 1 Tickets", 0, 130);
+        g.drawString(person.getPoints() + " points", 0, 140);
+        g.drawString(person.getTrainsLeft() + " trains left", 0, 150);
         
         if(playerTurn == 0)
         {
@@ -82,10 +85,8 @@ public class PlayerTicketsa extends JPanel implements MouseWheelListener
         else
         {
             g.setColor(Color.WHITE);
-            g.fillRect(0, 118, 20, 118);
+            g.fillRect(0, 0, 20, 118);
         }
-
-        g.drawString("Player Tickets", 0, 385);
     }
     
     public void mouseWheelMoved(MouseWheelEvent e)

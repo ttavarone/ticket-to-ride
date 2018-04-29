@@ -204,6 +204,10 @@ public class TicketDeckPanel extends BasePanel// implements MouseWheelListener
     {
         super.paintComponent(g);
 
+        if(baseline.finalTurn)
+        {
+            System.exit(0);
+        }
         g.drawImage(blueDest, 0, 0, this);
         g.drawImage(orangeDest, 80, 0, this);
         //g.setColor(Color.BLACK);
@@ -238,9 +242,17 @@ public class TicketDeckPanel extends BasePanel// implements MouseWheelListener
                 baseline.setBlockTrainDraw(false);
                 baseline.blockRouteClaim = false;
             }
+            if(baseline.oneTurnLeft)
+            {
+                baseline.finalTurn = true;
+            }
+            else if(baseline.almostFinalTurn)
+            {
+                baseline.oneTurnLeft = true;
+            }
             player0.repaint();
             player1.repaint();
-            p[currentPlayer].repaint();
+            p[baseline.currentPlayer].repaint();
             repaint();
         }
     }

@@ -71,6 +71,10 @@ public class PlayerHand extends JPanel// implements MouseWheelListener
         return person.getAmount(cardNumIn);
     }
     
+    public void setAmtCard(int cardNumIn, int toChange){
+        person.setAmount(cardNumIn, toChange);
+    }
+    
     public void addCard(TrainCard t)
     {
         person.addToHand(t);
