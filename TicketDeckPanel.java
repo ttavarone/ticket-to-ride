@@ -91,6 +91,9 @@ public class TicketDeckPanel extends BasePanel// implements MouseWheelListener
                                 {
                                     if(baseline.currentPlayer == 0)
                                     {
+                                        Image temp = toDraw[0].getImage();
+                                        temp = temp.getScaledInstance(80, 120, Image.SCALE_FAST);
+                                        toDraw[0].setImage(temp);
                                         player0.addTicketCard(toDraw[0]);
                                         toDraw[0] = null;
                                         ticketsDrawn++;
@@ -98,6 +101,9 @@ public class TicketDeckPanel extends BasePanel// implements MouseWheelListener
                                     }
                                     else if(baseline.currentPlayer == 1)
                                     {
+                                        Image temp = toDraw[0].getImage();
+                                        temp = temp.getScaledInstance(80, 120, Image.SCALE_FAST);
+                                        toDraw[0].setImage(temp);
                                         player1.addTicketCard(toDraw[0]);
                                         toDraw[0] = null;
                                         ticketsDrawn++;
@@ -112,6 +118,9 @@ public class TicketDeckPanel extends BasePanel// implements MouseWheelListener
                                 {
                                     if(baseline.currentPlayer == 0)
                                     {
+                                        Image temp = toDraw[1].getImage();
+                                        temp = temp.getScaledInstance(80, 120, Image.SCALE_FAST);
+                                        toDraw[1].setImage(temp);
                                         player0.addTicketCard(toDraw[1]);
                                         toDraw[1] = null;
                                         ticketsDrawn++;
@@ -119,6 +128,9 @@ public class TicketDeckPanel extends BasePanel// implements MouseWheelListener
                                     }
                                     else if(baseline.currentPlayer == 1)
                                     {
+                                        Image temp = toDraw[1].getImage();
+                                        temp = temp.getScaledInstance(80, 120, Image.SCALE_FAST);
+                                        toDraw[1].setImage(temp);
                                         player1.addTicketCard(toDraw[1]);
                                         toDraw[1] = null;
                                         ticketsDrawn++;
@@ -133,6 +145,9 @@ public class TicketDeckPanel extends BasePanel// implements MouseWheelListener
                                 {
                                     if(baseline.currentPlayer == 0)
                                     {
+                                        Image temp = toDraw[2].getImage();
+                                        temp = temp.getScaledInstance(80, 120, Image.SCALE_FAST);
+                                        toDraw[2].setImage(temp);
                                         player0.addTicketCard(toDraw[2]);
                                         toDraw[2] = null;
                                         ticketsDrawn++;
@@ -140,6 +155,9 @@ public class TicketDeckPanel extends BasePanel// implements MouseWheelListener
                                     }
                                     else if(baseline.currentPlayer == 1)
                                     {
+                                        Image temp = toDraw[2].getImage();
+                                        temp = temp.getScaledInstance(80, 120, Image.SCALE_FAST);
+                                        toDraw[2].setImage(temp);
                                         player1.addTicketCard(toDraw[2]);
                                         toDraw[2] = null;
                                         ticketsDrawn++;
@@ -154,6 +172,9 @@ public class TicketDeckPanel extends BasePanel// implements MouseWheelListener
                                 {
                                     if(baseline.currentPlayer == 0)
                                     {
+                                        Image temp = toDraw[3].getImage();
+                                        temp = temp.getScaledInstance(80, 120, Image.SCALE_FAST);
+                                        toDraw[3].setImage(temp);
                                         player0.addTicketCard(toDraw[3]);
                                         toDraw[3] = null;
                                         ticketsDrawn++;
@@ -161,6 +182,9 @@ public class TicketDeckPanel extends BasePanel// implements MouseWheelListener
                                     }
                                     else if(baseline.currentPlayer == 1)
                                     {
+                                        Image temp = toDraw[3].getImage();
+                                        temp = temp.getScaledInstance(80, 120, Image.SCALE_FAST);
+                                        toDraw[3].setImage(temp);
                                         player1.addTicketCard(toDraw[3]);
                                         toDraw[3] = null;
                                         ticketsDrawn++;
@@ -204,10 +228,7 @@ public class TicketDeckPanel extends BasePanel// implements MouseWheelListener
     {
         super.paintComponent(g);
 
-        if(baseline.finalTurn)
-        {
-            System.exit(0);
-        }
+
         g.drawImage(blueDest, 0, 0, this);
         g.drawImage(orangeDest, 80, 0, this);
         //g.setColor(Color.BLACK);
@@ -255,6 +276,7 @@ public class TicketDeckPanel extends BasePanel// implements MouseWheelListener
             p[baseline.currentPlayer].repaint();
             repaint();
         }
+
     }
 
     /*public void mouseWheelMoved(MouseWheelEvent e)

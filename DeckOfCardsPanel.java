@@ -13,7 +13,7 @@ public class DeckOfCardsPanel extends BasePanel{
     protected DeckOfCards deck;
     int displayCurrentHand  = 0;
     private int cardsDrawn;
-    PlayerHand[] p;
+    protected PlayerHand[] p;
     PlayerTicketsa player0;
     PlayerTicketsb player1;
     BasePanel baseline;
@@ -129,10 +129,6 @@ public class DeckOfCardsPanel extends BasePanel{
         super.paintComponent(g);
         g.setColor(Color.BLACK);
         g.drawString("Cards you can draw", 0,128);
-        if(baseline.finalTurn)
-        {
-            System.exit(0);
-        }
         if(deck.isEmpty())
         {
             deck.reshuffle();
@@ -182,7 +178,8 @@ public class DeckOfCardsPanel extends BasePanel{
             player1.repaint();
             p[baseline.currentPlayer].repaint();
             repaint();
+
+            //there should be methods here to update cards as they are chosen or removed
         }
-        //there should be methods here to update cards as they are chosen or removed
     }
 }

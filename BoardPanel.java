@@ -63,60 +63,62 @@ public class BoardPanel extends BasePanel implements MouseListener, MouseMotionL
 
         if(baseline.finalTurn)
         {
-            System.exit(0);
+            EndGamePanel e = new EndGamePanel(p);
         }
-        
-        if(isMouseOnCity){
-            g.setColor(Color.BLUE);
-            g.fillRect(meepleBoxX,meepleBoxY,110,40);
-            g.setColor(Color.WHITE);
-            currentCityName = currentCityName.replaceAll("[^A-Z]","");
-            g.drawString(currentCityName, meepleBoxX + 10, meepleBoxY + 10);
-            g.drawString("Has 2 meeples", meepleBoxX + 10, meepleBoxY + 30);
-        }
-
-        if(firstClick)
+        else
         {
-            String cityName = c1.getName();
-            g.drawString(cityName, 150, 150);
-        }
-
-        if(c2 != null)
-        {
-            String cityName = c2.getName();
-            g.drawString(cityName, 250, 250);
-        }
-
-        if(printValid)
-        {
-            g.drawString("Route valid!", 350, 250);
-        }
-
-        if(printWorked)
-        {
-            printWorked = false;
-            baseline.currentPlayer = (baseline.currentPlayer + 1) % baseline.totalPlayers;
-            tickets1.setTrainTicket(0);
-            tickets1.setPlayerTurn(baseline.currentPlayer);
-            tickets2.setTrainTicket(0);
-            tickets2.setPlayerTurn(baseline.currentPlayer);
-            baseline.currentTrainTicket = 0;
-            if(baseline.oneTurnLeft)
-            {
-                baseline.finalTurn = true;
+            if(isMouseOnCity){
+                g.setColor(Color.BLUE);
+                g.fillRect(meepleBoxX,meepleBoxY,110,40);
+                g.setColor(Color.WHITE);
+                currentCityName = currentCityName.replaceAll("[^A-Z]","");
+                g.drawString(currentCityName, meepleBoxX + 10, meepleBoxY + 10);
+                g.drawString("Has 2 meeples", meepleBoxX + 10, meepleBoxY + 30);
             }
-            else if(baseline.almostFinalTurn)
+
+            if(firstClick)
             {
-                baseline.oneTurnLeft = true;
+                String cityName = c1.getName();
+                g.drawString(cityName, 150, 150);
             }
-            tickets1.repaint();
-            tickets2.repaint();
-            players[baseline.currentPlayer].repaint();
-            repaint();
-        }
-        if(players[currentPlayer].getPlayer().getTrainsLeft() < 3)
-        {
-            baseline.almostFinalTurn = true;
+
+            if(c2 != null)
+            {
+                String cityName = c2.getName();
+                g.drawString(cityName, 250, 250);
+            }
+
+            if(printValid)
+            {
+                g.drawString("Route valid!", 350, 250);
+            }
+
+            if(printWorked)
+            {
+                printWorked = false;
+                baseline.currentPlayer = (baseline.currentPlayer + 1) % baseline.totalPlayers;
+                tickets1.setTrainTicket(0);
+                tickets1.setPlayerTurn(baseline.currentPlayer);
+                tickets2.setTrainTicket(0);
+                tickets2.setPlayerTurn(baseline.currentPlayer);
+                baseline.currentTrainTicket = 0;
+                if(baseline.oneTurnLeft)
+                {
+                    baseline.finalTurn = true;
+                }
+                else if(baseline.almostFinalTurn)
+                {
+                    baseline.oneTurnLeft = true;
+                }
+                tickets1.repaint();
+                tickets2.repaint();
+                players[baseline.currentPlayer].repaint();
+                repaint();
+            }
+            if(players[currentPlayer].getPlayer().getTrainsLeft() < 3)
+            {
+                baseline.almostFinalTurn = true;
+            }
         }
     }
 
@@ -134,14 +136,9 @@ public class BoardPanel extends BasePanel implements MouseListener, MouseMotionL
                     {
                         for(RouteList r2 : RouteList.values())
                         {
-                            if(c1 == r.getCITY1() && c2 == r.getCITY2() ||
-                            c1 == r.getCITY2() && c2 == r.getCITY1())
+                            if((c1 == r2.getCITY1() && c2 == r2.getCITY2()) && r2.getRouteColor() != r.getRouteColor())
                             {
-                                if(r2 == r)
-                                {
-                                    continue;
-                                }
-                                currentRouteb = r;
+                                currentRouteb = r2;
                                 return true;
                             }
                         }
@@ -160,6 +157,10 @@ public class BoardPanel extends BasePanel implements MouseListener, MouseMotionL
         Color currentColor = Color.GRAY;
         for(int i = 0; i < 9; i++)
         {
+            if(current.getTrainsLeft() < currentRoutea.getRouteLength())
+            {
+                return false;
+            }
             if(colorsUsed[i] == currentRoutea.getRouteColor())
             {
                 currentColor = colorsUsed[i];
@@ -198,7 +199,6 @@ public class BoardPanel extends BasePanel implements MouseListener, MouseMotionL
                         }
                     }
                 }
-                return false;
             }
             if(currentRouteb != null)
             {
@@ -211,11 +211,14 @@ public class BoardPanel extends BasePanel implements MouseListener, MouseMotionL
                         int wilds = current.getAmount(8);
                         if(trains + wilds >= currentRouteb.getRouteLength())
                         {
-                            current.claimRoute(currentRouteb, i);
-                            current.addPoints(currentRouteb.getRouteLength());
-                            discardTrains(currentRouteb.getRouteLength(), i);
-                            currentRoutea.setRouteClaimed(true);
-                            return true;
+                            if(current.getTrainsLeft() < currentRouteb.getRouteLength())
+                            {
+                                current.claimRoute(currentRouteb, i);
+                                current.addPoints(currentRouteb.getRouteLength());
+                                discardTrains(currentRouteb.getRouteLength(), i);
+                                currentRoutea.setRouteClaimed(true);
+                                return true;
+                            }
                         }
                     }
                     else
@@ -234,7 +237,6 @@ public class BoardPanel extends BasePanel implements MouseListener, MouseMotionL
                             }
                         }
                     }
-                    return false;
                 }
             }
         }
