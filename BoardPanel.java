@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.ArrayList;
 
 /**
  * GUI for the board
@@ -74,6 +75,12 @@ public class BoardPanel extends BasePanel implements MouseListener, MouseMotionL
             }
             else
             {
+                Graphics2D g2 = (Graphics2D) g;
+                g2.setStroke(new BasicStroke(10));
+                drawRoutes(g, players[0].getPlayer());
+                drawRoutes(g, players[1].getPlayer());
+                g.setColor(Color.BLACK);
+                
                 if(isMouseOnCity){
                     g.setColor(Color.BLUE);
                     g.fillRect(meepleBoxX,meepleBoxY,110,40);
@@ -249,6 +256,21 @@ public class BoardPanel extends BasePanel implements MouseListener, MouseMotionL
             }
         }
         return false;
+    }
+    
+    public void drawRoutes(Graphics g, Player currentPlayer)
+    {
+        ArrayList<RouteList> rList = currentPlayer.getRouteList();
+        g.setColor(currentPlayer.getPlayerColor());
+        for(int i = 0; i < rList.size(); i++)
+        {
+            RouteList r = rList.get(i);
+            int x1 = r.getCITY1().getX();
+            int y1 = r.getCITY1().getY();
+            int x2 = r.getCITY2().getX();
+            int y2 = r.getCITY2().getY();
+            g.drawLine(x1, y1, x2, y2);
+        }
     }
 
     public void discardTrains(int routeLength, int index)

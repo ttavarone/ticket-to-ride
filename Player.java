@@ -41,10 +41,20 @@ public class Player
             route.setRouteClaimed(true);
         }
     }
+    
+    public ArrayList<RouteList> getRouteList()
+    {
+        return controlledRoutes;
+    }
 
     public int getTrainsLeft()
     {
         return numTrains;
+    }
+    
+    public Color getPlayerColor()
+    {
+        return playerColor;
     }
 
     public void claimTicket(TicketCard t)
