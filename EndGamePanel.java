@@ -52,7 +52,7 @@ public class EndGamePanel extends JPanel
     {
         Player p1 = p[0].getPlayer();
         Player p2 = p[1].getPlayer();
-        g.setFont(new Font("Times New Roman", 0, 50));
+        g.setFont(new Font("Times New Roman", 10, 50));
         if(p1.getPoints() > p2.getPoints())
         {
             g.drawString("Player 1 Score: " + p1.getPoints(), 400, 250);

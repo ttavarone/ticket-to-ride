@@ -71,4 +71,19 @@ public class TicketCard extends JPanel
     public int getValue(){
         return VALUE;
     }
+    
+    public boolean containsCountry()
+    {
+        if(END_CITY.equals("DANEMARK") || END_CITY.equals("FRANKREICH") || END_CITY.equals("OSTERREICH")
+        || END_CITY.equals("NIERDERLANDE") || END_CITY.equals("SCHWEIZ"))
+        {
+            return true;
+        }
+        if(START_CITY.equals("DANEMARK") || START_CITY.equals("FRANKREICH") || START_CITY.equals("OSTERREICH")
+        || START_CITY.equals("NIERDERLANDE") || START_CITY.equals("SCHWEIZ"))
+        {
+            return true;
+        }
+        return false;
+    }
 }

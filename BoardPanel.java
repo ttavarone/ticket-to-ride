@@ -61,63 +61,71 @@ public class BoardPanel extends BasePanel implements MouseListener, MouseMotionL
         super.paintComponent(g);
         g.drawImage(board, bWidth, bHeight, this);
 
-        if(baseline.finalTurn)
-        {
-            EndGamePanel e = new EndGamePanel(p);
-        }
+        if(baseline.disableRepaint){  }
         else
         {
-            if(isMouseOnCity){
-                g.setColor(Color.BLUE);
-                g.fillRect(meepleBoxX,meepleBoxY,110,40);
-                g.setColor(Color.WHITE);
-                currentCityName = currentCityName.replaceAll("[^A-Z]","");
-                g.drawString(currentCityName, meepleBoxX + 10, meepleBoxY + 10);
-                g.drawString("Has 2 meeples", meepleBoxX + 10, meepleBoxY + 30);
-            }
-
-            if(firstClick)
+            if(baseline.finalTurn)
             {
-                String cityName = c1.getName();
-                g.drawString(cityName, 150, 150);
+                baseline.disableRepaint = true;
+                int p1Score = players[0].getPlayer().calculateFinalScore();
+                int p2Score = players[1].getPlayer().calculateFinalScore();
+                g.drawString("Player 1 scored " + p1Score + " total", 100, 100);
+                g.drawString("Player 2 scored " + p1Score + " total", 100, 200);
             }
-
-            if(c2 != null)
+            else
             {
-                String cityName = c2.getName();
-                g.drawString(cityName, 250, 250);
-            }
-
-            if(printValid)
-            {
-                g.drawString("Route valid!", 350, 250);
-            }
-
-            if(printWorked)
-            {
-                printWorked = false;
-                baseline.currentPlayer = (baseline.currentPlayer + 1) % baseline.totalPlayers;
-                tickets1.setTrainTicket(0);
-                tickets1.setPlayerTurn(baseline.currentPlayer);
-                tickets2.setTrainTicket(0);
-                tickets2.setPlayerTurn(baseline.currentPlayer);
-                baseline.currentTrainTicket = 0;
-                if(baseline.oneTurnLeft)
-                {
-                    baseline.finalTurn = true;
+                if(isMouseOnCity){
+                    g.setColor(Color.BLUE);
+                    g.fillRect(meepleBoxX,meepleBoxY,110,40);
+                    g.setColor(Color.WHITE);
+                    currentCityName = currentCityName.replaceAll("[^A-Z]","");
+                    g.drawString(currentCityName, meepleBoxX + 10, meepleBoxY + 10);
+                    g.drawString("Has 2 meeples", meepleBoxX + 10, meepleBoxY + 30);
                 }
-                else if(baseline.almostFinalTurn)
+
+                if(firstClick)
                 {
-                    baseline.oneTurnLeft = true;
+                    String cityName = c1.getName();
+                    g.drawString(cityName, 150, 150);
                 }
-                tickets1.repaint();
-                tickets2.repaint();
-                players[baseline.currentPlayer].repaint();
-                repaint();
-            }
-            if(players[currentPlayer].getPlayer().getTrainsLeft() < 3)
-            {
-                baseline.almostFinalTurn = true;
+
+                if(c2 != null)
+                {
+                    String cityName = c2.getName();
+                    g.drawString(cityName, 250, 250);
+                }
+
+                if(printValid)
+                {
+                    g.drawString("Route valid!", 350, 250);
+                }
+
+                if(printWorked)
+                {
+                    printWorked = false;
+                    baseline.currentPlayer = (baseline.currentPlayer + 1) % baseline.totalPlayers;
+                    tickets1.setTrainTicket(0);
+                    tickets1.setPlayerTurn(baseline.currentPlayer);
+                    tickets2.setTrainTicket(0);
+                    tickets2.setPlayerTurn(baseline.currentPlayer);
+                    baseline.currentTrainTicket = 0;
+                    if(baseline.oneTurnLeft)
+                    {
+                        baseline.finalTurn = true;
+                    }
+                    else if(baseline.almostFinalTurn)
+                    {
+                        baseline.oneTurnLeft = true;
+                    }
+                    tickets1.repaint();
+                    tickets2.repaint();
+                    players[baseline.currentPlayer].repaint();
+                    repaint();
+                }
+                if(players[currentPlayer].getPlayer().getTrainsLeft() < 3)
+                {
+                    baseline.almostFinalTurn = true;
+                }
             }
         }
     }

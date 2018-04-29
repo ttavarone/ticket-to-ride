@@ -27,6 +27,7 @@ public class BasePanel extends JPanel
     protected boolean almostFinalTurn = false;
     protected boolean oneTurnLeft = false;
     protected boolean finalTurn = false;
+    protected boolean disableRepaint = false;
     
     public BasePanel(){  }
     

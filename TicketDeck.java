@@ -24,7 +24,7 @@ public class TicketDeck
         blueDest = toolkit.getImage("TicketToRidePics"+File.separator+"BlueDest.jpg");
         ticketcardsDeck.add(new TicketCard("Berlin", "Chemnitz","short", 6, toolkit.getImage("TicketToRidePics"+File.separator+"BerlChem.jpg")));
         ticketcardsDeck.add(new TicketCard("Berlin", "Dusseldorf", "long", 13, toolkit.getImage("TicketToRidePics"+File.separator+"BerlDuss.jpg")));
-        ticketcardsDeck.add(new TicketCard("Berlin", "Erfurt", "short",  7, toolkit.getImage("TicketToRidePics"+File.separator+"BurlErfu.jpg")));
+        ticketcardsDeck.add(new TicketCard("Berlin", "Erfurt", "short", 7, toolkit.getImage("TicketToRidePics"+File.separator+"BurlErfu.jpg")));
         ticketcardsDeck.add(new TicketCard("Berlin", "Frankfurt","long", 14, toolkit.getImage("TicketToRidePics"+File.separator+"BerlFran.jpg")));
         ticketcardsDeck.add(new TicketCard("Berlin", "Koln","long", 14, toolkit.getImage("TicketToRidePics"+File.separator+"BerlKoln.jpg")));
         ticketcardsDeck.add(new TicketCard("Berlin", "Leipzig", "short", 4, toolkit.getImage("TicketToRidePics"+File.separator+"BerlLeip.jpg")));
@@ -40,7 +40,7 @@ public class TicketDeck
         ticketcardsDeck.add(new TicketCard("Bremerhaven", "Regensburg", "long", 16, toolkit.getImage("TicketToRidePics"+File.separator+"BremRege.jpg")));
         ticketcardsDeck.add(new TicketCard("Danemark", "Berlin", "short", 10, toolkit.getImage("TicketToRidePics"+File.separator+"DaneBerl.jpg")));
         ticketcardsDeck.add(new TicketCard("Danemark", "Lindau", "long", 22, toolkit.getImage("TicketToRidePics"+File.separator+"DaneLind.jpg")));
-        ticketcardsDeck.add(new TicketCard("Danemark", "Niederlande", "short",10, toolkit.getImage("TicketToRidePics"+File.separator+"DaneNied.jpg")));
+        ticketcardsDeck.add(new TicketCard("Danemark", "Niederlande", "short", 10, toolkit.getImage("TicketToRidePics"+File.separator+"DaneNied.jpg")));
         ticketcardsDeck.add(new TicketCard("Dortmund", "Erfurt", "short", 7, toolkit.getImage("TicketToRidePics"+File.separator+"DortErfu.jpg")));
         ticketcardsDeck.add(new TicketCard("Dortmund", "Magdeburg", "short", 9, toolkit.getImage("TicketToRidePics"+File.separator+"DortMagd.jpg")));
         ticketcardsDeck.add(new TicketCard("Dortmund", "Mannheim", "short", 6, toolkit.getImage("TicketToRidePics"+File.separator+"DortMann.jpg")));
@@ -51,7 +51,7 @@ public class TicketDeck
         ticketcardsDeck.add(new TicketCard("Emden", "Freiburg", "long", 15, toolkit.getImage("TicketToRidePics"+File.separator+"EmdeFrei.jpg")));
         ticketcardsDeck.add(new TicketCard("Emden", "hamburg", "short", 6, toolkit.getImage("TicketToRidePics"+File.separator+"EmdeHamb.jpg")));
         //two paths
-        ticketcardsDeck.add(new TicketCard("Emden", "Osterreich", "short", 20, toolkit.getImage("TicketToRidePics"+File.separator+"EmdeOste.jpg")));
+        ticketcardsDeck.add(new TicketCard("Emden", "Osterreich", "long", 20, toolkit.getImage("TicketToRidePics"+File.separator+"EmdeOste.jpg")));
         ticketcardsDeck.add(new TicketCard("Erfurt", "Wurzburg", "short", 6, toolkit.getImage("TicketToRidePics"+File.separator+"ErfuWurz.jpg")));
         ticketcardsDeck.add(new TicketCard("Frankreich", "Danemark", "long", 17, toolkit.getImage("TicketToRidePics"+File.separator+"FranDane.jpg")));
         ticketcardsDeck.add(new TicketCard("Frankfurt", "Munchen", "short", 9, toolkit.getImage("TicketToRidePics"+File.separator+"FrankfMunc.jpg")));
