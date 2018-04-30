@@ -1,4 +1,3 @@
-////////////////////////////////////////////////////////////////////////////////
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
@@ -13,6 +12,10 @@ import java.io.File;
  */
 public class PlayGame
 {
+    /**
+     * This method creates the the entire boad for the actual game
+     * once it is invoked.
+     */
     private static void createAndShowGUI() {
         JFrame frame = new JFrame("Ticket To Ride Board");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

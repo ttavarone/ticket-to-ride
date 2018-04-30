@@ -38,6 +38,16 @@ MouseMotionListener{
     private RouteList currentRouteb;
     protected DeckOfCards deck;
 
+    /**
+     * This constructor initializes the board panel with the players 
+     * and other necessities
+     * @param p - the players and what is in their hands.
+     * @param player1 - the tickets player 1 has, not the actual player
+     * @param player2 - the tickets player 2 has, not the actual player
+     * @param bPanel - the variables from a super class that the 3 main
+     * panels all share.
+     * @param d - the deck of cards that discarded cards will be added to
+     */
     public BoardPanel(PlayerHand[] p, PlayerTicketsa player1, 
         PlayerTicketsb player2, BasePanel bPanel, DeckOfCards d) {
         super();
@@ -61,7 +71,14 @@ MouseMotionListener{
         addMouseListener( this );
         addMouseMotionListener( this );
     }
-
+    
+    /**
+     * This method will draw the board, the all routes players have 
+     * claimed. Will also show a text box for the city the mouse is on if it
+     * is on one. Will also ake the game go into final turn if a route is 
+     * claimed and brings their train count below 3.
+     * @param g - The Graphics to be drawn for the class.
+     */
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -143,6 +160,12 @@ MouseMotionListener{
         }
     }
 
+    /**
+     * This method goes first to make sure that a route exists between
+     * the two selested cities. If the route is a double route, will try
+     * and find the other route if it exists.
+     * @return - true if a route exists, false othewise.
+     */
     public boolean checkValidRoute()
     {
         for(RouteList r : RouteList.values())
@@ -173,6 +196,13 @@ MouseMotionListener{
         return false;
     }
 
+    /**
+     * This method checks if a player has enough trains of the 
+     * color to claim a route. For gray routes, it will return the 
+     * first train color that successfully completes the route
+     * @return - true if a player can claim a train route, false
+     * if the player is unable to
+     */
     public boolean checkTrainCount()
     {
         Player current = players[baseline.currentPlayer].getPlayer();

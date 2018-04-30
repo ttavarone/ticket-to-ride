@@ -1,4 +1,3 @@
-////////////////////////////////////////////////////////////////////////////////
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
@@ -25,6 +24,7 @@ public class DeckOfCardsPanel extends BasePanel{
     protected PlayerTicketsa player0;
     protected PlayerTicketsb player1;
     protected BasePanel baseline;
+    
     /**
      * This is a constructor that initializes the DeckOfCards for the game
      * @param p - The hands of the players, as well as the actual players.

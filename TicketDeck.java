@@ -10,7 +10,8 @@ import java.util.Collections;
  * This class also gets the image objects that will eventually be used 
  * to paint on a JPanel
  *
- * @author (Tucker Tavarone, Logan Brandt, Josh DelSignore, Eamonn Conway)
+ * @author (Tucker Tavarone, Logan Brandt, Josh DelSignore,
+ * Eamonn Conway, Thomas Fressenius)
  * @version (4/30/18)
  */
 public class TicketDeck
