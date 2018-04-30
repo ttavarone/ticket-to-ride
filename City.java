@@ -63,21 +63,39 @@ public enum City
     private int yCoord;
     //private Passenger[] p;
     
+    /**
+     * This class returns the name of the current city.
+     * @return - name of the city as a string
+     */
     public String getName()
     {
         return name();
     }
     
+    /**
+     * This method gets the x coordinate for the city.
+     * @return - x coordinate for determining where the city is
+     */
     public int getX()
     {
         return xCoord;
     }
     
+    /**
+     * This method gets the y coordinate for the city.
+     * @return - y coordinate for determining where the city is
+     */
     public int getY()
     {
         return yCoord;
     }
     
+    /**
+     * This is a private constructor for creating a city. Since it
+     * is private, other classes can't make new cities.
+     * @param x - x coordinate for the city.
+     * @param y - y coordinate for the city.
+     */
     private City(int x, int y)//, Passenger[] newP)
     { 
         xCoord = x;
