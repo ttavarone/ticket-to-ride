@@ -1,3 +1,4 @@
+////////////////////////////////////////////////////////////////////////////////
 import java.awt.Color;
 /**
  * Enumeration class RouteList - write a description of the enum class here
@@ -64,6 +65,7 @@ public enum RouteList
     ERFUT_NURNBERG1(City.ERFUT, City.NURNBERG, Color.YELLOW, 4, false, true, false),
     ERFUT_NURNBERG2(City.ERFUT, City.NURNBERG, Color.PINK, 4, false, true, false),
     ERFUT_REGENSBURG(City.ERFUT, City.REGENSBURG, Color.WHITE, 7, false, false, false),
+    ERFUT_CHEMNITZ(City.ERFUT, City.CHEMNITZ, Color.BLACK, 4, false, false, false),
     CHEMNITZ_REGENSBURG(City.CHEMNITZ, City.REGENSBURG, Color.PINK, 6, false, false, false),
     KOLN_FRANKFURT1(City.KOLN, City.FRANKFURT, Color.GRAY, 4, false, true, false),
     //KOLN_FRANKFURT2(City.KOLN, City.FRANKFURT, Color.GRAY, 4, false, true, false),

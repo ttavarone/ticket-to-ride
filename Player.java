@@ -1,3 +1,4 @@
+////////////////////////////////////////////////////////////////////////////////
 import java.awt.Color;
 import java.util.ArrayList;
 /**
@@ -10,7 +11,7 @@ import java.util.ArrayList;
 public class Player
 {
     protected int greenMeeple, redMeeple, blueMeeple, blackMeeple, whiteMeeple, yellowMeeple = 0;
-    private int numTrains = 3;
+    private int numTrains = 45;
     private int playerNum; 
     private Color playerColor;
     private ArrayList<TicketCard> tickets = new ArrayList<TicketCard>();

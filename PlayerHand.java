@@ -1,3 +1,4 @@
+////////////////////////////////////////////////////////////////////////////////
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -92,7 +93,7 @@ public class PlayerHand extends JPanel// implements MouseWheelListener
     public void paintComponent(Graphics g){
         super.paintComponent(g); 
 
-        g.drawString("Player cards", 0, 385);
+        g.drawString("Player " + (playerNumber + 1) + "'s cards", 0, 385);
 
         g.drawImage(blackTrain.getTrainCard(), 0, 0, this);
         g.drawImage(blueTrain.getTrainCard(), 0, 128, this);

@@ -1,3 +1,4 @@
+////////////////////////////////////////////////////////////////////////////////
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
@@ -11,8 +12,11 @@ public class EndGamePanel extends JPanel
 {
     PlayerHand[] p;
     protected static Icon pic;
-    protected Toolkit toolkit = Toolkit.getDefaultToolkit();;
-
+    protected Toolkit toolkit = Toolkit.getDefaultToolkit();
+    protected JButton j1;
+    protected JButton j2;
+    protected JButton j3;
+    
     public void createAndShowGUI() {
         pic = new ImageIcon("TicketToRidePics"+File.separator+"EndScreen.jpg");
         JLabel label = new JLabel(pic);
@@ -24,11 +28,13 @@ public class EndGamePanel extends JPanel
         f.setLocationRelativeTo(null);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //frame.setSize(new Dimension(1200, 875));
+        calculateScore();
+        f.add(j1, BorderLayout.WEST);
+        f.add(j2, BorderLayout.EAST);
+        f.add(j3, BorderLayout.SOUTH);
         f.setResizable(false);
-
         f.pack();
         f.setVisible(true);
-        repaint();
     }
 
     public EndGamePanel(PlayerHand[] players)
@@ -41,48 +47,39 @@ public class EndGamePanel extends JPanel
             });
     }
 
-    @Override 
-    public void paintComponent(Graphics g)
-    {
-        super.paintComponent(g);
-        g.setColor(Color.BLACK);
-        calculateScore(g);
-    }
-
-    public void calculateScore(Graphics g)
+    public void calculateScore()
     {
         Player p1 = p[0].getPlayer();
         Player p2 = p[1].getPlayer();
-        g.setFont(new Font("Times New Roman", 10, 50));
         if(p1.getPoints() > p2.getPoints())
         {
-            g.drawString("Player 1 Score: " + p1.getPoints(), 400, 250);
-            g.drawString("Player 2 Score: " + p2.getPoints(), 400, 400);
-            g.drawString("Player 1 Wins!", 400, 100);
+            j1 = new JButton("Player 1 Score: " + p1.getPoints());
+            j2 = new JButton("Player 2 Score: " + p2.getPoints());
+            j3 = new JButton("Player 1 Wins!");
         }
         else if(p2.getPoints() > p1.getPoints())
         {
-            g.drawString("Player 2 Score: " + p2.getPoints(), 400, 250);
-            g.drawString("Player 1 Score: " + p1.getPoints(), 400, 400);
-            g.drawString("Player 2 Wins!", 400, 100);
+            j1 = new JButton("Player 2 Score: " + p2.getPoints());
+            j2 = new JButton("Player 1 Score: " + p1.getPoints());
+            j3 = new JButton("Player 2 Wins!");
         }
         else if(p1.claimedTickets() > p2.claimedTickets())
         {
-            g.drawString("Player 1 Score: " + p1.getPoints(), 400, 250);
-            g.drawString("Player 2 Score: " + p2.getPoints(), 400, 400);
-            g.drawString("Player 1 Wins!", 400, 100);
+            j1 = new JButton("Player 2 Score: " + p2.getPoints());
+            j2 = new JButton("Player 1 Score: " + p1.getPoints());
+            j3 = new JButton("Player 2 Wins!");
         }
         else if(p2.claimedTickets() > p1.claimedTickets())
         {
-            g.drawString("Player 2 Score: " + p2.getPoints(), 400, 250);
-            g.drawString("Player 1 Score: " + p1.getPoints(), 400, 400);
-            g.drawString("Player 1 Wins!", 400, 100);
+            j1 = new JButton("Player 2 Score: " + p2.getPoints());
+            j2 = new JButton("Player 1 Score: " + p1.getPoints());
+            j3 = new JButton("Player 2 Wins!");
         }
         else
         {
-            g.drawString("Player 1 Score: " + p1.getPoints(), 400, 250);
-            g.drawString("Player 2 Score: " + p2.getPoints(), 400, 400);
-            g.drawString("It's a Draw!", 400, 100);
+            j1 = new JButton("Player 2 Score: " + p2.getPoints());
+            j2 = new JButton("Player 1 Score: " + p1.getPoints());
+            j3 = new JButton("It's a Draw!");
         }
     }
 }
