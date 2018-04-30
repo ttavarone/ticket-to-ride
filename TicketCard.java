@@ -3,7 +3,7 @@ import java.awt.*;
 import java.io.File;
 
 /**
- * Write a description of class TicketCard here.
+ * TicketCard class creates an object called TicketCard.
  *
  * @author (Tucker Tavarone, Logan Brandt, Josh DelSignore,
  * Eamonn Conway, Tom Fresenius)
@@ -31,6 +31,13 @@ public class TicketCard extends JPanel
 
     /**
      * Constructor for objects of class TicketCard
+     *
+     *@param START_CITY is the starting city for the TicketCard
+     *@param END_CITY is the ending city for the TicketCard
+     *@param LENGTH represents whether the TicketCard is a short or long route
+     *@param value represents the points the card holds.
+     *@param image for a TicketCard
+     * 
      */
     public TicketCard(String startCity, String endCity, String length, int value, Image i)
     {
@@ -42,36 +49,62 @@ public class TicketCard extends JPanel
         currentImage = i;
     }
     
+    /**
+    *@return the image from the TicketCard object
+    */
     public Image getImage()
     {
         return currentImage;
     }
     
+    /**
+    * Sets the image from the TicketCard object
+    * @see image of the TicketCard
+    */
     public void setImage(Image i)
     {
         currentImage = i;
     }
     
+    /**
+    * Sets the boolean isRouteComplete to true for a TicketCard
+    */
     public void setRouteComplete(){
         isRouteComplete = true;
     }
     
+    /**
+    *@return the Starting City of TicketCard
+    */
     public String getStartCity(){
         return START_CITY;
     }
     
+    /**
+    *@return the Ending City of TicketCard
+    */
     public String getEndCity(){
         return END_CITY;
     }
     
+    /**
+    * @return the length of TicketCard, short or long
+    */
     public String getLength(){
         return LENGTH;
     }
     
+    /**
+    *@return the point value of TicketCard
+    */
     public int getValue(){
         return VALUE;
     }
     
+    /**
+    * Returns whether or not the object contains a country. True if yes, false if no
+    *@return boolean
+    */
     public boolean containsCountry()
     {
         if(END_CITY.equals("DANEMARK") || END_CITY.equals("FRANKREICH") || END_CITY.equals("OSTERREICH")
