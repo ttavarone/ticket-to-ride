@@ -58,6 +58,7 @@ public class PlayerTicketsa extends JPanel implements MouseWheelListener
     /**
      * This method returns the player object of player 1.
      * @return Player player 1
+     */
     public Player getPlayer()
     {
         return person;
