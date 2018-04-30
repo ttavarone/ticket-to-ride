@@ -81,7 +81,7 @@ public class BoardPanel extends BasePanel implements MouseListener, MouseMotionL
                 drawRoutes(g, players[0].getPlayer());
                 drawRoutes(g, players[1].getPlayer());
                 g.setColor(Color.BLACK);
-                
+
                 if(isMouseOnCity){
                     g.setColor(Color.BLUE);
                     g.fillRect(meepleBoxX,meepleBoxY,110,40);
@@ -186,14 +186,17 @@ public class BoardPanel extends BasePanel implements MouseListener, MouseMotionL
                     int wilds = current.getAmount(8);
                     if(trains + wilds >= currentRoutea.getRouteLength())
                     {
-                        current.claimRoute(currentRoutea);
-                        current.addPoints(currentRoutea.getRouteLength());
-                        discardTrains(currentRoutea.getRouteLength(), i);
-                        if(currentRouteb != null)
+                        if(current.getTrainsLeft() > currentRoutea.getRouteLength())
                         {
-                            currentRouteb.setRouteClaimed(true);
+                            current.claimRoute(currentRoutea);
+                            current.addPoints(currentRoutea.getRouteLength());
+                            discardTrains(currentRoutea.getRouteLength(), i);
+                            if(currentRouteb != null)
+                            {
+                                currentRouteb.setRouteClaimed(true);
+                            }
+                            return true;
                         }
-                        return true;
                     }
                 }
                 else
@@ -204,14 +207,17 @@ public class BoardPanel extends BasePanel implements MouseListener, MouseMotionL
                         int trains = current.getAmount(index);
                         if(trains + wilds >= currentRoutea.getRouteLength())
                         {
-                            current.claimRoute(currentRoutea);
-                            current.addPoints(currentRoutea.getRouteLength());
-                            discardTrains(currentRoutea.getRouteLength(), index);
-                            if(currentRouteb != null)
+                            if(current.getTrainsLeft() > currentRoutea.getRouteLength())
                             {
-                                currentRouteb.setRouteClaimed(true);
+                                current.claimRoute(currentRoutea);
+                                current.addPoints(currentRoutea.getRouteLength());
+                                discardTrains(currentRoutea.getRouteLength(), index);
+                                if(currentRouteb != null)
+                                {
+                                    currentRouteb.setRouteClaimed(true);
+                                }
+                                return true;
                             }
-                            return true;
                         }
                     }
                 }
@@ -227,7 +233,7 @@ public class BoardPanel extends BasePanel implements MouseListener, MouseMotionL
                         int wilds = current.getAmount(8);
                         if(trains + wilds >= currentRouteb.getRouteLength())
                         {
-                            if(current.getTrainsLeft() < currentRouteb.getRouteLength())
+                            if(current.getTrainsLeft() >= currentRouteb.getRouteLength())
                             {
                                 current.claimRoute(currentRouteb);
                                 current.addPoints(currentRouteb.getRouteLength());
@@ -245,11 +251,14 @@ public class BoardPanel extends BasePanel implements MouseListener, MouseMotionL
                             int trains = p[baseline.currentPlayer].returnAmtCard(index);
                             if(trains + wilds >= currentRouteb.getRouteLength())
                             {
-                                current.claimRoute(currentRouteb);
-                                current.addPoints(currentRouteb.getRouteLength());
-                                discardTrains(currentRouteb.getRouteLength(), index);
-                                currentRoutea.setRouteClaimed(true);
-                                return true;
+                                if(current.getTrainsLeft() >= currentRouteb.getRouteLength())
+                                {
+                                    current.claimRoute(currentRouteb);
+                                    current.addPoints(currentRouteb.getRouteLength());
+                                    discardTrains(currentRouteb.getRouteLength(), index);
+                                    currentRoutea.setRouteClaimed(true);
+                                    return true;
+                                }
                             }
                         }
                     }
@@ -258,7 +267,7 @@ public class BoardPanel extends BasePanel implements MouseListener, MouseMotionL
         }
         return false;
     }
-    
+
     public void drawRoutes(Graphics g, Player currentPlayer)
     {
         ArrayList<RouteList> rList = currentPlayer.getRouteList();
