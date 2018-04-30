@@ -49,56 +49,111 @@ public class Player
         }
     }
     
+    /**
+     * This method returns the list of controlled routes. 
+     * @return ArrayList<RouteList> a list of controled routes.
+     */
     public ArrayList<RouteList> getRouteList()
     {
         return controlledRoutes;
     }
 
+    /**
+     * This method returns the nunmber of trains that a 
+     * player has left.
+     * @return int the number of trains
+     */
     public int getTrainsLeft()
     {
         return numTrains;
     }
     
+    /**
+     * This method returns the color of the player.
+     * @return Color the color of the player
+     */
     public Color getPlayerColor()
     {
         return playerColor;
     }
 
+    /**
+     * This method claims a ticket card by adding
+     * it to the tickets array.
+     * @param t - the ticket card to be claimed
+     */
     public void claimTicket(TicketCard t)
     {
         tickets.add(t);
     }
 
+    /**
+     * This method returns the ticket card at the specified
+     * index.
+     * @param index - the index in the tickets array of the 
+     * desired ticket card
+     */
     public TicketCard getTicket(int index)
     {
         return tickets.get(index);
     }
 
+    /**
+     * This method returns the number of claimed tickets
+     * by finding the length of the tickets arraylist.
+     * @return int the size of the tickets arraylist
+     */
     public int claimedTickets()
     {
         return tickets.size();
     }
 
+    /**
+     * This method returns the number of the player.
+     * @return int the number of the player
+     */
     public int getPlayerNum()
     {
         return playerNum;
     }
 
+    /**
+     * This method adds a traincard to the players
+     * hand
+     * @param c - the traincard to be added to the hand
+     */
     public void addToHand(TrainCard c){
         int cardNum = c.getCurrentNum();
         amountEachCard[cardNum]++;
     }
 
+    /**
+     * This method returns the amount of a specified
+     * card 
+     * @param numIn - the index of the card
+     * @return int the number of specified cards
+     * that the player has
+     */
     public int getAmount(int numIn)
     {
         return amountEachCard[numIn];
     }
 
+    /**
+     * This method returns the total points that the player has
+     * earned.
+     * @return int the number of points
+     */
     public int getPoints()
     {
         return points;
     }
 
+    /**
+     * This method updates the points variable
+     * when a route is claimed.
+     * @param length - the length of the route
+     */
     public void addPoints(int length)
     {
         if(length == 1)
@@ -132,11 +187,21 @@ public class Player
         numTrains = numTrains - length;
     }
 
+    /**
+     * This method sets the amount of a specified 
+     * card that a player has.
+     * @param numIn - the index of the card in the amountEachCard array
+     * @param change - the desired amount of cards
+     */
     public void setAmount(int numIn, int change)
     {
         amountEachCard[numIn] = change;
     }
 
+    /**
+     * This method returns the total score for a player.
+     * @return int the total score
+     */
     public int calculateFinalScore()
     {
         boolean ticketComplete;
@@ -169,6 +234,12 @@ public class Player
         return points;
     }
 
+    /**
+     * This method accounts for the multiple route-connectors
+     * that countries have by replacing the single country name
+     * in the cities arraylist with the multiple names.
+     * @param cities - the arraylist of cities
+     */
     public void addCityNames(ArrayList<String> cities)
     {
         for(int i = 0; i < 2; i++)
@@ -216,10 +287,16 @@ public class Player
     }
 
     /**
+<<<<<<< HEAD
+     * This method copies the arraylist of routelist objects
+     * @param r - an arraylist of routelist objects to be copied
+     * @return ArrayList<RouteList> the copied arraylist
+=======
      * This method performs a deep copy of the routes into an array list
      * so they aren't permanently altered by the recursive call.
      * @param r - current list of routes a player has.
      * @return - deep copy of r that can be changed without altering r.
+>>>>>>> 5da78a25aa59ef4b7f113d3e03393df41adc6a67
      */
     public ArrayList<RouteList> copy(ArrayList<RouteList> r)
     {
@@ -304,6 +381,10 @@ public class Player
         return false;
     }
     
+    /**
+     * This method was used for testing purposes only
+     * @param str - an array of strings.
+     */
     public void print(ArrayList<String> str)
     {
         for(String s1 : str)
