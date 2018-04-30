@@ -16,15 +16,15 @@ public class Layout extends JPanel {
 
         Player[] players = {new Player(0, Color.RED), new Player(1, Color.BLUE)};
 
-        PlayerHand cPanelb = new PlayerHand(players[1], deck);
+        PlayerHand cPanela = new PlayerHand(players[0], deck);
         GridBagConstraints c = new GridBagConstraints();
         c.anchor = GridBagConstraints.NORTH;
         c.gridx = 1;
         c.gridy = 0;
-        add(cPanelb, c);
-        
-        PlayerHand cPanela = new PlayerHand(players[0], deck);
         add(cPanela, c);
+        
+        PlayerHand cPanelb = new PlayerHand(players[1], deck);
+        add(cPanelb, c);
 
         PlayerTicketsa hPanela = new PlayerTicketsa(players[0]);
         c.anchor = GridBagConstraints.NORTHWEST;

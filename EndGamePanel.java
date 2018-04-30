@@ -29,8 +29,8 @@ public class EndGamePanel extends JPanel
         //frame.setSize(new Dimension(1200, 875));
         calculateScore();
         f.add(j1, BorderLayout.WEST);
-        f.add(j2, BorderLayout.SOUTH);
-        f.add(j3, BorderLayout.EAST);
+        f.add(j2, BorderLayout.EAST);
+        f.add(j3, BorderLayout.SOUTH);
         f.setResizable(false);
         f.pack();
         f.setVisible(true);
