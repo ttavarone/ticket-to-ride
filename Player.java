@@ -215,6 +215,12 @@ public class Player
         }
     }
 
+    /**
+     * This method performs a deep copy of the routes into an array list
+     * so they aren't permanently altered by the recursive call.
+     * @param r - current list of routes a player has.
+     * @return - deep copy of r that can be changed without altering r.
+     */
     public ArrayList<RouteList> copy(ArrayList<RouteList> r)
     {
         ArrayList<RouteList> answer = new ArrayList<RouteList>();

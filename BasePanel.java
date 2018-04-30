@@ -22,10 +22,12 @@ public class BasePanel extends JPanel
     protected DeckOfCardsPanel dPanel;
     protected int ticketsDrawn = 0;
     protected int ticketsTaken = 0;
+    //makes it so multiple actions don't happen at the same time.
     protected boolean blockTrainDraw = true;
     protected boolean blockTicketDraw = false;
-    protected boolean firstTurn = true;
     protected boolean blockRouteClaim = true;
+    //locks out 
+    protected boolean firstTurn = true;
     protected boolean almostFinalTurn = false;
     protected boolean oneTurnLeft = false;
     protected boolean finalTurn = false;

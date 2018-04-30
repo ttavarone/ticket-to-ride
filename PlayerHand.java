@@ -35,6 +35,9 @@ public class PlayerHand extends JPanel// implements MouseWheelListener
     private int currentTrainTicket = 0;
     private int playerNumber = 0;
 
+    /**
+     * 
+     */
     public PlayerHand(Player p, DeckOfCards deck)
     {
         super();
