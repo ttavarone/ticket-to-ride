@@ -19,9 +19,6 @@ public class PlayerHand extends JPanel// implements MouseWheelListener
     private Player person;
     private int[] amountEachCard;
 
-    //imgArr = new Image[]{blackTrain, blueTrain, greenTrain, orangeTrain, purpleTrain,
-    //        redTrain, whiteTrain, yellowTrain, wildCard};
-
     private Toolkit toolkit;
     private static TrainCard blackTrain;
     private static TrainCard blueTrain;
@@ -93,7 +90,8 @@ public class PlayerHand extends JPanel// implements MouseWheelListener
     public void paintComponent(Graphics g){
         super.paintComponent(g); 
 
-        g.drawString("Player " + (playerNumber + 1) + "'s cards", 0, 385);
+        g.drawString("Player " + (playerNumber + 1) + 
+            "'s cards", 0, 385);
 
         g.drawImage(blackTrain.getTrainCard(), 0, 0, this);
         g.drawImage(blueTrain.getTrainCard(), 0, 128, this);
@@ -104,10 +102,6 @@ public class PlayerHand extends JPanel// implements MouseWheelListener
         g.drawImage(whiteTrain.getTrainCard(), 160, 0, this);
         g.drawImage(yellowTrain.getTrainCard(), 160, 128, this);
         g.drawImage(wildCard.getTrainCard(), 160, 256, this);
-
-        //imgArr = new Image[]{blackTrain, blueTrain, greenTrain, orangeTrain, purpleTrain,
-        //        redTrain, whiteTrain, yellowTrain, wildCard};
-
         /*
         The following statements create little black boxes that contain
         a number that represents how many of the card a player has

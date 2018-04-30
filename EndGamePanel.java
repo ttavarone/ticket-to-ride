@@ -18,7 +18,8 @@ public class EndGamePanel extends JPanel
     protected JButton j3;
     
     public void createAndShowGUI() {
-        pic = new ImageIcon("TicketToRidePics"+File.separator+"EndScreen.jpg");
+        pic = new ImageIcon("TicketToRidePics"+
+            File.separator+"EndScreen.jpg");
         JLabel label = new JLabel(pic);
         JFrame f = new JFrame("End Screen");
         f.setLayout(new BorderLayout());

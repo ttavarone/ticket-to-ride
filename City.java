@@ -2,8 +2,9 @@
 /**
  * Enumeration class City - write a description of the enum class here
  * 
- * @author (your name here)
- * @version (version number or date here)
+ * @author (Tucker Tavarone, Logan Brandt, Josh DelSignore, 
+ * Tom, Fresenius, Eamonn Conway)
+ * @version (1.0)
  */
 public enum City
 {

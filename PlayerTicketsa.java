@@ -119,7 +119,8 @@ public class PlayerTicketsa extends JPanel implements MouseWheelListener
             g.fillRect(0, 0, 20, 118);
             if(person.claimedTickets() > 0)
             {
-                g.drawImage(person.getTicket(currentTrainTicket).getImage(), 0, 0, this);
+                g.drawImage(person.getTicket(currentTrainTicket).
+                    getImage(), 0, 0, this);
             }
         }
         else
@@ -142,7 +143,8 @@ public class PlayerTicketsa extends JPanel implements MouseWheelListener
             {
                 if(person.claimedTickets() > 1)
                 {
-                    currentTrainTicket = (currentTrainTicket + 1) % person.claimedTickets();
+                    currentTrainTicket = (currentTrainTicket + 1) 
+                        % person.claimedTickets();
                     repaint();
                 }
             }

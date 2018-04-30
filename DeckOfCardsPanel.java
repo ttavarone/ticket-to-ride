@@ -8,6 +8,10 @@ import java.awt.event.MouseEvent;
 /**
  * This is a panel for showing the deck of cards at the bottom of the screen.
  * The deck is continuously updated throughout the game.
+ * 
+ * @author (Tucker Tavarone, Logan Brandt, Josh DelSignore, 
+ * Tom, Fresenius, Eamonn Conway)
+ * @version (1.0)
  */
 public class DeckOfCardsPanel extends BasePanel{
 
@@ -26,24 +30,31 @@ public class DeckOfCardsPanel extends BasePanel{
      * This is a constructor that initializes the DeckOfCards for the game
      * @param p - The hands of the players, along with the players themselves.
      * @param d - The deck to be used for the game.
-     * @param p0 - The tickets in player 1's hand. Only here to switch the tickets shown
+     * @param p0 - The tickets in player 1's hand. 
+     * Only here to switch the tickets shown
      * when the turn changes.
-     * @param p1 - The tickets in player 2's hand. Only here to switch the tickets shown
+     * @param p1 - The tickets in player 2's hand. 
+     * Only here to switch the tickets shown
      * when the turn changes.
-     * @param bp - The basePanel this class will use instead of a super class. Since the three main
-     * panels import the same object, it allows them all to speak with each other.
+     * @param bp - The basePanel this class 
+     * will use instead of a super class. Since the three main
+     * panels import the same object, it allows them all 
+     * to speak with each other.
      */
-    public DeckOfCardsPanel(PlayerHand[] p, DeckOfCards d, PlayerTicketsa p0, PlayerTicketsb p1, BasePanel bp){
+    public DeckOfCardsPanel(PlayerHand[] p, DeckOfCards d, 
+    PlayerTicketsa p0, PlayerTicketsb p1, BasePanel bp){
         baseline = bp;
         setOpaque(true);
         setBackground(Color.WHITE);
         toolkit = Toolkit.getDefaultToolkit();
-        trainCardBack = toolkit.getImage("TicketToRidePics"+File.separator+"TrainCardBack.JPG");
-        trainCardBack = trainCardBack.getScaledInstance(70, 118, Image.SCALE_FAST);
+        trainCardBack = toolkit.getImage("TicketToRidePics"+
+            File.separator+"TrainCardBack.JPG");
+        trainCardBack = trainCardBack.getScaledInstance(
+            70, 118, Image.SCALE_FAST);
 
         baseline.totalPlayers = p.length;
         deck = d;
-        setPreferredSize(new Dimension(480, 256));//128));   
+        setPreferredSize(new Dimension(480, 256));
 
         this.p = p;
         player0 = p0;
@@ -51,7 +62,8 @@ public class DeckOfCardsPanel extends BasePanel{
 
         addMouseListener(new MouseAdapter() { 
                 /**
-                 * If the mouse button is pressed, it will attempt to draw a card 
+                 * If the mouse button is pressed, it will attempt 
+                 * to draw a card 
                  * if it is not blocked and the draw is valid.
                  * @param e - event where mouse is pressed.
                  */
@@ -74,9 +86,11 @@ public class DeckOfCardsPanel extends BasePanel{
                         {
                             for(int i = 0; i < Math.min(5, deckSize); i++)
                             {
-                                if(e.getX() >= 80 + (80 * i) && e.getX() < 160 + (80 * i))
+                                if(e.getX() >= 80 + (80 * i) && e.getX() 
+                                < 160 + (80 * i))
                                 {
-                                    if(deck.peek(i).getCurrentNum() == 8 && cardsDrawn == 1)
+                                    if(deck.peek(i).getCurrentNum() == 
+                                    8 && cardsDrawn == 1)
                                     {
                                         break;
                                     }
@@ -88,7 +102,8 @@ public class DeckOfCardsPanel extends BasePanel{
                                             cardsDrawn++;
                                         }
                                         cardsDrawn++;
-                                        p[baseline.currentPlayer].addCard(t);
+                                        p[baseline.currentPlayer].
+                                            addCard(t);
                                         cardDrawn = true;
                                         break;
                                     }
@@ -152,7 +167,8 @@ public class DeckOfCardsPanel extends BasePanel{
     }
 
     /**
-     * This method paints the cards onto the screen, and also changes the player turn 
+     * This method paints the cards onto the screen, 
+     * and also changes the player turn 
      * if they have drawn two cards. 
      * @param g - Graphics to draw on the screen
      */
@@ -169,8 +185,10 @@ public class DeckOfCardsPanel extends BasePanel{
                 baseline.disableRepaint = true;
                 int p1Score = p[0].getPlayer().calculateFinalScore();
                 int p2Score = p[1].getPlayer().calculateFinalScore();
-                g.drawString("Player 1 scored " + p1Score + " total", 100, 100);
-                g.drawString("Player 2 scored " + p1Score + " total", 100, 200);
+                g.drawString("Player 1 scored " + 
+                    p1Score + " total", 100, 100);
+                g.drawString("Player 2 scored " + 
+                    p1Score + " total", 100, 200);
                 EndGamePanel e = new EndGamePanel(p);
             }
             if(deck.isEmpty())
@@ -186,14 +204,16 @@ public class DeckOfCardsPanel extends BasePanel{
             {
                 if(deck.peek(i) != null)
                 {
-                    g.drawImage(deck.peek(i).getTrainCard(), (80 + 80 * i), 0, this);
+                    g.drawImage(deck.peek(i).getTrainCard(), 
+                        (80 + 80 * i), 0, this);
                 }
                 else
                 {
                     deck.reshuffle();
                     if(deck.peek(i) != null)
                     {
-                        g.drawImage(deck.peek(i).getTrainCard(), (80 + 80 * i), 0, this);
+                        g.drawImage(deck.peek(i).getTrainCard(), 
+                            (80 + 80 * i), 0, this);
                     }
                     else break;
                 }
@@ -202,7 +222,8 @@ public class DeckOfCardsPanel extends BasePanel{
             if(cardsDrawn == 2)
             {
                 cardsDrawn = 0;
-                baseline.currentPlayer = (baseline.currentPlayer + 1) % baseline.totalPlayers;
+                baseline.currentPlayer = (baseline.currentPlayer + 1)
+                    % baseline.totalPlayers;
                 player0.setTrainTicket(0);
                 player0.setPlayerTurn(baseline.currentPlayer);
                 player1.setTrainTicket(0);

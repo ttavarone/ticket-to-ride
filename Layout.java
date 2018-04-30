@@ -4,18 +4,22 @@ import java.awt.*;
 
 /**
  * Put all the JPanel objects in here
+ * 
+ * @author (Tucker Tavarone, Logan Brandt, Josh DelSignore, 
+ * Tom, Fresenius, Eamonn Conway)
+ * @version (1.0)
  */
 public class Layout extends JPanel {
     TicketDeckPanel tPanel;
     public Layout() {
         setLayout(new GridBagLayout());
-        //setPreferredSize(new Dimension(1200, 875));
 
         DeckOfCards deck = new DeckOfCards();
 
         BasePanel baseline = new BasePanel();
 
-        Player[] players = {new Player(0, Color.RED), new Player(1, Color.BLUE)};
+        Player[] players = {new Player(0, Color.RED), 
+                new Player(1, Color.BLUE)};
 
         PlayerHand cPanela = new PlayerHand(players[0], deck);
         GridBagConstraints c = new GridBagConstraints();
@@ -49,13 +53,15 @@ public class Layout extends JPanel {
         c.gridy = 0;
         add(bPanel, c);
 
-        TicketDeckPanel tPanel = new TicketDeckPanel(t, playerHands, hPanela, hPanelb, baseline);
+        TicketDeckPanel tPanel = new TicketDeckPanel(t, playerHands, 
+            hPanela, hPanelb, baseline);
         c.anchor = GridBagConstraints.EAST;
         c.gridx = 2;
         c.gridy = 0;
         add(tPanel, c);
 
-        DeckOfCardsPanel dPanel = new DeckOfCardsPanel(playerHands, deck, hPanela, hPanelb, baseline);
+        DeckOfCardsPanel dPanel = new DeckOfCardsPanel(playerHands, 
+            deck, hPanela, hPanelb, baseline);
         c.anchor = GridBagConstraints.SOUTH;
         c.gridx = 1;
         c.gridy = 0;

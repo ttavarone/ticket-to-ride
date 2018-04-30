@@ -18,15 +18,24 @@ public class TrainCard
     protected Toolkit toolkit = Toolkit.getDefaultToolkit();
     private Image[] imgArr;
     //All the different trains.
-    private Image blackTrain = toolkit.getImage("TicketToRidePics"+File.separator+"BlackCard.jpg");
-    private Image blueTrain = toolkit.getImage("TicketToRidePics"+File.separator+"BlueCard.jpg");
-    private Image greenTrain = toolkit.getImage("TicketToRidePics"+File.separator+"GreenCard.jpg");
-    private Image orangeTrain = toolkit.getImage("TicketToRidePics"+File.separator+"OrangeCard.jpg");
-    private Image pinkTrain = toolkit.getImage("TicketToRidePics"+File.separator+"PurpleCard.jpg");
-    private Image redTrain = toolkit.getImage("TicketToRidePics"+File.separator+"RedCard.jpg");
-    private Image whiteTrain = toolkit.getImage("TicketToRidePics"+File.separator+"WhiteCard.jpg");
-    private Image yellowTrain = toolkit.getImage("TicketToRidePics"+File.separator+"YellowCard.jpg");
-    private Image wildCard = toolkit.getImage("TicketToRidePics"+File.separator+"RainbowCard.jpg");
+    private Image blackTrain = toolkit.getImage("TicketToRidePics"+
+        File.separator+"BlackCard.jpg");
+    private Image blueTrain = toolkit.getImage("TicketToRidePics"+
+        File.separator+"BlueCard.jpg");
+    private Image greenTrain = toolkit.getImage("TicketToRidePics"+
+        File.separator+"GreenCard.jpg");
+    private Image orangeTrain = toolkit.getImage("TicketToRidePics"+
+        File.separator+"OrangeCard.jpg");
+    private Image pinkTrain = toolkit.getImage("TicketToRidePics"+
+        File.separator+"PurpleCard.jpg");
+    private Image redTrain = toolkit.getImage("TicketToRidePics"+
+        File.separator+"RedCard.jpg");
+    private Image whiteTrain = toolkit.getImage("TicketToRidePics"+
+        File.separator+"WhiteCard.jpg");
+    private Image yellowTrain = toolkit.getImage("TicketToRidePics"+
+        File.separator+"YellowCard.jpg");
+    private Image wildCard = toolkit.getImage("TicketToRidePics"+
+        File.separator+"RainbowCard.jpg");
 
     /**
      * This method initializes the TrainCard with the type of
@@ -37,10 +46,12 @@ public class TrainCard
     {
         cardNum = newCardNum;
         
-        imgArr = new Image[]{blackTrain, blueTrain, greenTrain, orangeTrain, pinkTrain,
-        redTrain, whiteTrain, yellowTrain, wildCard};
+        imgArr = new Image[]{blackTrain, blueTrain, greenTrain, 
+                orangeTrain, pinkTrain,redTrain, whiteTrain, 
+                yellowTrain, wildCard};
 
-        imgArr[newCardNum] = imgArr[newCardNum].getScaledInstance(70, 118, Image.SCALE_FAST);
+        imgArr[newCardNum] = imgArr[newCardNum].getScaledInstance(
+            70, 118, Image.SCALE_FAST);
     }
     
     /**

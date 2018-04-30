@@ -12,7 +12,8 @@ import java.util.ArrayList;
  * @author (Logan, Tucker, Josh, Eamonn, Tom)
  * @version (4 / 8 / 18)
  */
-public class BoardPanel extends BasePanel implements MouseListener, MouseMotionListener{
+public class BoardPanel extends BasePanel implements MouseListener, 
+MouseMotionListener{
     private Toolkit toolkit;
     private Image board;
     private int bHeight;
@@ -29,13 +30,15 @@ public class BoardPanel extends BasePanel implements MouseListener, MouseMotionL
     City c2;
     protected boolean printWorked;
     protected boolean printValid;
-    Color[] colorsUsed = new Color[]{Color.BLACK, Color.BLUE, Color.GREEN, Color.ORANGE, Color.PINK,
-            Color.RED, Color.WHITE, Color.YELLOW, Color.GRAY};
+    Color[] colorsUsed = new Color[]{Color.BLACK, Color.BLUE, 
+        Color.GREEN, Color.ORANGE, Color.PINK,
+        Color.RED, Color.WHITE, Color.YELLOW, Color.GRAY};
     RouteList currentRoutea;
     RouteList currentRouteb;
     DeckOfCards deck;
 
-    public BoardPanel(PlayerHand[] p, PlayerTicketsa player1, PlayerTicketsb player2, BasePanel bPanel, DeckOfCards d) {
+    public BoardPanel(PlayerHand[] p, PlayerTicketsa player1, 
+        PlayerTicketsb player2, BasePanel bPanel, DeckOfCards d) {
         super();
         setOpaque(true);
         setBackground(Color.WHITE);
@@ -71,8 +74,10 @@ public class BoardPanel extends BasePanel implements MouseListener, MouseMotionL
                 baseline.disableRepaint = true;
                 int p1Score = players[0].getPlayer().calculateFinalScore();
                 int p2Score = players[1].getPlayer().calculateFinalScore();
-                g.drawString("Player 1 scored " + p1Score + " total", 100, 100);
-                g.drawString("Player 2 scored " + p1Score + " total", 100, 200);
+                g.drawString("Player 1 scored " + p1Score +
+                    " total", 100, 100);
+                g.drawString("Player 2 scored " + p1Score + 
+                    " total", 100, 200);
                 EndGamePanel e = new EndGamePanel(players);
             }
             else
@@ -88,8 +93,10 @@ public class BoardPanel extends BasePanel implements MouseListener, MouseMotionL
                     g.fillRect(meepleBoxX,meepleBoxY,110,40);
                     g.setColor(Color.WHITE);
                     currentCityName = currentCityName.replaceAll("[^A-Z]","");
-                    g.drawString(currentCityName, meepleBoxX + 10, meepleBoxY + 10);
-                    g.drawString("Has 2 meeples", meepleBoxX + 10, meepleBoxY + 30);
+                    g.drawString(currentCityName, meepleBoxX + 
+                        10, meepleBoxY + 10);
+                    g.drawString("Has 2 meeples", meepleBoxX + 
+                        10, meepleBoxY + 30);
                 }
 
                 if(firstClick)
@@ -112,7 +119,8 @@ public class BoardPanel extends BasePanel implements MouseListener, MouseMotionL
                 if(printWorked)
                 {
                     printWorked = false;
-                    baseline.currentPlayer = (baseline.currentPlayer + 1) % baseline.totalPlayers;
+                    baseline.currentPlayer = 
+                        (baseline.currentPlayer + 1) % baseline.totalPlayers;
                     tickets1.setTrainTicket(0);
                     tickets1.setPlayerTurn(baseline.currentPlayer);
                     tickets2.setTrainTicket(0);

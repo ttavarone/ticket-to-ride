@@ -48,8 +48,10 @@ public final class DeckOfCards extends JPanel
     }
 
     /**
-     * This method removes the top card of the deck, then returns the card that was on top.
-     * @return - The card that was on top of the deck, or nothing if the deck is empty.
+     * This method removes the top card of the deck, then 
+     * returns the card that was on top.
+     * @return - The card that was on top of the deck, or 
+     * nothing if the deck is empty.
      */
     public TrainCard dequeue()
     {
@@ -63,8 +65,10 @@ public final class DeckOfCards extends JPanel
     }
     
     /**
-     * This method removes the top card of the deck, then returns the card that was on top.
-     * @return - The card that was on top of the deck, or nothing if the deck is empty.
+     * This method removes the top card of the deck, 
+     * then returns the card that was on top.
+     * @return - The card that was on top of the deck, or 
+     * nothing if the deck is empty.
      */
     public TrainCard dequeue(int index)
     {
@@ -78,9 +82,12 @@ public final class DeckOfCards extends JPanel
     }
 
     /**
-     * This method peeks at the next card, but doesn't remove it from the deck.
-     * Potentially useful for determining if there are going to be three wild cards face up.
-     * @return - the next TrainCard that is going to be displayed, or null if the deck is empty.
+     * This method peeks at the next card, but doesn't 
+     * remove it from the deck.
+     * Potentially useful for determining if there are 
+     * going to be three wild cards face up.
+     * @return - the next TrainCard that is going to be 
+     * displayed, or null if the deck is empty.
      */
     public TrainCard peek(int loc) {
         if (isEmpty()) {
@@ -132,9 +139,11 @@ public final class DeckOfCards extends JPanel
     }
     
     /**
-     * This method is called to shuffle the discard pile back into the main deck. It then
+     * This method is called to shuffle the discard pile 
+     * back into the main deck. It then
      * shuffles the main deck. If the discard pile is empty, returns false.
-     * @return - true if the discard pile was shuffled into the deck false otherwise
+     * @return - true if the discard pile was shuffled into 
+     * the deck false otherwise
      */
     public boolean reshuffle()
     {

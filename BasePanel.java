@@ -34,15 +34,18 @@ public class BasePanel extends JPanel
     protected boolean finalTurn = false;
     protected boolean disableRepaint = false;
     /**
-     * An empty constructor that serves the same purpose as a default constructor.
+     * An empty constructor that serves the 
+     * same purpose as a default constructor.
      */
     public BasePanel(){  }
 
     /**
      * This method blocks a player from drawing from the deck of train cards. 
      * Used when a player is taking a different action during a turn.
-     * @trainDraw - blocks a player from drawing a card if they are performing
-     * another action, or unlocks them if the turn ends or a route is cancelled.
+     * @trainDraw - blocks a player from drawing a card if 
+     * they are performing
+     * another action, or unlocks them if the turn ends or a 
+     * route is cancelled.
      */
     public void setBlockTrainDraw(boolean trainDraw)
     {
@@ -50,10 +53,13 @@ public class BasePanel extends JPanel
     }
 
     /**
-     * This method blocks a player from drawing from the deck of ticket cards. 
+     * This method blocks a player from drawing from the deck 
+     * of ticket cards. 
      * Used when a player is taking a different action during a turn.
-     * @ticketDraw - blocks a player from drawing a card if they are performing
-     * another action, or unlocks them if the turn ends or a route is cancelled.
+     * @ticketDraw - blocks a player from drawing a card 
+     * if they are performing
+     * another action, or unlocks them if the turn ends 
+     * or a route is cancelled.
      */
     public void setBlockTicketDraw(boolean ticketDraw)
     {

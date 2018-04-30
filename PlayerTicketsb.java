@@ -11,8 +11,9 @@ import java.awt.event.MouseWheelEvent;
  * This Class represents Player 2 in the game. It displays the current
  * ticketcards for player 2 if it is their turn.
  * 
- * @author (Logan, Tucker, Josh, Eamonn, Tom) 
- * @version (4-29-2018)
+ * @author (Tucker Tavarone, Logan Brandt, Josh DelSignore, 
+ * Tom, Fresenius, Eamonn Conway)
+ * @version (1.0)
  */
 public class PlayerTicketsb extends JPanel implements MouseWheelListener
 {
@@ -120,7 +121,8 @@ public class PlayerTicketsb extends JPanel implements MouseWheelListener
             g.fillRect(0, 0, 20, 118);
             if(person.claimedTickets() > 0)
             {
-                g.drawImage(person.getTicket(currentTrainTicket).getImage(), 0, 0, this);
+                g.drawImage(person.getTicket(currentTrainTicket).
+                    getImage(), 0, 0, this);
             }
         }
         else
@@ -143,7 +145,8 @@ public class PlayerTicketsb extends JPanel implements MouseWheelListener
             {
                 if(person.claimedTickets() > 1)
                 {
-                    currentTrainTicket = (currentTrainTicket + 1) % person.claimedTickets();
+                    currentTrainTicket = (currentTrainTicket + 1) 
+                        % person.claimedTickets();
                     repaint();
                 }
             }

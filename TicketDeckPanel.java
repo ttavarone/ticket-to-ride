@@ -8,12 +8,14 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelListener;
 import java.awt.event.MouseWheelEvent;
 /**
- * Write a description of class TicketDeckPanel here.
+ * This is the method that paints tickets on the board, it is 
+ * technically an extension of ticketdeck class
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Tucker Tavarone, Logan Brandt, Josh DelSignore, 
+ * Tom, Fresenius, Eamonn Conway)
+ * @version (1.0)
  */
-public class TicketDeckPanel extends BasePanel// implements MouseWheelListener
+public class TicketDeckPanel extends BasePanel
 {
     private static Image orangeDest;
     private static Image blueDest;
@@ -28,7 +30,8 @@ public class TicketDeckPanel extends BasePanel// implements MouseWheelListener
     PlayerTicketsb player1;
     BasePanel baseline;
 
-    public TicketDeckPanel(TicketDeck d, PlayerHand[] players, PlayerTicketsa p0, PlayerTicketsb p1, BasePanel bp){
+    public TicketDeckPanel(TicketDeck d, PlayerHand[] players, 
+    PlayerTicketsa p0, PlayerTicketsb p1, BasePanel bp){
         baseline = bp;
         setOpaque(true);
         setBackground(Color.WHITE);
@@ -41,8 +44,10 @@ public class TicketDeckPanel extends BasePanel// implements MouseWheelListener
 
         p = players;
 
-        orangeDest = toolkit.getImage("TicketToRidePics"+File.separator+"OrangeDest.jpg");
-        blueDest = toolkit.getImage("TicketToRidePics"+File.separator+"BlueDest.jpg");
+        orangeDest = toolkit.getImage("TicketToRidePics"+
+            File.separator+"OrangeDest.jpg");
+        blueDest = toolkit.getImage("TicketToRidePics"+
+            File.separator+"BlueDest.jpg");
 
         blueDest = blueDest.getScaledInstance(70, 118, Image.SCALE_FAST);
         orangeDest = orangeDest.getScaledInstance(70, 118, Image.SCALE_FAST);
@@ -55,13 +60,16 @@ public class TicketDeckPanel extends BasePanel// implements MouseWheelListener
                     {
                         if(ticketsTaken < 4)
                         {
-                            if(e.getX() >= 0 && e.getX() < 80 && e.getY() <= 118)
+                            if(e.getX() >= 0 && e.getX() < 80 && 
+                                e.getY() <= 118)
                             {
                                 if(!d.shortEmpty())
                                 {
                                     toDraw[ticketsTaken] = d.dequeueShort();
-                                    Image temp = toDraw[ticketsTaken].getImage();
-                                    temp = temp.getScaledInstance(75, 118, Image.SCALE_FAST);
+                                    Image temp = toDraw[ticketsTaken].
+                                        getImage();
+                                    temp = temp.getScaledInstance(
+                                        75, 118, Image.SCALE_FAST);
                                     toDraw[ticketsTaken].setImage(temp);
                                     ticketsTaken++;
                                     baseline.blockTrainDraw = true;
@@ -69,13 +77,16 @@ public class TicketDeckPanel extends BasePanel// implements MouseWheelListener
                                     repaint();
                                 }
                             }
-                            else if(e.getX() >= 80 && e.getX() < 160 && e.getY() <= 118)
+                            else if(e.getX() >= 80 && e.getX() < 160 && 
+                            e.getY() <= 118)
                             {
                                 if(!d.longEmpty())
                                 {
                                     toDraw[ticketsTaken] = d.dequeueLong();
-                                    Image temp = toDraw[ticketsTaken].getImage();
-                                    temp = temp.getScaledInstance(75, 118, Image.SCALE_FAST);
+                                    Image temp = toDraw[ticketsTaken].
+                                        getImage();
+                                    temp = temp.getScaledInstance(
+                                        75, 118, Image.SCALE_FAST);
                                     toDraw[ticketsTaken].setImage(temp);
                                     ticketsTaken++;
                                     baseline.blockTrainDraw = true;
@@ -86,14 +97,16 @@ public class TicketDeckPanel extends BasePanel// implements MouseWheelListener
                         }
                         else if(ticketsTaken == 4)
                         {
-                            if(e.getX() >= 0 && e.getX() < 80 && e.getY() >= 118 && e.getY() <= 236)
+                            if(e.getX() >= 0 && e.getX() < 80 && 
+                            e.getY() >= 118 && e.getY() <= 236)
                             {
                                 if(toDraw[0] != null)
                                 {
                                     if(baseline.currentPlayer == 0)
                                     {
                                         Image temp = toDraw[0].getImage();
-                                        temp = temp.getScaledInstance(80, 120, Image.SCALE_FAST);
+                                        temp = temp.getScaledInstance(
+                                            80, 120, Image.SCALE_FAST);
                                         toDraw[0].setImage(temp);
                                         player0.addTicketCard(toDraw[0]);
                                         toDraw[0] = null;
@@ -103,7 +116,8 @@ public class TicketDeckPanel extends BasePanel// implements MouseWheelListener
                                     else if(baseline.currentPlayer == 1)
                                     {
                                         Image temp = toDraw[0].getImage();
-                                        temp = temp.getScaledInstance(80, 120, Image.SCALE_FAST);
+                                        temp = temp.getScaledInstance(
+                                            80, 120, Image.SCALE_FAST);
                                         toDraw[0].setImage(temp);
                                         player1.addTicketCard(toDraw[0]);
                                         toDraw[0] = null;
@@ -113,14 +127,16 @@ public class TicketDeckPanel extends BasePanel// implements MouseWheelListener
                                     repaint();
                                 }
                             }
-                            else if(e.getX() >= 0 && e.getX() < 80 && e.getY() >= 236 && e.getY() <= 354)
+                            else if(e.getX() >= 0 && e.getX() < 80 && 
+                            e.getY() >= 236 && e.getY() <= 354)
                             {
                                 if(toDraw[1] != null)
                                 {
                                     if(baseline.currentPlayer == 0)
                                     {
                                         Image temp = toDraw[1].getImage();
-                                        temp = temp.getScaledInstance(80, 120, Image.SCALE_FAST);
+                                        temp = temp.getScaledInstance(
+                                            80, 120, Image.SCALE_FAST);
                                         toDraw[1].setImage(temp);
                                         player0.addTicketCard(toDraw[1]);
                                         toDraw[1] = null;
@@ -130,7 +146,8 @@ public class TicketDeckPanel extends BasePanel// implements MouseWheelListener
                                     else if(baseline.currentPlayer == 1)
                                     {
                                         Image temp = toDraw[1].getImage();
-                                        temp = temp.getScaledInstance(80, 120, Image.SCALE_FAST);
+                                        temp = temp.getScaledInstance(
+                                            80, 120, Image.SCALE_FAST);
                                         toDraw[1].setImage(temp);
                                         player1.addTicketCard(toDraw[1]);
                                         toDraw[1] = null;
@@ -140,14 +157,16 @@ public class TicketDeckPanel extends BasePanel// implements MouseWheelListener
                                     repaint();
                                 }
                             }
-                            else if(e.getX() >= 80 && e.getX() < 160 && e.getY() >= 118 && e.getY() <= 236)
+                            else if(e.getX() >= 80 && e.getX() < 160 && 
+                            e.getY() >= 118 && e.getY() <= 236)
                             {
                                 if(toDraw[2] != null)
                                 {
                                     if(baseline.currentPlayer == 0)
                                     {
                                         Image temp = toDraw[2].getImage();
-                                        temp = temp.getScaledInstance(80, 120, Image.SCALE_FAST);
+                                        temp = temp.getScaledInstance(
+                                            80, 120, Image.SCALE_FAST);
                                         toDraw[2].setImage(temp);
                                         player0.addTicketCard(toDraw[2]);
                                         toDraw[2] = null;
@@ -157,7 +176,8 @@ public class TicketDeckPanel extends BasePanel// implements MouseWheelListener
                                     else if(baseline.currentPlayer == 1)
                                     {
                                         Image temp = toDraw[2].getImage();
-                                        temp = temp.getScaledInstance(80, 120, Image.SCALE_FAST);
+                                        temp = temp.getScaledInstance(
+                                        80, 120, Image.SCALE_FAST);
                                         toDraw[2].setImage(temp);
                                         player1.addTicketCard(toDraw[2]);
                                         toDraw[2] = null;
@@ -167,14 +187,16 @@ public class TicketDeckPanel extends BasePanel// implements MouseWheelListener
                                     repaint();
                                 }
                             }
-                            else if(e.getX() >= 80 && e.getX() < 160 && e.getY() >= 236 && e.getY() <= 354)
+                            else if(e.getX() >= 80 && e.getX() < 160 && 
+                            e.getY() >= 236 && e.getY() <= 354)
                             {
                                 if(toDraw[3] != null)
                                 {
                                     if(baseline.currentPlayer == 0)
                                     {
                                         Image temp = toDraw[3].getImage();
-                                        temp = temp.getScaledInstance(80, 120, Image.SCALE_FAST);
+                                        temp = temp.getScaledInstance(
+                                            80, 120, Image.SCALE_FAST);
                                         toDraw[3].setImage(temp);
                                         player0.addTicketCard(toDraw[3]);
                                         toDraw[3] = null;
@@ -184,7 +206,8 @@ public class TicketDeckPanel extends BasePanel// implements MouseWheelListener
                                     else if(baseline.currentPlayer == 1)
                                     {
                                         Image temp = toDraw[3].getImage();
-                                        temp = temp.getScaledInstance(80, 120, Image.SCALE_FAST);
+                                        temp = temp.getScaledInstance(
+                                            80, 120, Image.SCALE_FAST);
                                         toDraw[3].setImage(temp);
                                         player1.addTicketCard(toDraw[3]);
                                         toDraw[3] = null;
@@ -196,7 +219,8 @@ public class TicketDeckPanel extends BasePanel// implements MouseWheelListener
                             }
                             else if(ticketsDrawn > 0)
                             {
-                                if(e.getX() >= 20 && e.getX() < 145 && e.getY() >= 450 && e.getY() < 475)
+                                if(e.getX() >= 20 && e.getX() < 145 && 
+                                e.getY() >= 450 && e.getY() < 475)
                                 {
                                     for(int i = 0; i < 4; i++)
                                     {
@@ -244,8 +268,10 @@ public class TicketDeckPanel extends BasePanel// implements MouseWheelListener
                 baseline.disableRepaint = true;
                 int p1Score = p[0].getPlayer().calculateFinalScore();
                 int p2Score = p[1].getPlayer().calculateFinalScore();
-                g.drawString("Player 1 scored " + p1Score + " total", 100, 100);
-                g.drawString("Player 2 scored " + p1Score + " total", 100, 200);
+                g.drawString("Player 1 scored " + p1Score + 
+                    " total", 100, 100);
+                g.drawString("Player 2 scored " + p1Score + 
+                    " total", 100, 200);
                 EndGamePanel e = new EndGamePanel(p);
             }
             
@@ -254,14 +280,16 @@ public class TicketDeckPanel extends BasePanel// implements MouseWheelListener
                 if(toDraw[i] != null)
                 {
                     Image t = toDraw[i].getImage();
-                    g.drawImage(t, (0 + 80 * (i / 2)), (118 + 118 * (i % 2)), this);
+                    g.drawImage(t, (0 + 80 * (i / 2)), 
+                        (118 + 118 * (i % 2)), this);
                 }
             }
 
             if(ticketsDrawn == 4)
             {
                 ticketsDrawn = ticketsTaken = 0;
-                baseline.currentPlayer = (baseline.currentPlayer + 1) % baseline.totalPlayers;
+                baseline.currentPlayer = (baseline.currentPlayer + 1)
+                    % baseline.totalPlayers;
                 player0.setTrainTicket(0);
                 player0.setPlayerTurn(baseline.currentPlayer);
                 player1.setTrainTicket(0);
@@ -291,18 +319,4 @@ public class TicketDeckPanel extends BasePanel// implements MouseWheelListener
             }
         }
     }
-
-    /*public void mouseWheelMoved(MouseWheelEvent e)
-    {
-    int ticketNum = playerT[currentPlayer].getTrainTicket();
-    if(e.getX() >= 40 && e.getX() < 120 && e.getY() >= 425)
-    {
-    if(playerT[currentPlayer].getPlayer().claimedTickets() >= 2)
-    {
-    baseline.currentTrainTicket = (ticketNum + 1) % playerT[currentPlayer].getPlayer().claimedTickets();
-    playerT[currentPlayer].setTrainTicket(baseline.currentTrainTicket);
-    repaint();
-    }
-    }
-    }*/
 }

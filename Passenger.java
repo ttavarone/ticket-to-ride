@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.Random;
 /**
  * Class for the colored passengers placed at each city and taken at the 
- * end of a turn when a connection is made. We did not have time to impliment 
+ * end of a turn when a connection is made. We did not have time to implement 
  * this class into the game.
  *
- * @author (Tucker Tavarone, Josh DelSignore, Logan Brandt,
- * Tom Fresenius, Eamonn Conway)
- * @version 4/13/18
+ * @author (Tucker Tavarone, Logan Brandt, Josh DelSignore, 
+ * Tom, Fresenius, Eamonn Conway)
+ * @version (1.0)
  */
 public class Passenger
 {

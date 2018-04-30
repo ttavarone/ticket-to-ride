@@ -4,19 +4,23 @@ import java.util.ArrayList;
 /**
  * This class contains a player in the game, and the variables they contain.
  * 
- * @author Logan Brandt, Tom Fressenius, Tucker Tavarone, 
- * Eamonn Conway, Joshua DelSignore 
- * @version 1.0
+ * @author (Tucker Tavarone, Logan Brandt, Josh DelSignore, 
+ * Tom, Fresenius, Eamonn Conway)
+ * @version (1.0)
  */
 public class Player
 {
-    protected int greenMeeple, redMeeple, blueMeeple, blackMeeple, whiteMeeple, yellowMeeple = 0;
+    protected int greenMeeple, redMeeple, 
+        blueMeeple, blackMeeple, whiteMeeple, yellowMeeple = 0;
     private int numTrains = 45;
     private int playerNum; 
     private Color playerColor;
-    private ArrayList<TicketCard> tickets = new ArrayList<TicketCard>();
-    private ArrayList<RouteList> controlledRoutes = new ArrayList<RouteList>();
-    private int[] amountEachCard = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
+    private ArrayList<TicketCard> tickets = 
+        new ArrayList<TicketCard>();
+    private ArrayList<RouteList> controlledRoutes = 
+        new ArrayList<RouteList>();
+    private int[] amountEachCard = 
+        new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
     private int points = 0;
     public int successfulTickets;
 
@@ -34,7 +38,8 @@ public class Player
 
     /**
      * This method attempts to add a route to a player object. 
-     * @param route - The route to add to the players controlled routes.
+     * @param route - The route to add to 
+     *  the players controlled routes.
      */
     public void claimRoute(RouteList route)
     {
@@ -311,15 +316,19 @@ public class Player
     }
 
     /**
-     * This is a "fun" recursive method that tests if a ticekt is valid. To do this,
-     * it first sees if it has visted the cities that were part of the route. If it doesn't work,
-     * then it sees if a cityName matches one of the citynames in the route. If it does, adds it to 
-     * citiesVisted, removes it from the route list, and goes through again.
+     * This is a "fun" recursive method that tests if a ticekt is valid. 
+     * To do this, it first sees if it has visted the cities 
+     * that were part of the route. If it doesn't work,then it sees if a 
+     * cityName matches one of the citynames in the route. If it does, 
+     * adds it to citiesVisted, removes it from the route list, 
+     * and goes through again.
+     * 
      * @param cityNames - cities that are either the routes or have not been visited.
      * @param routes - routes that haven't been connected for the ticket.
      * @param citiesVisited - cities that have been visited.
      */
-    public boolean ticketPath(ArrayList<String> cityNames, ArrayList<RouteList> routes, ArrayList<City> citiesVisited)
+    public boolean ticketPath(ArrayList<String> cityNames, 
+    ArrayList<RouteList> routes, ArrayList<City> citiesVisited)
     {
         int visited = 0;
         for(int i = 0; i < citiesVisited.size(); i++)
@@ -345,7 +354,8 @@ public class Player
         {
             for(int j = 0; j < routes.size(); j++)
             {
-                if(cityNames.get(i).equals(routes.get(j).getCITY1().getName()))
+                if(cityNames.get(i).equals(routes.get(j).getCITY1().
+                getName()))
                 {
                     String city = cityNames.get(i);
                     cityNames.add(routes.get(j).getCITY2().getName());
@@ -361,7 +371,8 @@ public class Player
                         return false;
                     }
                 }
-                else if(cityNames.get(i).equals(routes.get(j).getCITY2().getName()))
+                else if(cityNames.get(i).equals(routes.get(j).getCITY2()
+                .getName()))
                 {
                     String city = cityNames.get(i);
                     cityNames.add(routes.get(j).getCITY1().getName());

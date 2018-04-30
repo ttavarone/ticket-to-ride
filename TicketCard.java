@@ -21,7 +21,8 @@ public class TicketCard extends JPanel
     /**
      * Default constructor, ONLY used to display the backs of ticket cards
      *
-     * This is so a user can click on something and then a new ticket card will
+     * This is so a user can click on something and
+     * then a new ticket card will
      * be initialized
      */
     public TicketCard(){
@@ -35,12 +36,14 @@ public class TicketCard extends JPanel
      *
      *@param START_CITY is the starting city for the TicketCard
      *@param END_CITY is the ending city for the TicketCard
-     *@param LENGTH represents whether the TicketCard is a short or long route
+     *@param LENGTH represents whether the TicketCard 
+     *  is a short or long route
      *@param value represents the points the card holds.
      *@param image for a TicketCard
      * 
      */
-    public TicketCard(String startCity, String endCity, String length, int value, Image i)
+    public TicketCard(String startCity, String endCity, 
+    String length, int value, Image i)
     {
         START_CITY = startCity;
         END_CITY = endCity;
@@ -103,17 +106,20 @@ public class TicketCard extends JPanel
     }
     
     /**
-    * Returns whether or not the object contains a country. True if yes, false if no
+    * Returns whether or not the object contains a country. 
+    * True if yes, false if no
     *@return boolean
     */
     public boolean containsCountry()
     {
-        if(END_CITY.equals("DANEMARK") || END_CITY.equals("FRANKREICH") || END_CITY.equals("OSTERREICH")
+        if(END_CITY.equals("DANEMARK") || END_CITY.equals("FRANKREICH") 
+        || END_CITY.equals("OSTERREICH")
         || END_CITY.equals("NIERDERLANDE") || END_CITY.equals("SCHWEIZ"))
         {
             return true;
         }
-        if(START_CITY.equals("DANEMARK") || START_CITY.equals("FRANKREICH") || START_CITY.equals("OSTERREICH")
+        if(START_CITY.equals("DANEMARK") || START_CITY.equals("FRANKREICH") 
+        || START_CITY.equals("OSTERREICH")
         || START_CITY.equals("NIERDERLANDE") || START_CITY.equals("SCHWEIZ"))
         {
             return true;
