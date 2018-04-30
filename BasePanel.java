@@ -27,7 +27,7 @@ public class BasePanel extends JPanel
     protected boolean blockTrainDraw = true;
     protected boolean blockTicketDraw = false;
     protected boolean blockRouteClaim = true;
-    //locks out 
+    //locks out player actions
     protected boolean firstTurn = true;
     protected boolean almostFinalTurn = false;
     protected boolean oneTurnLeft = false;

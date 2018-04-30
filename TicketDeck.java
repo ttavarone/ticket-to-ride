@@ -5,7 +5,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collections;
 /**
- * Initilizes and constructs tickets (short and long routes)
+ * Initializes and constructs short and long tickets.
  * 
  * This class also gets the image objects that will eventually be used 
  * to paint on a JPanel
@@ -32,7 +32,7 @@ public class TicketDeck
             File.separator+"OrangeDest.jpg");
         blueDest = toolkit.getImage("TicketToRidePics"+
             File.separator+"BlueDest.jpg");
-            
+
         ticketcardsDeck.add(new TicketCard("Berlin","Chemnitz","short",6, 
             toolkit.getImage("TicketToRidePics"+
             File.separator+"BerlChem.jpg")));
@@ -71,8 +71,8 @@ public class TicketDeck
         ticketcardsDeck.add(new TicketCard("Berlin", "Dusseldorf", "short", 5, 
             toolkit.getImage("TicketToRidePics"+
             File.separator+"BremDuss.jpg")));
-        ticketcardsDeck.add(new TicketCard("Bremerhaven","Frankreich","long",12, 
-            toolkit.getImage("TicketToRidePics"+
+        ticketcardsDeck.add(new TicketCard("Bremerhaven","Frankreich","long",
+            12, toolkit.getImage("TicketToRidePics"+
             File.separator+"BremFran.jpg")));
         ticketcardsDeck.add(new TicketCard("Bremen", "Kassel", "short", 6, 
             toolkit.getImage("TicketToRidePics"+
@@ -80,8 +80,8 @@ public class TicketDeck
         ticketcardsDeck.add(new TicketCard("Bremerhaven", "koln", "short", 7, 
             toolkit.getImage("TicketToRidePics"+
             File.separator+"BremKoln.jpg")));
-        ticketcardsDeck.add(new TicketCard("Bremerhaven","Regensburg","long",16, 
-            toolkit.getImage("TicketToRidePics"+
+        ticketcardsDeck.add(new TicketCard("Bremerhaven","Regensburg","long",
+            16, toolkit.getImage("TicketToRidePics"+
             File.separator+"BremRege.jpg")));
         ticketcardsDeck.add(new TicketCard("Danemark", "Berlin", "short", 10, 
             toolkit.getImage("TicketToRidePics"+
@@ -141,8 +141,8 @@ public class TicketDeck
         ticketcardsDeck.add(new TicketCard("Frankfurt", "Lindau", "short", 8, 
             toolkit.getImage("TicketToRidePics"+
             File.separator+"FranLind.jpg")));
-        ticketcardsDeck.add(new TicketCard("Frankfurt", "Osterreich", "short", 10, 
-            toolkit.getImage("TicketToRidePics"+
+        ticketcardsDeck.add(new TicketCard("Frankfurt", "Osterreich", "short",
+            10, toolkit.getImage("TicketToRidePics"+
             File.separator+"FranOste.jpg")));
         ticketcardsDeck.add(new TicketCard("Frankfurt","Stuttgart","short",4, 
             toolkit.getImage("TicketToRidePics"+
@@ -186,8 +186,8 @@ public class TicketDeck
         ticketcardsDeck.add(new TicketCard("Hannover", "Leipzig", "short", 6, 
             toolkit.getImage("TicketToRidePics"+
             File.separator+"HannLeip.jpg")));
-        ticketcardsDeck.add(new TicketCard("Hannover","Saarbrucken","short",11, 
-            toolkit.getImage("TicketToRidePics"+
+        ticketcardsDeck.add(new TicketCard("Hannover","Saarbrucken","short",
+            11, toolkit.getImage("TicketToRidePics"+
             File.separator+"HannSaar.jpg")));
         ticketcardsDeck.add(new TicketCard("Karlsruhe","Augsburg","short",4, 
             toolkit.getImage("TicketToRidePics"+

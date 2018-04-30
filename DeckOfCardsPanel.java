@@ -19,16 +19,15 @@ public class DeckOfCardsPanel extends BasePanel{
     private Image trainCardBack;
     private boolean cardDrawn = false;
     protected DeckOfCards deck;
-    int displayCurrentHand  = 0;
+    private int displayCurrentHand  = 0;
     private int cardsDrawn;
     protected PlayerHand[] p;
-    PlayerTicketsa player0;
-    PlayerTicketsb player1;
-    BasePanel baseline;
-
+    protected PlayerTicketsa player0;
+    protected PlayerTicketsb player1;
+    protected BasePanel baseline;
     /**
      * This is a constructor that initializes the DeckOfCards for the game
-     * @param p - The hands of the players, along with the players themselves.
+     * @param p - The hands of the players, as well as the actual players.
      * @param d - The deck to be used for the game.
      * @param p0 - The tickets in player 1's hand. 
      * Only here to switch the tickets shown
@@ -63,8 +62,8 @@ public class DeckOfCardsPanel extends BasePanel{
         addMouseListener(new MouseAdapter() { 
                 /**
                  * If the mouse button is pressed, it will attempt 
-                 * to draw a card 
-                 * if it is not blocked and the draw is valid.
+                 * to draw a card if it is not blocked
+                 * and the draw is valid.
                  * @param e - event where mouse is pressed.
                  */
                 public void mousePressed(MouseEvent e) { 
@@ -130,7 +129,6 @@ public class DeckOfCardsPanel extends BasePanel{
     public Image getScaledInstanceOf(TrainCard trainCard){
         return trainCard.getTrainCard()
         .getScaledInstance(70, 118, Image.SCALE_FAST);
-
     }
 
     public int getPlayerNum()
@@ -181,7 +179,7 @@ public class DeckOfCardsPanel extends BasePanel{
             g.setColor(Color.BLACK);
             g.drawString("Cards you can draw", 0,128);
             if(baseline.finalTurn)
-            {//if it is the final turn, calculate the score and lock out all player actions.
+            {//if it is the final turn, calculate the score
                 baseline.disableRepaint = true;
                 int p1Score = p[0].getPlayer().calculateFinalScore();
                 int p2Score = p[1].getPlayer().calculateFinalScore();
