@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.Random;
 /**
  * Class for the colored passengers placed at each city and taken at the 
- * end of a turn when a connection is made.
+ * end of a turn when a connection is made. We did not have time to impliment 
+ * this class into the game.
  *
  * @author (Tucker Tavarone, Josh DelSignore, Logan Brandt,
  * Tom Fresenius, Eamonn Conway)
@@ -16,6 +17,10 @@ public class Passenger
     ArrayList<Color> remainingToPlace; //number remaining that can be placed
     ArrayList<Color> remainingOnBoard; //number remaining on board
 
+    /**
+     * Default constructor for the Passenger class. Fills the array of
+     * meeples to be placed on the board.
+     */
     Passenger(){
         red = new Color(255,0,0);
         black = new Color(0,0,0);
