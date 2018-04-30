@@ -287,9 +287,16 @@ public class Player
     }
 
     /**
+<<<<<<< HEAD
      * This method copies the arraylist of routelist objects
      * @param r - an arraylist of routelist objects to be copied
      * @return ArrayList<RouteList> the copied arraylist
+=======
+     * This method performs a deep copy of the routes into an array list
+     * so they aren't permanently altered by the recursive call.
+     * @param r - current list of routes a player has.
+     * @return - deep copy of r that can be changed without altering r.
+>>>>>>> 5da78a25aa59ef4b7f113d3e03393df41adc6a67
      */
     public ArrayList<RouteList> copy(ArrayList<RouteList> r)
     {

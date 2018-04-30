@@ -4,7 +4,10 @@ import java.io.File;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
+/**
+ * This is a panel for showing the deck of cards at the bottom of the screen.
+ * The deck is continuously updated throughout the game.
+ */
 public class DeckOfCardsPanel extends BasePanel{
 
     private Toolkit toolkit;
@@ -18,6 +21,17 @@ public class DeckOfCardsPanel extends BasePanel{
     PlayerTicketsb player1;
     BasePanel baseline;
 
+    /**
+     * This is a constructor that initializes the DeckOfCards for the game
+     * @param p - The hands of the players, along with the players themselves.
+     * @param d - The deck to be used for the game.
+     * @param p0 - The tickets in player 1's hand. Only here to switch the tickets shown
+     * when the turn changes.
+     * @param p1 - The tickets in player 2's hand. Only here to switch the tickets shown
+     * when the turn changes.
+     * @param bp - The basePanel this class will use instead of a super class. Since the three main
+     * panels import the same object, it allows them all to speak with each other.
+     */
     public DeckOfCardsPanel(PlayerHand[] p, DeckOfCards d, PlayerTicketsa p0, PlayerTicketsb p1, BasePanel bp){
         baseline = bp;
         setOpaque(true);
@@ -35,6 +49,11 @@ public class DeckOfCardsPanel extends BasePanel{
         player1 = p1;
 
         addMouseListener(new MouseAdapter() { 
+                /**
+                 * If the mouse button is pressed, it will attempt to draw a card 
+                 * if it is not blocked and the draw is valid.
+                 * @param e - event where mouse is pressed.
+                 */
                 public void mousePressed(MouseEvent e) { 
                     TrainCard t;
                     int deckSize = deck.getDeckSize();
@@ -87,6 +106,11 @@ public class DeckOfCardsPanel extends BasePanel{
             }); 
     }
 
+    /**
+     * This method scales the cards down to fit the screen
+     * @param trainCard - card to resize
+     * @return - The image scaled to the set dimensions.
+     */
     public Image getScaledInstanceOf(TrainCard trainCard){
         return trainCard.getTrainCard()
         .getScaledInstance(70, 118, Image.SCALE_FAST);
@@ -99,7 +123,9 @@ public class DeckOfCardsPanel extends BasePanel{
     }
 
     /**
-     * Returns true if there are not three wilds, false otherwise.
+     * This method checks to see if there are three wilds being diplayed as
+     * cards for all players to draw.
+     * @return - true if there are not three wilds, false otherwise 
      */
     public boolean checkWilds()
     {
@@ -124,6 +150,11 @@ public class DeckOfCardsPanel extends BasePanel{
         else return true;
     }
 
+    /**
+     * This method paints the cards onto the screen, and also changes the player turn 
+     * if they have drawn two cards. 
+     * @param g - Graphics to draw on the screen
+     */
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
@@ -133,7 +164,7 @@ public class DeckOfCardsPanel extends BasePanel{
             g.setColor(Color.BLACK);
             g.drawString("Cards you can draw", 0,128);
             if(baseline.finalTurn)
-            {
+            {//if it is the final turn, calculate the score and lock out all player actions.
                 baseline.disableRepaint = true;
                 int p1Score = p[0].getPlayer().calculateFinalScore();
                 int p2Score = p[1].getPlayer().calculateFinalScore();
@@ -190,8 +221,6 @@ public class DeckOfCardsPanel extends BasePanel{
                 player1.repaint();
                 p[baseline.currentPlayer].repaint();
                 repaint();
-
-                //there should be methods here to update cards as they are chosen or removed
             }
         }
     }
