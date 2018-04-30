@@ -102,25 +102,20 @@ MouseMotionListener{
                 if(firstClick)
                 {
                     String cityName = c1.getName();
-                    g.drawString(cityName, 150, 150);
+                    //g.drawString(cityName, 150, 150);
                 }
 
                 if(c2 != null)
                 {
                     String cityName = c2.getName();
-                    g.drawString(cityName, 250, 250);
-                }
-
-                if(printValid)
-                {
-                    g.drawString("Route valid!", 350, 250);
+                    //g.drawString(cityName, 250, 250);
                 }
 
                 if(printWorked)
                 {
                     printWorked = false;
                     baseline.currentPlayer = 
-                        (baseline.currentPlayer + 1) % baseline.totalPlayers;
+                    (baseline.currentPlayer + 1) % baseline.totalPlayers;
                     tickets1.setTrainTicket(0);
                     tickets1.setPlayerTurn(baseline.currentPlayer);
                     tickets2.setTrainTicket(0);
