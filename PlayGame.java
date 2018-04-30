@@ -1,3 +1,4 @@
+////////////////////////////////////////////////////////////////////////////////
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
@@ -30,7 +31,8 @@ public class PlayGame
      * @param args - Command line arguments.
      */
     public static void main(String[] args) {
-        Icon icon = new ImageIcon("TicketToRidePics"+File.separator+"ThomasTheTank2.gif");
+        Icon icon = new ImageIcon("TicketToRidePics"
+                                  +File.separator+"ThomasTheTank2.gif");
         JLabel label = new JLabel(icon);
         JFrame f = new JFrame("Ticket to Ride");
         f.setLayout(new BorderLayout());
