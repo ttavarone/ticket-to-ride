@@ -1,6 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 /**
- * Enumeration class City - write a description of the enum class here
+ * Enumeration class City - This is an enum that allows us to create city
+ * variables that are useful in claiming routes and hovering over them.
  * 
  * @author (Tucker Tavarone, Logan Brandt, Josh DelSignore, 
  * Tom, Fresenius, Eamonn Conway)
@@ -60,7 +61,7 @@ public enum City
     ; 
     private int xCoord;
     private int yCoord;
-    private Passenger[] p;
+    //private Passenger[] p;
     
     public String getName()
     {

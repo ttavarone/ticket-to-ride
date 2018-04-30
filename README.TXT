@@ -13,7 +13,7 @@ Once the game begins there are only 2 players possible.  Player one will be
 represented by the color red and player two by the color blue.  Player one will
 start by drawing four cards from the ticket deck on the right side of the
 screen.  There are two ticket options, long routes and short routes.  The 
-player will choose to keep at least two or up to all of the four ticket cards.
+player will choose to keep at least one or up to all of the four ticket cards.
 To choose the cards click the black box under the ticket deck that says "stop
 drawing cards".  After this, player two will do the same and the game can begin.
 

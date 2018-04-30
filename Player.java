@@ -12,7 +12,7 @@ public class Player
 {
     protected int greenMeeple, redMeeple, 
         blueMeeple, blackMeeple, whiteMeeple, yellowMeeple = 0;
-    private int numTrains = 45;
+    private int numTrains = 2;
     private int playerNum; 
     private Color playerColor;
     private ArrayList<TicketCard> tickets = 

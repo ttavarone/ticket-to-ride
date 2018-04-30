@@ -1,4 +1,3 @@
-////////////////////////////////////////////////////////////////////////////////
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -7,10 +6,12 @@ import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 
 /**
- * GUI for the board
+ * This method creates the GUI for the board. It also is used to claim 
+ * routes for the player and updates their hands and remaining trains 
+ * accordingly.
  *
  * @author (Logan, Tucker, Josh, Eamonn, Tom)
- * @version (4 / 8 / 18)
+ * @version (4 / 30 / 18)
  */
 public class BoardPanel extends BasePanel implements MouseListener, 
 MouseMotionListener{
@@ -22,20 +23,20 @@ MouseMotionListener{
     private int meepleBoxX, meepleBoxY = 0;
     private String currentCityName;
     private boolean firstClick = false;
-    BasePanel baseline;
-    PlayerHand[] players;
-    PlayerTicketsa tickets1;
-    PlayerTicketsb tickets2;
-    City c1;
-    City c2;
+    protected BasePanel baseline;
+    protected PlayerHand[] players;
+    protected PlayerTicketsa tickets1;
+    protected PlayerTicketsb tickets2;
+    protected City c1;
+    protected City c2;
     protected boolean printWorked;
     protected boolean printValid;
-    Color[] colorsUsed = new Color[]{Color.BLACK, Color.BLUE, 
+    private Color[] colorsUsed = new Color[]{Color.BLACK, Color.BLUE, 
         Color.GREEN, Color.ORANGE, Color.PINK,
         Color.RED, Color.WHITE, Color.YELLOW, Color.GRAY};
-    RouteList currentRoutea;
-    RouteList currentRouteb;
-    DeckOfCards deck;
+    private RouteList currentRoutea;
+    private RouteList currentRouteb;
+    protected DeckOfCards deck;
 
     public BoardPanel(PlayerHand[] p, PlayerTicketsa player1, 
         PlayerTicketsb player2, BasePanel bPanel, DeckOfCards d) {
@@ -95,21 +96,21 @@ MouseMotionListener{
                     currentCityName = currentCityName.replaceAll("[^A-Z]","");
                     g.drawString(currentCityName, meepleBoxX + 
                         10, meepleBoxY + 10);
-                    g.drawString("Has 2 meeples", meepleBoxX + 
-                        10, meepleBoxY + 30);
+                    //g.drawString("Has 2 meeples", meepleBoxX + 
+                    //    10, meepleBoxY + 30);
                 }
 
-                if(firstClick)
+                /*if(firstClick)
                 {
                     String cityName = c1.getName();
                     //g.drawString(cityName, 150, 150);
-                }
+                }*/
 
-                if(c2 != null)
+                /*if(c2 != null)
                 {
                     String cityName = c2.getName();
                     //g.drawString(cityName, 250, 250);
-                }
+                }*/
 
                 if(printWorked)
                 {
@@ -156,7 +157,8 @@ MouseMotionListener{
                     {
                         for(RouteList r2 : RouteList.values())
                         {
-                            if((c1 == r2.getCITY1() && c2 == r2.getCITY2()) && r2.getRouteColor() != r.getRouteColor())
+                            if((c1 == r2.getCITY1() && c2 == r2.getCITY2())
+                            && r2.getRouteColor() != r.getRouteColor())
                             {
                                 currentRouteb = r2;
                                 return true;
@@ -190,7 +192,8 @@ MouseMotionListener{
                     int wilds = current.getAmount(8);
                     if(trains + wilds >= currentRoutea.getRouteLength())
                     {
-                        if(current.getTrainsLeft() > currentRoutea.getRouteLength())
+                        if(current.getTrainsLeft() >
+                        currentRoutea.getRouteLength())
                         {
                             current.claimRoute(currentRoutea);
                             current.addPoints(currentRoutea.getRouteLength());
@@ -211,11 +214,14 @@ MouseMotionListener{
                         int trains = current.getAmount(index);
                         if(trains + wilds >= currentRoutea.getRouteLength())
                         {
-                            if(current.getTrainsLeft() > currentRoutea.getRouteLength())
+                            if(current.getTrainsLeft() > 
+                            currentRoutea.getRouteLength())
                             {
                                 current.claimRoute(currentRoutea);
-                                current.addPoints(currentRoutea.getRouteLength());
-                                discardTrains(currentRoutea.getRouteLength(), index);
+                                current.addPoints(
+                                currentRoutea.getRouteLength());
+                                discardTrains(currentRoutea.getRouteLength(),
+                                index);
                                 if(currentRouteb != null)
                                 {
                                     currentRouteb.setRouteClaimed(true);
@@ -237,11 +243,14 @@ MouseMotionListener{
                         int wilds = current.getAmount(8);
                         if(trains + wilds >= currentRouteb.getRouteLength())
                         {
-                            if(current.getTrainsLeft() >= currentRouteb.getRouteLength())
+                            if(current.getTrainsLeft() >=
+                            currentRouteb.getRouteLength())
                             {
                                 current.claimRoute(currentRouteb);
-                                current.addPoints(currentRouteb.getRouteLength());
-                                discardTrains(currentRouteb.getRouteLength(), i);
+                                current.addPoints(
+                                currentRouteb.getRouteLength());
+                                discardTrains(currentRouteb.
+                                getRouteLength(), i);
                                 currentRoutea.setRouteClaimed(true);
                                 return true;
                             }
@@ -249,17 +258,23 @@ MouseMotionListener{
                     }
                     else
                     {
-                        int wilds = p[baseline.currentPlayer].returnAmtCard(8);
+                        int wilds = p[baseline.currentPlayer].
+                        returnAmtCard(8);
                         for(int index = 0; index < 8; index++)
                         {
-                            int trains = p[baseline.currentPlayer].returnAmtCard(index);
-                            if(trains + wilds >= currentRouteb.getRouteLength())
+                            int trains = p[baseline.currentPlayer].
+                            returnAmtCard(index);
+                            if(trains + wilds >= currentRouteb.
+                            getRouteLength())
                             {
-                                if(current.getTrainsLeft() >= currentRouteb.getRouteLength())
+                                if(current.getTrainsLeft() >= 
+                                currentRouteb.getRouteLength())
                                 {
                                     current.claimRoute(currentRouteb);
-                                    current.addPoints(currentRouteb.getRouteLength());
-                                    discardTrains(currentRouteb.getRouteLength(), index);
+                                    current.addPoints(
+                                    currentRouteb.getRouteLength());
+                                    discardTrains(currentRouteb.
+                                    getRouteLength(), index);
                                     currentRoutea.setRouteClaimed(true);
                                     return true;
                                 }
@@ -272,6 +287,12 @@ MouseMotionListener{
         return false;
     }
 
+    /**
+     * This method draws a line between two cities based on the 
+     * routes a player has claimed.
+     * @param g - The graphics that are drawn for the board.
+     * @param currentPlayer - the player who's routes are being drawn.
+     */
     public void drawRoutes(Graphics g, Player currentPlayer)
     {
         ArrayList<RouteList> rList = currentPlayer.getRouteList();
@@ -287,6 +308,13 @@ MouseMotionListener{
         }
     }
 
+    /**
+     * This method will discard trains from the player class and
+     * add them to the discard pile of the deck.
+     * @param routeLength - how long the route being claimed is.
+     * @param index - Index of the color in the array so it knows
+     * which trains to remove from a players hand.
+     */
     public void discardTrains(int routeLength, int index)
     {
         PlayerHand current = players[baseline.currentPlayer];
@@ -320,21 +348,20 @@ MouseMotionListener{
      * @param e - Mouse event
      */
     @Override
-    public void mouseExited( MouseEvent e ) { 
-    }
+    public void mouseExited( MouseEvent e ) { }
 
     /**
-     * This method will determine if a piece is right clicked on, and if it is in the correct difficulty,
-     * it will go into that pieces mouseClicked method and rotate it
-     * @param e - The event where the mouse is clicked down
+     * Only exists to override an abstract method
+     * @param e - Mouse event
      */
     @Override
     public void mouseClicked( MouseEvent e ) {  }
 
     /**
-     * This method will determine if the user pressed the mouse down on a valid piece, and then send it into that
-     * pieces mouse pressed handler to determine what happens.
-     * @param e - when the mouse is pushed down
+     * This method will determine which city was clicked on first,
+     * then when a second click is made, if it was a city, it will see if
+     * there is a valid route between the cities and claim it for a player.
+     * @param e - event where mouse is pressed down.
      */
     @Override
     public void mousePressed( MouseEvent e ) {
@@ -345,8 +372,10 @@ MouseMotionListener{
             if(!firstClick)
             {
                 for(City c: City.values()){
-                    if(e.getX() >= (c.getX() - 11) && e.getX() <= (c.getX() + 11)){
-                        if(e.getY() >= (c.getY() - 11) && e.getY() <= (c.getY() + 11))
+                    if(e.getX() >= (c.getX() - 11) && e.getX() <=
+                    (c.getX() + 11)){
+                        if(e.getY() >= (c.getY() - 11) && e.getY() <=
+                        (c.getY() + 11))
                         {
                             c1 = c;
                             c2 = null;
@@ -365,8 +394,10 @@ MouseMotionListener{
                 baseline.blockTicketDraw = false;
                 baseline.blockTrainDraw = false;
                 for(City c: City.values()){
-                    if(e.getX() >= (c.getX() - 11) && e.getX() <= (c.getX() + 11)){
-                        if(e.getY() >= (c.getY() - 11) && e.getY() <= (c.getY() + 11))
+                    if(e.getX() >= (c.getX() - 11) && e.getX() <=
+                    (c.getX() + 11)){
+                        if(e.getY() >= (c.getY() - 11) && e.getY() <=
+                        (c.getY() + 11))
                         {
                             c2 = c;
                             if(checkValidRoute())
@@ -387,20 +418,19 @@ MouseMotionListener{
     }
 
     /**
-     * This method determines if the mouse is released over a piece, and then sends it 
-     * into the piece to determine what it does.
-     * @param e - the event where the mouse button is pulled up.
+     * Only exists to override an abstract method
+     * @param e - Mouse event
      */
     @Override
     public void mouseReleased( MouseEvent e ) { }
 
     /**
-     * Only exists to override an abstract method
-     * @param e - Mouse event
+     * If the mouse is moved over a city, it will draw a box and 
+     * display the name of the city.
+     * @param e - Mouse event where mouse is moved.
      */
     @Override
     public void mouseMoved( MouseEvent e ){
-        //cities
         isMouseOnCity = false;
         for(City c: City.values()){
             if(e.getX() >= (c.getX() - 11) && e.getX() <= (c.getX() + 11)){
@@ -425,77 +455,12 @@ MouseMotionListener{
             }
         }
         repaint();
-        //Danemark
-        // if(e.getX() >= (233 - 27) && e.getX() <= (233 + 27)){
-        // if(e.getY() >= 0 && e.getY() <= (25 + 28))
-        // {
-        // isMouseOnCity = true;
-        // meepleBoxX = 233;
-        // meepleBoxY = 25;
-        // currentCityName = "DANEMARK";
-        // }
-        // }
-        // //Niederlande
-        // else if(e.getX() >= 0 && e.getX() <= (20 + 35)){
-        // if(e.getY() >= (269 - 36) && e.getY() <= (269 + 36))
-        // {
-        // isMouseOnCity = true;
-        // meepleBoxX = 20;
-        // meepleBoxY = 269;
-        // currentCityName = "NIEDERLANDE";
-        // }
-        // }
-        // //Frankreich
-        // else if(e.getX() >= 0 && e.getX() <= (31 + 44)){
-        // if(e.getY() >= (706 - 45) && e.getY() <= (706 + 45))
-        // {
-        // isMouseOnCity = true;
-        // meepleBoxX = 31;
-        // meepleBoxY = 706;
-        // currentCityName = "FRANKREICH";
-        // }
-        // }
-        // //Schweiz
-        // else if(e.getX() >= (142 - 28) && e.getX() <= (142 + 28)){
-        // if(e.getY() >= (824 - 29) && e.getY() <= (824 + 29))
-        // {
-        // isMouseOnCity = true;
-        // meepleBoxX = 142;
-        // meepleBoxY = 824;
-        // currentCityName = "SCHWEIZ";
-        // }
-        // }
-        // //Osterreich small
-        // else if(e.getX() >= (338 - 23) && e.getX() <= (338 + 23)){
-        // if(e.getY() >= (827 - 22) && e.getY() <= (827 + 22))
-        // {
-        // isMouseOnCity = true;
-        // meepleBoxX = 338;
-        // meepleBoxY = 827;
-        // currentCityName = "OSTERREICH";
-        // }
-        // }
-        // //Osterreich large
-        // else if(e.getX() >= (507 - 45) && e.getX() <= (507 + 45)){
-        // if(e.getY() >= (791 - 45) && e.getY() <= (791 + 45))
-        // {
-        // isMouseOnCity = true;
-        // meepleBoxX = 507;
-        // meepleBoxY = 791;
-        // currentCityName = "OSTERREICH";
-        // }
-        // }
-        // else{
-        // isMouseOnCity = false;
-        // }
     }
 
     /**
-     * This method determines if the mouse is dragged over a valid piece, and then sends it 
-     * down into that pieces method to determine what occurs. 
-     * @param e - The event where the mouse if moved while being held down.
+     * Only exists to override an abstract method
+     * @param e - Mouse event
      */
     @Override
-    public void mouseDragged( MouseEvent e) { 
-    }
+    public void mouseDragged( MouseEvent e) {  }
 }
