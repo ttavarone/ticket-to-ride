@@ -13,7 +13,7 @@ public class EndGamePanel extends JPanel
     protected static Icon pic;
     protected Toolkit toolkit = Toolkit.getDefaultToolkit();;
 
-    public static void createAndShowGUI() {
+    public void createAndShowGUI() {
         pic = new ImageIcon("TicketToRidePics"+File.separator+"EndScreen.jpg");
         JLabel label = new JLabel(pic);
         JFrame f = new JFrame("End Screen");
@@ -28,6 +28,7 @@ public class EndGamePanel extends JPanel
 
         f.pack();
         f.setVisible(true);
+        repaint();
     }
 
     public EndGamePanel(PlayerHand[] players)

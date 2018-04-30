@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class Player
 {
     protected int greenMeeple, redMeeple, blueMeeple, blackMeeple, whiteMeeple, yellowMeeple = 0;
-    private int numTrains = 45;
+    private int numTrains = 3;
     private int playerNum; 
     private Color playerColor;
     private ArrayList<TicketCard> tickets = new ArrayList<TicketCard>();
@@ -226,12 +226,25 @@ public class Player
         return answer;
     }
 
+    /**
+     * This is a "fun" recursive method that tests if a ticekt is valid. To do this,
+     * it first sees if it has visted the cities that were part of the route. If it doesn't work,
+     * then it sees if a cityName matches one of the citynames in the route. If it does, adds it to 
+     * citiesVisted, removes it from the route list, and goes through again.
+     * @param cityNames - cities that are either the routes or have not been visited.
+     * @param routes - routes that haven't been connected for the ticket.
+     * @param citiesVisited - cities that have been visited.
+     */
     public boolean ticketPath(ArrayList<String> cityNames, ArrayList<RouteList> routes, ArrayList<City> citiesVisited)
     {
         int visited = 0;
         for(int i = 0; i < citiesVisited.size(); i++)
         {
-            if(cityNames.contains(citiesVisited.get(i).getName()))
+            if(cityNames.get(0).equals(citiesVisited.get(i).getName()))
+            {
+                visited++;
+            }
+            else if(cityNames.get(1).equals(citiesVisited.get(i).getName()))
             {
                 visited++;
             }

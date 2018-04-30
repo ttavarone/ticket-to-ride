@@ -227,56 +227,68 @@ public class TicketDeckPanel extends BasePanel// implements MouseWheelListener
     public void paintComponent(Graphics g)
     {
         super.paintComponent(g);
-
-
-        g.drawImage(blueDest, 0, 0, this);
-        g.drawImage(orangeDest, 80, 0, this);
-        //g.setColor(Color.BLACK);
-        g.fillRect(20, 450, 125, 25);
-        g.setColor(Color.WHITE);
-        g.drawString("Stop drawing tickets", 25, 460);
-
-        for(int i = 0; i < 4; i++)
+        if(baseline.disableRepaint){  }
+        else
         {
-            if(toDraw[i] != null)
+            
+            g.drawImage(blueDest, 0, 0, this);
+            g.drawImage(orangeDest, 80, 0, this);
+            //g.setColor(Color.BLACK);
+            g.fillRect(20, 450, 125, 25);
+            g.setColor(Color.WHITE);
+            g.drawString("Stop drawing tickets", 25, 460);
+            
+            if(baseline.finalTurn)
             {
-                Image t = toDraw[i].getImage();
-                g.drawImage(t, (0 + 80 * (i / 2)), (118 + 118 * (i % 2)), this);
+                baseline.disableRepaint = true;
+                int p1Score = p[0].getPlayer().calculateFinalScore();
+                int p2Score = p[1].getPlayer().calculateFinalScore();
+                g.drawString("Player 1 scored " + p1Score + " total", 100, 100);
+                g.drawString("Player 2 scored " + p1Score + " total", 100, 200);
+                EndGamePanel e = new EndGamePanel(p);
+            }
+            
+            for(int i = 0; i < 4; i++)
+            {
+                if(toDraw[i] != null)
+                {
+                    Image t = toDraw[i].getImage();
+                    g.drawImage(t, (0 + 80 * (i / 2)), (118 + 118 * (i % 2)), this);
+                }
+            }
+
+            if(ticketsDrawn == 4)
+            {
+                ticketsDrawn = ticketsTaken = 0;
+                baseline.currentPlayer = (baseline.currentPlayer + 1) % baseline.totalPlayers;
+                player0.setTrainTicket(0);
+                player0.setPlayerTurn(baseline.currentPlayer);
+                player1.setTrainTicket(0);
+                player1.setPlayerTurn(baseline.currentPlayer);
+                baseline.currentTrainTicket = 0;
+                if(baseline.firstTurn)
+                {
+                    baseline.setFirstTurn(false);
+                }
+                else
+                {
+                    baseline.setBlockTrainDraw(false);
+                    baseline.blockRouteClaim = false;
+                }
+                if(baseline.oneTurnLeft)
+                {
+                    baseline.finalTurn = true;
+                }
+                else if(baseline.almostFinalTurn)
+                {
+                    baseline.oneTurnLeft = true;
+                }
+                player0.repaint();
+                player1.repaint();
+                p[baseline.currentPlayer].repaint();
+                repaint();
             }
         }
-
-        if(ticketsDrawn == 4)
-        {
-            ticketsDrawn = ticketsTaken = 0;
-            baseline.currentPlayer = (baseline.currentPlayer + 1) % baseline.totalPlayers;
-            player0.setTrainTicket(0);
-            player0.setPlayerTurn(baseline.currentPlayer);
-            player1.setTrainTicket(0);
-            player1.setPlayerTurn(baseline.currentPlayer);
-            baseline.currentTrainTicket = 0;
-            if(baseline.firstTurn)
-            {
-                baseline.setFirstTurn(false);
-            }
-            else
-            {
-                baseline.setBlockTrainDraw(false);
-                baseline.blockRouteClaim = false;
-            }
-            if(baseline.oneTurnLeft)
-            {
-                baseline.finalTurn = true;
-            }
-            else if(baseline.almostFinalTurn)
-            {
-                baseline.oneTurnLeft = true;
-            }
-            player0.repaint();
-            player1.repaint();
-            p[baseline.currentPlayer].repaint();
-            repaint();
-        }
-
     }
 
     /*public void mouseWheelMoved(MouseWheelEvent e)

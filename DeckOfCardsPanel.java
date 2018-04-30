@@ -127,59 +127,72 @@ public class DeckOfCardsPanel extends BasePanel{
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        g.setColor(Color.BLACK);
-        g.drawString("Cards you can draw", 0,128);
-        if(deck.isEmpty())
+        if(baseline.disableRepaint){  }
+        else
         {
-            deck.reshuffle();
-        }
-        if(deck.getDeckSize() >= 6)
-        {
-            g.drawImage(trainCardBack, 0, 0, this);
-        }
-        while(!checkWilds());
-        for(int i = 0; i < Math.min(5, deck.getDeckSize()); i++)
-        {
-            if(deck.peek(i) != null)
+            g.setColor(Color.BLACK);
+            g.drawString("Cards you can draw", 0,128);
+            if(baseline.finalTurn)
             {
-                g.drawImage(deck.peek(i).getTrainCard(), (80 + 80 * i), 0, this);
+                baseline.disableRepaint = true;
+                int p1Score = p[0].getPlayer().calculateFinalScore();
+                int p2Score = p[1].getPlayer().calculateFinalScore();
+                g.drawString("Player 1 scored " + p1Score + " total", 100, 100);
+                g.drawString("Player 2 scored " + p1Score + " total", 100, 200);
+                EndGamePanel e = new EndGamePanel(p);
             }
-            else
+            if(deck.isEmpty())
             {
                 deck.reshuffle();
+            }
+            if(deck.getDeckSize() >= 6)
+            {
+                g.drawImage(trainCardBack, 0, 0, this);
+            }
+            while(!checkWilds());
+            for(int i = 0; i < Math.min(5, deck.getDeckSize()); i++)
+            {
                 if(deck.peek(i) != null)
                 {
                     g.drawImage(deck.peek(i).getTrainCard(), (80 + 80 * i), 0, this);
                 }
-                else break;
+                else
+                {
+                    deck.reshuffle();
+                    if(deck.peek(i) != null)
+                    {
+                        g.drawImage(deck.peek(i).getTrainCard(), (80 + 80 * i), 0, this);
+                    }
+                    else break;
+                }
             }
-        }
 
-        if(cardsDrawn == 2)
-        {
-            cardsDrawn = 0;
-            baseline.currentPlayer = (baseline.currentPlayer + 1) % baseline.totalPlayers;
-            player0.setTrainTicket(0);
-            player0.setPlayerTurn(baseline.currentPlayer);
-            player1.setTrainTicket(0);
-            player1.setPlayerTurn(baseline.currentPlayer);
-            baseline.currentTrainTicket = 0;
-            baseline.blockTicketDraw = false;
-            baseline.blockRouteClaim = false;
-            if(baseline.oneTurnLeft)
+            if(cardsDrawn == 2)
             {
-                baseline.finalTurn = true;
-            }
-            else if(baseline.almostFinalTurn)
-            {
-                baseline.oneTurnLeft = true;
-            }
-            player0.repaint();
-            player1.repaint();
-            p[baseline.currentPlayer].repaint();
-            repaint();
+                cardsDrawn = 0;
+                baseline.currentPlayer = (baseline.currentPlayer + 1) % baseline.totalPlayers;
+                player0.setTrainTicket(0);
+                player0.setPlayerTurn(baseline.currentPlayer);
+                player1.setTrainTicket(0);
+                player1.setPlayerTurn(baseline.currentPlayer);
+                baseline.currentTrainTicket = 0;
+                baseline.blockTicketDraw = false;
+                baseline.blockRouteClaim = false;
+                if(baseline.oneTurnLeft)
+                {
+                    baseline.finalTurn = true;
+                }
+                else if(baseline.almostFinalTurn)
+                {
+                    baseline.oneTurnLeft = true;
+                }
+                player0.repaint();
+                player1.repaint();
+                p[baseline.currentPlayer].repaint();
+                repaint();
 
-            //there should be methods here to update cards as they are chosen or removed
+                //there should be methods here to update cards as they are chosen or removed
+            }
         }
     }
 }

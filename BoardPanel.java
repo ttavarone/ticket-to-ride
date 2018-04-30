@@ -72,6 +72,7 @@ public class BoardPanel extends BasePanel implements MouseListener, MouseMotionL
                 int p2Score = players[1].getPlayer().calculateFinalScore();
                 g.drawString("Player 1 scored " + p1Score + " total", 100, 100);
                 g.drawString("Player 2 scored " + p1Score + " total", 100, 200);
+                EndGamePanel e = new EndGamePanel(players);
             }
             else
             {
