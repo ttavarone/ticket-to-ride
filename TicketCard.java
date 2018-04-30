@@ -36,7 +36,7 @@ public class TicketCard extends JPanel
      *@param END_CITY is the ending city for the TicketCard
      *@param LENGTH represents whether the TicketCard is a short or long route
      *@param value represents the points the card holds.
-     *@see image for a TicketCard
+     *@param image for a TicketCard
      * 
      */
     public TicketCard(String startCity, String endCity, String length, int value, Image i)
