@@ -4,7 +4,7 @@
  * variables that are useful in claiming routes and hovering over them.
  * 
  * @author (Tucker Tavarone, Logan Brandt, Josh DelSignore, 
- * Tom, Fresenius, Eamonn Conway)
+ * Tom Fresenius, Eamonn Conway)
  * @version (1.0)
  */
 public enum City
