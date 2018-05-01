@@ -1,11 +1,13 @@
 #BlueJ class context
-comment0.params=newCardNum
-comment0.target=TrainCard(int)
-comment0.text=\r\n\ This\ method\ initializes\ the\ TrainCard\ with\ the\ type\ of\r\n\ train\ the\ card\ has.\r\n\ @param\ newCardType\ -\ The\ type\ of\ train\ portrayed\ on\ the\ card\r\n
-comment1.params=
-comment1.target=java.awt.Image\ getTrainCard()
-comment1.text=\r\n\ This\ method\ returns\ the\ current\ Image\ of\ the\ object.\r\n\ @return\ -\ the\ train\ in\ use\ by\ this\ object\r\n
+comment0.target=TrainCard
+comment0.text=\n\ This\ method\ creates\ a\ single\ instance\ of\ one\ of\ the\ train\ cards\ a\n\ player\ would\ draw.\n\ \n\ @author\ Logan\ Brandt,\ Tucker\ Tavarone,\ Tom\ Fresenius,\ \n\ Eamonn\ Conway,\ Josh\ DelSignore\ \n\ @version\ 1.0\n
+comment1.params=newCardNum
+comment1.target=TrainCard(int)
+comment1.text=\n\ This\ method\ initializes\ the\ TrainCard\ with\ the\ type\ of\n\ train\ the\ card\ has.\n\ @param\ newCardType\ -\ The\ type\ of\ train\ portrayed\ on\ the\ card\n
 comment2.params=
-comment2.target=int\ getCurrentNum()
-comment2.text=\r\n\ This\ method\ returns\ the\ current\ index\ in\ the\ imgArr\ of\ this\ object,\r\n\ which\ gets\ you\ the\ image\ you\ want\ to\ use\ as\ an\ int.\r\n\ @return\ -\ current\ index\ in\ imgArr\ of\ the\ object.\r\n
-numComments=3
+comment2.target=java.awt.Image\ getTrainCard()
+comment2.text=\n\ This\ method\ returns\ the\ current\ Image\ of\ the\ object.\n\ @return\ -\ the\ train\ in\ use\ by\ this\ object\n
+comment3.params=
+comment3.target=int\ getCurrentNum()
+comment3.text=\n\ This\ method\ returns\ the\ current\ index\ in\ the\ imgArr\ of\ this\ object,\n\ which\ gets\ you\ the\ image\ you\ want\ to\ use\ as\ an\ int.\n\ @return\ -\ current\ index\ in\ imgArr\ of\ the\ object.\n
+numComments=4

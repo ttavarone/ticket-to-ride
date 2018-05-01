@@ -9,6 +9,8 @@ import java.awt.*;
  * @version (1.0)
  */
 public class Layout extends JPanel {
+    static Color c1 = Color.RED;
+    static Color c2 = Color.BLUE;
     /**
      * This constructor cretates the board state, putting all of the
      * JPanel objects onto locations on the board.
@@ -20,8 +22,8 @@ public class Layout extends JPanel {
 
         BasePanel baseline = new BasePanel();
 
-        Player[] players = {new Player(0, Color.RED), 
-                new Player(1, Color.BLUE)};
+        Player[] players = {new Player(0, c1), 
+                new Player(1, c2)};
 
         PlayerHand cPanela = new PlayerHand(players[0], deck);
         GridBagConstraints c = new GridBagConstraints();
