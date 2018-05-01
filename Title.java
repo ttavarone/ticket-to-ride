@@ -11,6 +11,11 @@ import java.io.IOException;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+/**
+*   Creates the Title Screen that can be interacted with. Play starts the game,
+*   Players lets the players choose their colors, Quit closes the game.
+*
+**/
 public class Title {
     public Rectangle playButton = new Rectangle(625, 175,150,50);
     public Rectangle playersButton = new Rectangle(625, 250,150,50);
