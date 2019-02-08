@@ -1,4 +1,3 @@
-////////////////////////////////////////////////////////////////////////////////
 import java.awt.Color;
 import java.util.ArrayList;
 /**
@@ -22,7 +21,7 @@ public class Player
     private int[] amountEachCard = 
         new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
     private int points = 0;
-    public int successfulTickets;
+    private int successfulTickets;
 
     /**
      * This is a constuctor that assigns a number and color
@@ -122,7 +121,16 @@ public class Player
     {
         return playerNum;
     }
-
+    
+    /**
+     * This method return how many tickets a player had were successful
+     * @return - number of successful tickets a player had.
+     */
+    public int getSuccessfulTickets()
+    {
+        return successfulTickets;
+    }
+    
     /**
      * This method adds a traincard to the players
      * hand
@@ -153,6 +161,15 @@ public class Player
     public int getPoints()
     {
         return points;
+    }
+    
+    /**
+     * This method adds 15 points from the globtrotter bonus
+     * @param newPoints - points to add or subtract from the player
+     */
+    public void addTicketPoints(int newPoints)
+    {
+        points = points + newPoints;
     }
 
     /**
@@ -293,16 +310,13 @@ public class Player
     }
 
     /**
-<<<<<<< HEAD
      * This method copies the arraylist of routelist objects
      * @param r - an arraylist of routelist objects to be copied
      * @return ArrayList<RouteList> the copied arraylist
-=======
      * This method performs a deep copy of the routes into an array list
      * so they aren't permanently altered by the recursive call.
      * @param r - current list of routes a player has.
      * @return - deep copy of r that can be changed without altering r.
->>>>>>> 5da78a25aa59ef4b7f113d3e03393df41adc6a67
      */
     public ArrayList<RouteList> copy(ArrayList<RouteList> r)
     {
@@ -316,7 +330,7 @@ public class Player
     }
 
     /**
-     * This is a "fun" recursive method that tests if a ticekt is valid. 
+     * This is a "fun" recursive method that tests if a ticket is valid. 
      * To do this, it first sees if it has visted the cities 
      * that were part of the route. If it doesn't work,then it sees if a 
      * cityName matches one of the citynames in the route. If it does, 
@@ -395,7 +409,7 @@ public class Player
     
     /**
      * This method was used for testing purposes only
-     * @param str - an array of strings.
+     * @param str - an array list of strings.
      */
     public void print(ArrayList<String> str)
     {

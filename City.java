@@ -1,9 +1,10 @@
 ////////////////////////////////////////////////////////////////////////////////
 /**
- * Enumeration class City - write a description of the enum class here
+ * Enumeration class City - This is an enum that allows us to create city
+ * variables that are useful in claiming routes and hovering over them.
  * 
  * @author (Tucker Tavarone, Logan Brandt, Josh DelSignore, 
- * Tom, Fresenius, Eamonn Conway)
+ * Tom Fresenius, Eamonn Conway)
  * @version (1.0)
  */
 public enum City
@@ -60,23 +61,41 @@ public enum City
     ; 
     private int xCoord;
     private int yCoord;
-    private Passenger[] p;
+    //private Passenger[] p;
     
+    /**
+     * This class returns the name of the current city.
+     * @return - name of the city as a string
+     */
     public String getName()
     {
         return name();
     }
     
+    /**
+     * This method gets the x coordinate for the city.
+     * @return - x coordinate for determining where the city is
+     */
     public int getX()
     {
         return xCoord;
     }
     
+    /**
+     * This method gets the y coordinate for the city.
+     * @return - y coordinate for determining where the city is
+     */
     public int getY()
     {
         return yCoord;
     }
     
+    /**
+     * This is a private constructor for creating a city. Since it
+     * is private, other classes can't make new cities.
+     * @param x - x coordinate for the city.
+     * @param y - y coordinate for the city.
+     */
     private City(int x, int y)//, Passenger[] newP)
     { 
         xCoord = x;

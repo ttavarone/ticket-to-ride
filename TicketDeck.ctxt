@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=TicketDeck
-comment0.text=\n\ Initilizes\ and\ constructs\ tickets\ (short\ and\ long\ routes)\n\ \n\ This\ class\ also\ gets\ the\ image\ objects\ that\ will\ eventually\ be\ used\ \n\ to\ paint\ on\ a\ JPanel\n\n\ @author\ (Tucker\ Tavarone,\ Logan\ Brandt,\ Josh\ DelSignore,\ Eamonn\ Conway)\n\ @version\ (4/30/18)\n
+comment0.text=\n\ Initializes\ and\ constructs\ short\ and\ long\ tickets.\n\ \n\ This\ class\ also\ gets\ the\ image\ objects\ that\ will\ eventually\ be\ used\ \n\ to\ paint\ on\ a\ JPanel\n\n\ @author\ (Tucker\ Tavarone,\ Logan\ Brandt,\ Josh\ DelSignore,\n\ Eamonn\ Conway,\ Thomas\ Fressenius)\n\ @version\ (4/30/18)\n
 comment1.params=
 comment1.target=TicketDeck()
 comment2.params=

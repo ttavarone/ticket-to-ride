@@ -34,17 +34,13 @@ public final class DeckOfCards extends JPanel
         return false;
     }
     
+    /**
+     * Adds a train to the discard pile
+     * @param t - train to add to the discard pile
+     */
     public void discardTrain(TrainCard t)
     {
         discard.add(t);
-    }
-    
-    public void discardTrains(TrainCard[] t)
-    {
-        for(int i = 0; i < t.length; i++)
-        {
-            discard.add(t[i]);
-        }
     }
 
     /**
@@ -131,6 +127,10 @@ public final class DeckOfCards extends JPanel
         Collections.shuffle(deck);
     }
     
+    /**
+     * A method to print out cards in the discard pile.
+     * Only used for testing purposes.
+     */
     public void print() {
         for(int i = 0; i < discard.size(); i++)
         {

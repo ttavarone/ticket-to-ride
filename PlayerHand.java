@@ -1,4 +1,3 @@
-////////////////////////////////////////////////////////////////////////////////
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -34,7 +33,11 @@ public class PlayerHand extends JPanel// implements MouseWheelListener
     private int playerNumber = 0;
 
     /**
-     * 
+     * This creates a new player hand for a player, and has a
+     * deck to add the top 4 into a player's hand.
+     * @param p - The player this playerhand represents
+     * @param d - the deck of cards the player gets cards from
+     * at the beginning of the game.
      */
     public PlayerHand(Player p, DeckOfCards deck)
     {
@@ -57,7 +60,7 @@ public class PlayerHand extends JPanel// implements MouseWheelListener
         playerNumber = p.getPlayerNum();
 
         TrainCard t;
-        for(int i = 0; i < 5; i++)
+        for(int i = 0; i < 4; i++)
         {
             t = deck.dequeue(0);
             int toAdd = t.getCurrentNum();
@@ -68,24 +71,49 @@ public class PlayerHand extends JPanel// implements MouseWheelListener
         setPreferredSize(new Dimension(230, 485));
     }
 
+    /**
+     * This method returns how many train cards are
+     * of a certain color.
+     * @param cardNumIn - The color to check train amount for.
+     * @return - how many trains of a color are in the players hand
+     */
     public int returnAmtCard(int cardNumIn){
         return person.getAmount(cardNumIn);
     }
-    
+
+    /**
+     * This method sets the number of train cards of a certain
+     * color that are in a players hand.
+     * @param cardNumIn - The color to change train amount for.
+     * @param toChange - the new amount of trains cards of the color
+     */
     public void setAmtCard(int cardNumIn, int toChange){
         person.setAmount(cardNumIn, toChange);
     }
-    
+
+    /**
+     * Adds the train card to a players hand.
+     * @param t - The Trains card to add to a player's hand.
+     */
     public void addCard(TrainCard t)
     {
         person.addToHand(t);
     }
 
+    /**
+     * Returns the player that this playerhand object represents
+     * @return - the player whose hand this is
+     */
     public Player getPlayer()
     {
         return person;
     }
 
+    /**
+     * This class draws all the train cards, and then prints how many
+     * of each card the player has.
+     * @param g - the graphics for this class
+     */
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g); 
@@ -106,9 +134,10 @@ public class PlayerHand extends JPanel// implements MouseWheelListener
         The following statements create little black boxes that contain
         a number that represents how many of the card a player has
          */
+        
         g.setColor(Color.LIGHT_GRAY);
         g.fillRect(0, 0, 25, 25);//black
-        g.fillRect(0, 128, 25, 25);//
+        g.fillRect(0, 128, 25, 25);
         g.fillRect(0, 256, 25, 25);
         g.fillRect(80, 0, 25, 25);
         g.fillRect(80, 128, 25, 25);

@@ -1,4 +1,3 @@
-////////////////////////////////////////////////////////////////////////////////
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
@@ -8,8 +7,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelListener;
 import java.awt.event.MouseWheelEvent;
 /**
- * This is the method that paints tickets on the board, it is 
- * technically an extension of ticketdeck class
+ * This is the method that paints tickets on the board, and updates the 
+ * decks when a player draws a ticket card or chooses not to.
  * 
  * @author (Tucker Tavarone, Logan Brandt, Josh DelSignore, 
  * Tom, Fresenius, Eamonn Conway)
@@ -26,10 +25,20 @@ public class TicketDeckPanel extends BasePanel
     protected PlayerHand[] p;
     protected int ticketsDrawn = 0;
     protected int currentTrainTicket = 0;
-    PlayerTicketsa player0;
-    PlayerTicketsb player1;
-    BasePanel baseline;
+    protected PlayerTicketsa player0;
+    protected PlayerTicketsb player1;
+    protected BasePanel baseline;
 
+    /**
+     * This method creates the TicketDeck Panel where players
+     * can draw train tickets.
+     * @param d - The deck of train tickets to draw from.
+     * @param players - The players that are in the game
+     * @param p0 - Player 1's ticket cards they've taken.
+     * @param p1 - Player 2's ticket cards they've taken.
+     * @param bp - The basepanel that this class will use 
+     * to get superclass variables.
+     */
     public TicketDeckPanel(TicketDeck d, PlayerHand[] players, 
     PlayerTicketsa p0, PlayerTicketsb p1, BasePanel bp){
         baseline = bp;
@@ -54,6 +63,11 @@ public class TicketDeckPanel extends BasePanel
 
         //addMouseWheelListener(this);
         addMouseListener(new MouseAdapter() { 
+            /**
+             * This inner class will either add a ticket card to a 
+             * player's hand or draws a ticket card from the deck.
+             * @param e - Event where mouse is pressed down
+             */
                 public void mousePressed(MouseEvent e) { 
                     TicketCard t;
                     if(!baseline.blockTicketDraw)
@@ -248,6 +262,11 @@ public class TicketDeckPanel extends BasePanel
             }); 
     }
 
+    /**
+     * This method draws the current tickets that have been drawn
+     * and the ticket deck itself.
+     * @param g - The graphics to be drawn.
+     */
     @Override
     public void paintComponent(Graphics g)
     {

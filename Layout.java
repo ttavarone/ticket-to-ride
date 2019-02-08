@@ -1,16 +1,20 @@
-////////////////////////////////////////////////////////////////////////////////
 import javax.swing.*;
 import java.awt.*;
 
 /**
- * Put all the JPanel objects in here
+ * This method places on the JPanels on the screen in an ordered way
  * 
  * @author (Tucker Tavarone, Logan Brandt, Josh DelSignore, 
  * Tom, Fresenius, Eamonn Conway)
  * @version (1.0)
  */
 public class Layout extends JPanel {
-    TicketDeckPanel tPanel;
+    static Color c1 = Color.RED;
+    static Color c2 = Color.BLUE;
+    /**
+     * This constructor cretates the board state, putting all of the
+     * JPanel objects onto locations on the board.
+     */
     public Layout() {
         setLayout(new GridBagLayout());
 
@@ -18,8 +22,8 @@ public class Layout extends JPanel {
 
         BasePanel baseline = new BasePanel();
 
-        Player[] players = {new Player(0, Color.RED), 
-                new Player(1, Color.BLUE)};
+        Player[] players = {new Player(0, c1), 
+                new Player(1, c2)};
 
         PlayerHand cPanela = new PlayerHand(players[0], deck);
         GridBagConstraints c = new GridBagConstraints();
@@ -66,18 +70,5 @@ public class Layout extends JPanel {
         c.gridx = 1;
         c.gridy = 0;
         add(dPanel, c);
-    }
-    
-    public Layout(PlayerHand[] p)
-    {
-        setLayout(new GridBagLayout());
-        setPreferredSize(new Dimension(1200, 875));
-        EndGamePanel eGame = new EndGamePanel(p);
-        
-        GridBagConstraints c = new GridBagConstraints();
-        c.anchor = GridBagConstraints.WEST;
-        c.gridx = 0;
-        c.gridy = 0;
-        add(eGame, c);
     }
 }
